@@ -409,10 +409,10 @@
             padding: 4px 6px;
             border-radius: 5px;
             text-transform: uppercase;
-            border: 1px solid rgba(34, 197, 94, 0.4);
+            border: 1px solid rgba(34, 197, 94, 0.3);
         }
 
-        /* --- PAGINA 2: REPAIRS & QUOTE --- */
+        /* --- PAGINA 2 & 3: COMMON STYLING --- */
         .top-action-bar {
             display: flex;
             justify-content: space-between;
@@ -741,9 +741,171 @@
             gap: 8px;
         }
 
+        /* --- STILURI PENTRU PAGINA 3 (SELECT DATE & TIME - 43288.png) --- */
+        .sched-title {
+            font-size: 20px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #fff;
+        }
+
+        .sched-label {
+            font-size: 11px;
+            font-weight: 800;
+            color: #aaa;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .date-select-box {
+            background: rgba(18, 18, 18, 0.95);
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 14px 16px;
+            color: #fff;
+            font-size: 14px;
+            font-weight: 700;
+            width: 100%;
+            margin-bottom: 20px;
+            outline: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .date-select-box input {
+            background: transparent;
+            border: none;
+            color: #fff;
+            font-size: 14px;
+            font-weight: 700;
+            width: 100%;
+            outline: none;
+        }
+
+        .slots-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .slot-btn {
+            background: rgba(18, 18, 18, 0.95);
+            border: 1px solid #333;
+            border-radius: 10px;
+            padding: 14px 10px;
+            color: #fff;
+            font-size: 13px;
+            font-weight: 800;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .slot-btn:hover {
+            border-color: #ff3333;
+        }
+
+        .slot-btn.selected {
+            background: #ff1e1e;
+            border-color: #ff1e1e;
+            color: #fff;
+            box-shadow: 0 0 15px rgba(255, 30, 30, 0.5);
+        }
+
+        .summary-card {
+            background: rgba(18, 18, 18, 0.95);
+            border: 1px solid #333;
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+        }
+
+        .summary-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #222;
+            padding-bottom: 12px;
+        }
+
+        .summary-title {
+            font-size: 16px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .summary-price {
+            font-size: 18px;
+            font-weight: 900;
+            color: #ff3333;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 10px;
+            font-weight: 800;
+            text-transform: uppercase;
+            color: #aaa;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+        }
+
+        .form-group input {
+            background: rgba(10, 10, 10, 0.9);
+            border: 1px solid #333;
+            border-radius: 10px;
+            padding: 12px 14px;
+            color: #fff;
+            font-size: 13px;
+            width: 100%;
+            outline: none;
+            transition: 0.2s;
+        }
+
+        .form-group input:focus {
+            border-color: #ff3333;
+        }
+
+        .confirm-booking-btn {
+            background: linear-gradient(135deg, #ff1e1e, #cc0000);
+            color: white;
+            width: 100%;
+            padding: 16px;
+            border-radius: 12px;
+            border: none;
+            font-weight: 900;
+            font-size: 13px;
+            text-transform: uppercase;
+            cursor: pointer;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 20px rgba(255, 30, 30, 0.4);
+            text-align: center;
+            margin-top: 10px;
+            transition: 0.2s;
+        }
+
+        .confirm-booking-btn:hover {
+            opacity: 0.9;
+        }
+
         .whatsapp-float {
             position: fixed;
-            bottom: 115px;
+            bottom: 30px;
             right: 20px;
             background-color: #22c55e;
             color: white;
@@ -776,12 +938,13 @@
             </div>
             <div class="logo-text">
                 <h1>V8 POWER GARAGE</h1>
-                <p>AUTO SERVICE & MOT CENTRE</p>
+                <p>DVSA MOT & PERFORMANCE WORKSHOP</p>
             </div>
         </div>
         <button class="menu-btn" onclick="toggleMenu()">☰</button>
     </header>
 
+    <!-- Meniul dropdown -->
     <div id="navDropdown" class="dropdown-menu">
         <a href="#" class="dropdown-link" style="border-bottom: 1px solid #222;" onclick="switchPage('home'); closeMenu();">HOME</a>
         
@@ -833,6 +996,7 @@
         </div>
     </div>
 
+    <!-- PAGINA 1: HOME -->
     <div id="homePage" class="page-section active">
         <div class="top-badge">
             🛡️ APPROVED INDEPENDENT WORKSHOP • BRISTOL
@@ -884,6 +1048,7 @@
         </div>
     </div>
 
+    <!-- PAGINA 2: REPAIRS & QUOTE SELECTION -->
     <div id="quotePage" class="page-section">
         <div class="top-action-bar">
             <button class="back-btn" onclick="switchPage('home')">&larr; BACK</button>
@@ -892,9 +1057,10 @@
 
         <div class="search-repair-box">
             <span style="color: #777;">🔍</span>
-            <input type="text" id="searchInput" placeholder="Search repairs (e.g. brake pads, water pump...)" oninput="handleSearchInput(this.value)">
+            <input type="text" placeholder="Search repairs (e.g. brake pads, water pump, timing belt...)">
         </div>
 
+        <!-- 1. MOT & ROUTINE SERVICING -->
         <div class="repair-category-card" onclick="toggleSubList('motList', 'arrow1')">
             <div class="repair-cat-left">
                 <div class="repair-cat-icon">🛡️</div>
@@ -903,7 +1069,7 @@
             <div id="arrow1" class="repair-cat-arrow">⌄</div>
         </div>
         <div id="motList" class="sub-service-list">
-            <div class="service-item-card" id="card-mot4" onclick="toggleService('mot4', 45.00)">
+            <div class="service-item-card" id="card-mot4" onclick="toggleService('mot4', 45.00, 'MOT Test (Class 4 Cars)')">
                 <div class="service-item-top">
                     <div class="service-item-title-area">
                         <div class="service-item-name">MOT Test (Class 4 Cars)</div>
@@ -912,3 +1078,822 @@
                     </div>
                     <div class="service-item-right">
                         <div class="service-item-price" id="price-mot4">£45</div>
+                        <div class="service-item-action" id="action-mot4">+ Add</div>
+                    </div>
+                </div>
+                <div class="service-item-desc">Official DVSA comprehensive road safety inspection.</div>
+            </div>
+
+            <div class="service-item-card" id="card-mot7" onclick="toggleService('mot7', 55.00, 'MOT Test (Class 7 Commercials)')">
+                <div class="service-item-top">
+                    <div class="service-item-title-area">
+                        <div class="service-item-name">MOT Test (Class 7 Commercials)</div>
+                        <span class="service-badge-time">60 mins</span>
+                    </div>
+                    <div class="service-item-right">
+                        <div class="service-item-price" id="price-mot7">£55</div>
+                        <div class="service-item-action" id="action-mot7">+ Add</div>
+                    </div>
+                </div>
+                <div class="service-item-desc">Commercial goods vehicles and large vans up to 3,500kg.</div>
+            </div>
+
+            <div class="service-item-card" id="card-oil" onclick="toggleService('oil', 75.00, 'Engine Oil & Filter Replacement')">
+                <div class="service-item-top">
+                    <div class="service-item-title-area">
+                        <div class="service-item-name">Engine Oil & Filter Replacement</div>
+                        <span class="service-badge-time">45 mins</span>
+                    </div>
+                    <div class="service-item-right">
+                        <div class="service-item-price">£75</div>
+                        <div class="service-item-action" id="action-oil">+ Add</div>
+                    </div>
+                </div>
+                <div class="service-item-desc">Fresh premium synthetic oil & OEM quality oil filter change.</div>
+            </div>
+
+            <div class="service-item-card" id="card-interim" onclick="toggleService('interim', 110.00, 'Interim Service (35-point)')">
+                <div class="service-item-top">
+                    <div class="service-item-title-area">
+                        <div class="service-item-name">Interim Service (35-point)</div>
+                        <span class="service-badge-time">1.5 hrs</span>
+                    </div>
+                    <div class="service-item-right">
+                        <div class="service-item-price">£110</div>
+                        <div class="service-item-action" id="action-interim">+ Add</div>
+                    </div>
+                </div>
+                <div class="service-item-desc">Oil, filter renewal, underbody check & fluid top-ups.</div>
+            </div>
+
+            <div class="service-item-card" id="card-major" onclick="toggleService('major', 195.00, 'Full Major Service (72-point)')">
+                <div class="service-item-top">
+                    <div class="service-item-title-area">
+                        <div class="service-item-name">Full Major Service (72-point)</div>
+                        <span class="service-badge-time">3.0 hrs</span>
+                        <span class="service-badge-val">Best Value</span>
+                    </div>
+                    <div class="service-item-right">
+                        <div class="service-item-price">£195</div>
+                        <div class="service-item-action" id="action-major">+ Add</div>
+                    </div>
+                </div>
+                <div class="service-item-desc">Complete filters, spark plugs, fluids & diagnostics.</div>
+            </div>
+        </div>
+
+        <!-- 2. BRAKES & HYDRAULIC SYSTEMS -->
+        <div class="repair-category-card" onclick="toggleSubList('brakesList', 'arrow2')">
+            <div class="repair-cat-left">
+                <div class="repair-cat-icon">🛑</div>
+                <div class="repair-cat-title">Brakes & Hydraulic Systems</div>
+            </div>
+            <div id="arrow2" class="repair-cat-arrow">⌄</div>
+        </div>
+        <div id="brakesList" class="sub-service-list">
+            <div class="service-item-card" id="card-bpf" onclick="toggleService('bpf', 85.00, 'Brake Pads - Front')">
+                <div class="service-item-top">
+                    <div class="service-item-title-area">
+                        <div class="service-item-name">Brake Pads Replacement - Front</div>
+                        <span class="service-badge-time">60 mins</span>
+                    </div>
+                    <div class="service-item-right">
+                        <div class="service-item-price">£85</div>
+                        <div class="service-item-action" id="action-bpf">+ Add</div>
+                    </div>
+                </div>
+                <div class="service-item-desc">High quality OEM front brake pads replacement & testing.</div>
+            </div>
+            <div class="service-item-card" id="card-bpr" onclick="toggleService('bpr', 80.00, 'Brake Pads - Rear')">
+                <div class="service-item-top">
+                    <div class="service-item-title-area">
+                        <div class="service-item-name">Brake Pads Replacement - Rear</div>
+                        <span class="service-badge-time">60 mins</span>
+                    </div>
+                    <div class="service-item-right">
+                        <div class="service-item-price">£80</div>
+                        <div class="service-item-action" id="action-bpr">+ Add</div>
+                    </div>
+                </div>
+                <div class="service-item-desc">High quality OEM rear brake pads replacement & testing.</div>
+            </div>
+            <div class="service-item-card" id="card-bdpf" onclick="toggleService('bdpf', 165.00, 'Brake Discs & Pads - Front')">
+                <div class="service-item-top">
+                    <div class="service-item-title-area">
+                        <div class="service-item-name">Brake Discs & Pads - Front</div>
+                        <span class="service-badge-time">90 mins</span>
+                    </div>
+                    <div class="service-item-right">
+                        <div class="service-item-price">£165</div>
+                        <div class="service-item-action" id="action-bdpf">+ Add</div>
+                    </div>
+                </div>
+                <div class="service-item-desc">Complete front axle brake disc and pad replacement set.</div>
+            </div>
+            <div class="service-item-card" id="card-bdpr" onclick="toggleService('bdpr', 155.00, 'Brake Discs & Pads - Rear')">
+                <div class="service-item-top">
+                    <div class="service-item-title-area">
+                        <div class="service-item-name">Brake Discs & Pads - Rear</div>
+                        <span class="service-badge-time">90 mins</span>
+                    </div>
+                    <div class="service-item-right">
+                        <div class="service-item-price">£155</div>
+                        <div class="service-item-action" id="action-bdpr">+ Add</div>
+                    </div>
+                </div>
+                <div class="service-item-desc">Complete rear axle brake disc and pad replacement set.</div>
+            </div>
+            <div class="service-item-card" id="card-bff" onclick="toggleService('bff', 55.00, 'Brake Fluid Flush')">
+                <div class="service-item-top">
+                    <div class="service-item-title-area">
+                        <div class="service-item-name">Brake Fluid Flush</div>
+                        <span class="service-badge-time">45 mins</span>
+                    </div>
+                    <div class="service-item-right">
+                        <div class="service-item-price">£55</div>
+                        <div class="service-item-action" id="action-bff">+ Add</div>
+                    </div>
+                </div>
+                <div class="service-item-desc">Complete system bleed and fresh DOT 4 fluid refill.</div>
+            </div>
+            <div class="service-item-card" id="card-cal" onclick="toggleService('cal', 120.00, 'Caliper Replacement')">
+                <div class="service-item-top">
+                    <div class="service-item-title-area">
+                        <div class="service-item-name">Caliper Replacement</div>
+                        <span class="service-badge-time">90 mins</span>
+                    </div>
+                    <div class="service-item-right">
+                        <div class="service-item-price">£120</div>
+                        <div class="service-item-action" id="action-cal">+ Add</div>
+                    </div>
+                </div>
+                <div class="service-item-desc">Single brake caliper replacement including bleeding.</div>
+            </div>
+        </div>
+
+        <!-- 3. ENGINE, BELTS & ELECTRICAL MOTORS -->
+        <div class="repair-category-card" onclick="toggleSubList('engineList', 'arrow3')">
+            <div class="repair-cat-left">
+                <div class="repair-cat-icon">⚡</div>
+                <div class="repair-cat-title">Engine, Belts & Electrical Motors</div>
+            </div>
+            <div id="arrow3" class="repair-cat-arrow">⌄</div>
+        </div>
+        <div id="engineList" class="sub-service-list">
+            <div class="service-item-card" id="card-timb" onclick="toggleService('timb', 280.00, 'Timing Belt Kit')">
+                <div class="service-item-top">
+                    <div class="service-item-title-area">
+                        <div class="service-item-name">Timing Belt Kit Replacement</div>
+                        <span class="service-badge-time">3.5 hrs</span>
+                    </div>
+                    <div class="service-item-right">
+                        <div class="service-item-price">£280</div>
+                        <div class="service-item-action" id="action-timb">+ Add</div>
+                    </div>
+                </div>
+                <div class="service-item-desc">New timing belt, tensioners and idler pulleys installed.</div>
+            </div>
+            <div class="service-item-card" id="card-womp" onclick="toggleService('womp', 140.00, 'Water Pump')">
+                <div class="service-item-top">
+                    <div class="service-item-title-area">
+                        <div class="service-item-name">Water Pump Replacement</div>
+                        <span class="service-badge-time">2.0 hrs</span>
+                    </div>
+                    <div class="service-item-right">
+                        <div class="service-item-price">£140</div>
+                        <div class="service-item-action" id="action-womp">+ Add</div>
+                    </div>
+                </div>
+                <div class="service-item-desc">New water pump and coolant refill included.</div>
+            </div>
+            <div class="service-item-card" id="card-alt" onclick="toggleService('alt', 220.00, 'Alternator Replacement')">
+                <div class="service-item-top">
+                    <div class="service-item-title-area">
+                        <div class="service-item-name">Alternator Replacement</div>
+                        <span class="service-badge-time">2.0 hrs</span>
+                    </div>
+                    <div class="service-item-right">
+                        <div class="service-item-price">£220</div>
+                        <div class="service-item-action" id="action-alt">+ Add</div>
+                    </div>
+                </div>
+                <div class="service-item-desc">OEM quality alternator replacement & charging test.</div>
+            </div>
+            <div class="service-item-card" id="card-stm" onclick="toggleService('stm', 210.00, 'Starter Motor')">
+                <div class="service-item-top">
+                    <div class="service-item-title-area">
+                        <div class="service-item-name">Starter Motor Replacement</div>
+                        <span class="service-badge-time">1.5 hrs</span>
+                    </div>
+                    <div class="service-item-right">
+                        <div class="service-item-price">£210</div>
+                        <div class="service-item-action" id="action-stm">+ Add</div>
+                    </div>
+                </div>
+                <div class="service-item-desc">New starter motor supply and professional fitting.</div>
+            </div>
+            <div class="service-item-card" id="card-aux" onclick="toggleService('aux', 65.00, 'Auxiliary Drive Belt')">
+                <div class="service-item-top">
+                    <div class="service-item-title-area">
+                        <div class="service-item-name">Auxiliary Drive Belt</div>
+                        <span class="service-badge-time">45 mins</span>
+                    </div>
+                    <div class="service-item-right">
+                        <div class="service-item-price">£65</div>
+                        <div class="service-item-action" id="action-aux">+ Add</div>
+                    </div>
+                </div>
+                <div class="service-item-desc">Fan / alternator belt replacement and tension check.</div>
+            </div>
+            <div class="service-item-card" id="card-glow" onclick="toggleService('glow', 90.00, 'Glow Plugs')">
+                <div class="service-item-top">
+                    <div class="service-item-title-area">
+                        <div class="service-item-name">Glow Plugs Replacement</div>
+                        <span class="service-badge-time">60 mins</span>
+                    </div>
+                    <div class="service-item-right">
+                        <div class="service-item-price">£90</div>
+                        <div class="service-item-action" id="action-glow">+ Add</div>
+                    </div>
+                </div>
+                <div class="service-item-desc">Set of diesel glow plugs replacement for easy winter starts.</div>
+            </div>
+        </div>
+
+        <!-- 4. SUSPENSION, SPRINGS & STEERING -->
+        <div class="repair-category-card" onclick="toggleSubList('suspList', 'arrow4')">
+            <div class="repair-cat-left">
+                <div class="repair-cat-icon">🚗</div>
+                <div class="repair-cat-title">Suspension, Springs & Steering</div>
+            </div>
+            <div id="arrow4" class="repair-cat-arrow">⌄</div>
+        </div>
+        <div id="suspList" class="sub-service-list">
+            <div class="service-item-card" id="card-shf" onclick="toggleService('shf', 180.00, 'Front Shock Absorbers')">
+                <div class="service-item-top">
+                    <div class="service-item-title-area">
+                        <div class="service-item-name">Shock Absorbers Replacement - Front</div>
+                        <span class="service-badge-time">2.0 hrs</span>
+                    </div>
+                    <div class="service-item-right">
+                        <div class="service-item-price">£180</div>
+                        <div class="service-item-action" id="action-shf">+ Add</div>
+                    </div>
+                </div>
+                <div class="service-item-desc">Front axle shock absorbers replacement pair.</div>
+            </div>
+            <div class="service-item-card" id="card-shr" onclick="toggleService('shr', 150.00, 'Rear Shock Absorbers')">
+                <div class="service-item-top">
+                    <div class="service-item-title-area">
+                        <div class="service-item-name">Shock Absorbers Replacement - Rear</div>
+                        <span class="service-badge-time">1.5 hrs</span>
+                    </div>
+                    <div class="service-item-right">
+                        <div class="service-item-price">£150</div>
+                        <div class="service-item-action" id="action-shr">+ Add</div>
+                    </div>
+                </div>
+                <div class="service-item-desc">Rear axle shock absorbers replacement pair.</div>
+            </div>
+            <div class="service-item-card" id="card-csp" onclick="toggleService('csp', 110.00, 'Coil Spring')">
+                <div class="service-item-top">
+                    <div class="service-item-title-area">
+                        <div class="service-item-name">Coil Spring Replacement</div>
+                        <span class="service-badge-time">60 mins</span>
+                    </div>
+                    <div class="service-item-right">
+                        <div class="service-item-price">£110</div>
+                        <div class="service-item-action" id="action-csp">+ Add</div>
+                    </div>
+                </div>
+                <div class="service-item-desc">Single road coil spring replacement.</div>
+            </div>
+            <div class="service-item-card" id="card-arl" onclick="toggleService('arl', 70.00, 'Anti-Roll Bar Link')">
+                <div class="service-item-top">
+                    <div class="service-item-title-area">
+                        <div class="service-item-name">Anti-Roll Bar Link</div>
+                        <span class="service-badge-time">45 mins</span>
+                    </div>
+                    <div class="service-item-right">
+                        <div class="service-item-price">£70</div>
+                        <div class="service-item-action" id="action-arl">+ Add</div>
+                    </div>
+                </div>
+                <div class="service-item-desc">Drop link replacement to eliminate suspension knocking noises.</div>
+            </div>
+            <div class="service-item-card" id="card-arm" onclick="toggleService('arm', 130.00, 'Wishbone / Control Arm')">
+                <div class="service-item-top">
+                    <div class="service-item-title-area">
+                        <div class="service-item-name">Wishbone / Control Arm</div>
+                        <span class="service-badge-time">90 mins</span>
+                    </div>
+                    <div class="service-item-right">
+                        <div class="service-item-price">£130</div>
+                        <div class="service-item-action" id="action-arm">+ Add</div>
+                    </div>
+                </div>
+                <div class="service-item-desc">Lower suspension arm with pre-pressed bushes and ball joint.</div>
+            </div>
+            <div class="service-item-card" id="card-whb" onclick="toggleService('whb', 120.00, 'Wheel Bearing')">
+                <div class="service-item-top">
+                    <div class="service-item-title-area">
+                        <div class="service-item-name">Wheel Bearing Replacement</div>
+                        <span class="service-badge-time">90 mins</span>
+                    </div>
+                    <div class="service-item-right">
+                        <div class="service-item-price">£120</div>
+                        <div class="service-item-action" id="action-whb">+ Add</div>
+                    </div>
+                </div>
+                <div class="service-item-desc">New hub wheel bearing assembly supply & fit.</div>
+            </div>
+            <div class="service-item-card" id="card-tre" onclick="toggleService('tre', 65.00, 'Track Rod End')">
+                <div class="service-item-top">
+                    <div class="service-item-title-area">
+                        <div class="service-item-name">Track Rod End</div>
+                        <span class="service-badge-time">45 mins</span>
+                    </div>
+                    <div class="service-item-right">
+                        <div class="service-item-price">£65</div>
+                        <div class="service-item-action" id="action-tre">+ Add</div>
+                    </div>
+                </div>
+                <div class="service-item-desc">Steering track rod end joint replacement.</div>
+            </div>
+        </div>
+
+        <!-- 5. CLUTCH, GEARBOX & TRANSMISSION -->
+        <div class="repair-category-card" onclick="toggleSubList('clutchList', 'arrow5')">
+            <div class="repair-cat-left">
+                <div class="repair-cat-icon">🔧</div>
+                <div class="repair-cat-title">Clutch, Gearbox & Drivetrain</div>
+            </div>
+            <div id="arrow5" class="repair-cat-arrow">⌄</div>
+        </div>
+        <div id="clutchList" class="sub-service-list">
+            <div class="service-item-card" id="card-clt" onclick="toggleService('clt', 380.00, 'Clutch Kit')">
+                <div class="service-item-top">
+                    <div class="service-item-title-area">
+                        <div class="service-item-name">Clutch Kit Replacement</div>
+                        <span class="service-badge-time">4.5 hrs</span>
+                    </div>
+                    <div class="service-item-right">
+                        <div class="service-item-price">£380</div>
+                        <div class="service-item-action" id="action-clt">+ Add</div>
+                    </div>
+                </div>
+                <div class="service-item-desc">Clutch cover, friction disc and release bearing kit replacement.</div>
+            </div>
+            <div class="service-item-card" id="card-dmf" onclick="toggleService('dmf', 590.00, 'Dual Mass Flywheel & Clutch')">
+                <div class="service-item-top">
+                    <div class="service-item-title-area">
+                        <div class="service-item-name">Dual Mass Flywheel & Clutch</div>
+                        <span class="service-badge-time">5.5 hrs</span>
+                    </div>
+                    <div class="service-item-right">
+                        <div class="service-item-price">£590</div>
+                        <div class="service-item-action" id="action-dmf">+ Add</div>
+                    </div>
+                </div>
+                <div class="service-item-desc">Complete clutch kit and dual mass flywheel replacement.</div>
+            </div>
+            <div class="service-item-card" id="card-gbo" onclick="toggleService('gbo', 85.00, 'Gearbox Oil Change')">
+                <div class="service-item-top">
+                    <div class="service-item-title-area">
+                        <div class="service-item-name">Gearbox Oil Change</div>
+                        <span class="service-badge-time">45 mins</span>
+                    </div>
+                    <div class="service-item-right">
+                        <div class="service-item-price">£85</div>
+                        <div class="service-item-action" id="action-gbo">+ Add</div>
+                    </div>
+                </div>
+                <div class="service-item-desc">Manual or automatic transmission fluid replacement.</div>
+            </div>
+            <div class="service-item-card" id="card-cvj" onclick="toggleService('cvj', 130.00, 'Drive Shaft CV Joint')">
+                <div class="service-item-top">
+                    <div class="service-item-title-area">
+                        <div class="service-item-name">Drive Shaft CV Joint</div>
+                        <span class="service-badge-time">90 mins</span>
+                    </div>
+                    <div class="service-item-right">
+                        <div class="service-item-price">£130</div>
+                        <div class="service-item-action" id="action-cvj">+ Add</div>
+                    </div>
+                </div>
+                <div class="service-item-desc">Outer CV boot or complete constant velocity joint replacement.</div>
+            </div>
+        </div>
+
+        <!-- 6. TURBO, EXHAUST & DPF EMISSIONS -->
+        <div class="repair-category-card" onclick="toggleSubList('exhaustList', 'arrow6')">
+            <div class="repair-cat-left">
+                <div class="repair-cat-icon">💨</div>
+                <div class="repair-cat-title">Turbo, Exhaust & DPF Emissions</div>
+            </div>
+            <div id="arrow6" class="repair-cat-arrow">⌄</div>
+        </div>
+        <div id="exhaustList" class="sub-service-list">
+            <div class="service-item-card" id="card-dpf" onclick="toggleService('dpf', 140.00, 'DPF Clean & Regen')">
+                <div class="service-item-top">
+                    <div class="service-item-title-area">
+                        <div class="service-item-name">DPF Chemical Clean & Regeneration</div>
+                        <span class="service-badge-time">90 mins</span>
+                    </div>
+                    <div class="service-item-right">
+                        <div class="service-item-price">£140</div>
+                        <div class="service-item-action" id="action-dpf">+ Add</div>
+                    </div>
+                </div>
+                <div class="service-item-desc">Professional diesel particulate filter flush and forced regen.</div>
+            </div>
+            <div class="service-item-card" id="card-exh" onclick="toggleService('exh', 130.00, 'Exhaust Back Box')">
+                <div class="service-item-top">
+                    <div class="service-item-title-area">
+                        <div class="service-item-name">Exhaust Back Box Replacement</div>
+                        <span class="service-badge-time">60 mins</span>
+                    </div>
+                    <div class="service-item-right">
+                        <div class="service-item-price">£130</div>
+                        <div class="service-item-action" id="action-exh">+ Add</div>
+                    </div>
+                </div>
+                <div class="service-item-desc">Rear silencer box and hanging rubbers replacement.</div>
+            </div>
+            <div class="service-item-card" id="card-lam" onclick="toggleService('lam', 95.00, 'Lambda / O2 Sensor')">
+                <div class="service-item-top">
+                    <div class="service-item-title-area">
+                        <div class="service-item-name">Lambda / O2 Sensor Replacement</div>
+                        <span class="service-badge-time">45 mins</span>
+                    </div>
+                    <div class="service-item-right">
+                        <div class="service-item-price">£95</div>
+                        <div class="service-item-action" id="action-lam">+ Add</div>
+                    </div>
+                </div>
+                <div class="service-item-desc">Oxygen sensor replacement to fix emission faults and high fuel usage.</div>
+            </div>
+            <div class="service-item-card" id="card-cat" onclick="toggleService('cat', 120.00, 'Catalytic Converter Check')">
+                <div class="service-item-top">
+                    <div class="service-item-title-area">
+                        <div class="service-item-name">Catalytic Converter Check & Clean</div>
+                        <span class="service-badge-time">60 mins</span>
+                    </div>
+                    <div class="service-item-right">
+                        <div class="service-item-price">£120</div>
+                        <div class="service-item-action" id="action-cat">+ Add</div>
+                    </div>
+                </div>
+                <div class="service-item-desc">Exhaust emissions analysis and cat inspection.</div>
+            </div>
+        </div>
+
+        <!-- 7. AIR CONDITIONING & ELECTRICAL -->
+        <div class="repair-category-card" onclick="toggleSubList('acList', 'arrow7')">
+            <div class="repair-cat-left">
+                <div class="repair-cat-icon">🔋</div>
+                <div class="repair-cat-title">Air Conditioning & Electrical</div>
+            </div>
+            <div id="arrow7" class="repair-cat-arrow">⌄</div>
+        </div>
+        <div id="acList" class="sub-service-list">
+            <div class="service-item-card" id="card-ac" onclick="toggleService('ac', 65.00, 'Air Con Re-gas')">
+                <div class="service-item-top">
+                    <div class="service-item-title-area">
+                        <div class="service-item-name">Air Con Re-gas & Service</div>
+                        <span class="service-badge-time">45 mins</span>
+                    </div>
+                    <div class="service-item-right">
+                        <div class="service-item-price">£65</div>
+                        <div class="service-item-action" id="action-ac">+ Add</div>
+                    </div>
+                </div>
+                <div class="service-item-desc">R134a or R1234yf refrigerant gas recharge and leak test.</div>
+            </div>
+            <div class="service-item-card" id="card-bat" onclick="toggleService('bat', 110.00, 'Car Battery')">
+                <div class="service-item-top">
+                    <div class="service-item-title-area">
+                        <div class="service-item-name">Car Battery Replacement</div>
+                        <span class="service-badge-time">30 mins</span>
+                    </div>
+                    <div class="service-item-right">
+                        <div class="service-item-price">£110</div>
+                        <div class="service-item-action" id="action-bat">+ Add</div>
+                    </div>
+                </div>
+                <div class="service-item-desc">Heavy duty maintenance-free battery with 3-year warranty.</div>
+            </div>
+            <div class="service-item-card" id="card-diag" onclick="toggleService('diag', 50.00, 'Diagnostic Scan')">
+                <div class="service-item-top">
+                    <div class="service-item-title-area">
+                        <div class="service-item-name">Full Diagnostic Computer Scan</div>
+                        <span class="service-badge-time">30 mins</span>
+                    </div>
+                    <div class="service-item-right">
+                        <div class="service-item-price">£50</div>
+                        <div class="service-item-action" id="action-diag">+ Add</div>
+                    </div>
+                </div>
+                <div class="service-item-desc">ECU fault code reading, live data check and report.</div>
+            </div>
+            <div class="service-item-card" id="card-altt" onclick="toggleService('altt', 60.00, 'Alternator Testing')">
+                <div class="service-item-top">
+                    <div class="service-item-title-area">
+                        <div class="service-item-name">Alternator Testing & Repair</div>
+                        <span class="service-badge-time">45 mins</span>
+                    </div>
+                    <div class="service-item-right">
+                        <div class="service-item-price">£60</div>
+                        <div class="service-item-action" id="action-altt">+ Add</div>
+                    </div>
+                </div>
+                <div class="service-item-desc">Electrical charging system output test and diode check.</div>
+            </div>
+        </div>
+
+        <div class="custom-repair-box">
+            <div class="custom-repair-header">
+                <div class="custom-repair-icon">❓</div>
+                <div>
+                    <div class="custom-repair-title">Can't find your specific part or repair?</div>
+                    <div class="custom-repair-sub">Type any custom part or job description below:</div>
+                </div>
+            </div>
+            <div class="custom-repair-input-row">
+                <input type="text" id="customPartInput" placeholder="e.g. Front anti-roll bar link, Alternator renew...">
+                <button class="add-custom-btn" onclick="addCustomPart()">+ Add</button>
+            </div>
+        </div>
+
+        <!-- Bara fixă de jos de pe Pagina 2 -->
+        <div class="quote-bottom-bar">
+            <div class="quote-info-row">
+                <div id="selectedCountText" class="quote-items-count">0 SELECTED</div>
+            </div>
+            <div class="quote-info-row">
+                <div id="totalPriceText" class="quote-total-price">£0.00</div>
+            </div>
+            <button class="continue-btn" onclick="switchPage('schedule')">
+                CONTINUE &gt;
+            </button>
+        </div>
+    </div>
+
+    <!-- PAGINA 3: SELECT DATE & TIME (43288.png) -->
+    <div id="schedulePage" class="page-section">
+        <div class="top-action-bar">
+            <button class="back-btn" onclick="switchPage('quote')">&larr; BACK</button>
+            <div id="regDisplayBadge3" class="reg-display-badge">LA21 CZU</div>
+        </div>
+
+        <div class="sched-title">
+            📅 Select Date & Time
+        </div>
+
+        <div class="sched-label">Appointment Date</div>
+        <div class="date-select-box">
+            <input type="date" id="appDate" value="2026-09-31">
+        </div>
+
+        <div class="sched-label">Available Slots</div>
+        <div class="slots-grid">
+            <div class="slot-btn" onclick="selectSlot(this)">08:30</div>
+            <div class="slot-btn selected" onclick="selectSlot(this)">09:30</div>
+            <div class="slot-btn" onclick="selectSlot(this)">10:30</div>
+            <div class="slot-btn" onclick="selectSlot(this)">11:30</div>
+            <div class="slot-btn" onclick="selectSlot(this)">13:00</div>
+            <div class="slot-btn" onclick="selectSlot(this)">14:00</div>
+            <div class="slot-btn" onclick="selectSlot(this)">15:00</div>
+            <div class="slot-btn" onclick="selectSlot(this)">16:00</div>
+            <div class="slot-btn" onclick="selectSlot(this)">17:00</div>
+        </div>
+
+        <div class="summary-card">
+            <div class="summary-header">
+                <div class="summary-title">Summary</div>
+                <div id="summaryTotalPrice" class="summary-price">£0</div>
+            </div>
+
+            <div class="form-group">
+                <label>Your Full Name</label>
+                <input type="text" id="clientName" placeholder="John Doe">
+            </div>
+
+            <div class="form-group">
+                <label>Email Address (For Confirmation)</label>
+                <input type="email" id="clientEmail" placeholder="valentinoprea57@gmail.com">
+            </div>
+
+            <div class="form-group">
+                <label>Phone Number</label>
+                <input type="tel" id="clientPhone" placeholder="07123 456789">
+            </div>
+
+            <button class="confirm-booking-btn" onclick="bookViaWhatsApp()">
+                CONFIRM & SECURE BOOKING &rarr;
+            </button>
+        </div>
+    </div>
+
+    <!-- Buton WhatsApp plutitor -->
+    <a href="https://wa.me/447367446973?text=Hello%20V8%20Power%20Garage,%20I%20would%20like%20to%20book%20a%20service." target="_blank" class="whatsapp-float" title="Chat on WhatsApp">
+        💬
+    </a>
+
+    <script>
+        function toggleMenu() {
+            var menu = document.getElementById("navDropdown");
+            menu.classList.toggle("active");
+        }
+
+        function toggleSubmenu(submenuId, btnId) {
+            var submenu = document.getElementById(submenuId);
+            var btn = document.getElementById(btnId);
+            submenu.classList.toggle("active");
+            btn.classList.toggle("active");
+        }
+
+        function closeMenu() {
+            document.getElementById("navDropdown").classList.remove("active");
+            document.getElementById("servicesSubmenu").classList.remove("active");
+            document.getElementById("servicesDropdownBtn").classList.remove("active");
+            document.getElementById("areasSubmenu").classList.remove("active");
+            document.getElementById("areasDropdownBtn").classList.remove("active");
+            document.getElementById("contactSubmenu").classList.remove("active");
+            document.getElementById("contactDropdownBtn").classList.remove("active");
+        }
+
+        function goToQuote() {
+            var regVal = document.getElementById("regInput").value;
+            if(regVal.trim() !== "") {
+                document.getElementById("regDisplayBadge").innerText = regVal;
+                document.getElementById("regDisplayBadge3").innerText = regVal;
+            }
+            switchPage('quote');
+        }
+
+        function switchPage(pageName) {
+            document.getElementById("homePage").classList.remove("active");
+            document.getElementById("quotePage").classList.remove("active");
+            document.getElementById("schedulePage").classList.remove("active");
+
+            if (pageName === 'home') {
+                document.getElementById("homePage").classList.add("active");
+            } else if (pageName === 'quote') {
+                document.getElementById("quotePage").classList.add("active");
+            } else if (pageName === 'schedule') {
+                document.getElementById("schedulePage").classList.add("active");
+                document.getElementById("summaryTotalPrice").innerText = document.getElementById("totalPriceText").innerText;
+            }
+            window.scrollTo(0, 0);
+        }
+
+        function toggleSubList(listId, arrowId) {
+            var list = document.getElementById(listId);
+            var arrow = document.getElementById(arrowId);
+            list.classList.toggle("active");
+            arrow.style.transform = list.classList.contains("active") ? "rotate(180deg)" : "rotate(0deg)";
+        }
+
+        var selectedServices = {
+            mot4: false, mot7: false, oil: false, interim: false, major: false,
+            bpf: false, bpr: false, bdpf: false, bdpr: false, bff: false, cal: false,
+            timb: false, womp: false, alt: false, stm: false, aux: false, glow: false,
+            shf: false, shr: false, csp: false, arl: false, arm: false, whb: false, tre: false,
+            clt: false, dmf: false, gbo: false, cvj: false,
+            dpf: false, exh: false, lam: false, cat: false,
+            ac: false, bat: false, diag: false, altt: false
+        };
+
+        var serviceNames = {
+            mot4: "MOT Test (Class 4)", mot7: "MOT Test (Class 7)", oil: "Oil & Filter Replacement", interim: "Interim Service", major: "Major Service",
+            bpf: "Front Brake Pads", bpr: "Rear Brake Pads", bdpf: "Front Discs & Pads", bdpr: "Rear Discs & Pads", bff: "Brake Fluid Flush", cal: "Caliper Replacement",
+            timb: "Timing Belt Kit", womp: "Water Pump", alt: "Alternator", stm: "Starter Motor", aux: "Auxiliary Drive Belt", glow: "Glow Plugs",
+            shf: "Front Shock Absorbers", shr: "Rear Shock Absorbers", csp: "Coil Spring", arl: "Anti-Roll Bar Link", arm: "Wishbone", whb: "Wheel Bearing", tre: "Track Rod End",
+            clt: "Clutch Kit", dmf: "Dual Mass Flywheel", gbo: "Gearbox Oil Change", cvj: "CV Joint",
+            dpf: "DPF Clean & Regen", exh: "Exhaust Back Box", lam: "Lambda Sensor", cat: "Catalytic Converter",
+            ac: "Air Con Re-gas", bat: "Car Battery", diag: "Diagnostic Scan", altt: "Alternator Testing"
+        };
+
+        var customPartsList = [];
+
+        const prices = {
+            mot4Normal: 45.00, mot7Normal: 55.00, motCombo: 24.99,
+            oil: 75.00, interim: 110.00, major: 195.00,
+            bpf: 85.00, bpr: 80.00, bdpf: 165.00, bdpr: 155.00, bff: 55.00, cal: 120.00,
+            timb: 280.00, womp: 140.00, alt: 220.00, stm: 210.00, aux: 65.00, glow: 90.00,
+            shf: 180.00, shr: 150.00, csp: 110.00, arl: 70.00, arm: 130.00, whb: 120.00, tre: 65.00,
+            clt: 380.00, dmf: 590.00, gbo: 85.00, cvj: 130.00,
+            dpf: 140.00, exh: 130.00, lam: 95.00, cat: 120.00,
+            ac: 65.00, bat: 110.00, diag: 50.00, altt: 60.00
+        };
+
+        function toggleService(key, basePrice) {
+            selectedServices[key] = !selectedServices[key];
+            var card = document.getElementById("card-" + key);
+            var action = document.getElementById("action-" + key);
+
+            if(selectedServices[key]) {
+                card.classList.add("selected");
+                action.innerText = "✓ Added";
+            } else {
+                card.classList.remove("selected");
+                action.innerText = "+ Add";
+            }
+
+            updateCartSummary();
+        }
+
+        function addCustomPart() {
+            let input = document.getElementById("customPartInput");
+            let val = input.value.trim();
+            if(val !== "") {
+                customPartsList.push(val);
+                alert("Custom part added: " + val);
+                input.value = "";
+                updateCartSummary();
+            }
+        }
+
+        function updateCartSummary() {
+            let total = 0;
+            let count = 0;
+
+            let hasServiceOrOil = selectedServices.oil || selectedServices.interim || selectedServices.major;
+
+            let price4 = prices.mot4Normal;
+            if(selectedServices.mot4) {
+                count++;
+                if(hasServiceOrOil) { price4 = prices.motCombo; }
+                total += price4;
+                document.getElementById("price-mot4").innerText = "£" + price4.toFixed(2);
+            } else {
+                document.getElementById("price-mot4").innerText = "£" + prices.mot4Normal.toFixed(0);
+            }
+
+            let price7 = prices.mot7Normal;
+            if(selectedServices.mot7) {
+                count++;
+                if(hasServiceOrOil) { price7 = prices.motCombo; }
+                total += price7;
+                document.getElementById("price-mot7").innerText = "£" + price7.toFixed(2);
+            } else {
+                document.getElementById("price-mot7").innerText = "£" + prices.mot7Normal.toFixed(0);
+            }
+
+            for (let key in selectedServices) {
+                if (key !== 'mot4' && key !== 'mot7' && selectedServices[key]) {
+                    count++;
+                    total += prices[key];
+                }
+            }
+
+            count += customPartsList.length;
+
+            document.getElementById("selectedCountText").innerText = count + " SELECTED";
+            document.getElementById("totalPriceText").innerText = "£" + total.toFixed(2);
+        }
+
+        function selectSlot(el) {
+            let slots = document.querySelectorAll(".slot-btn");
+            slots.forEach(s => s.classList.remove("selected"));
+            el.classList.add("selected");
+        }
+
+        function bookViaWhatsApp() {
+            let reg = document.getElementById("regDisplayBadge3").innerText;
+            let total = document.getElementById("summaryTotalPrice").innerText;
+            let date = document.getElementById("appDate").value;
+            let selectedSlot = document.querySelector(".slot-btn.selected").innerText;
+            let name = document.getElementById("clientName").value || "Not provided";
+            let email = document.getElementById("clientEmail").value || "Not provided";
+            let phone = document.getElementById("clientPhone").value || "Not provided";
+
+            let items = [];
+            for (let key in selectedServices) {
+                if (selectedServices[key]) {
+                    items.push(serviceNames[key]);
+                }
+            }
+            if(customPartsList.length > 0) {
+                items.push("Custom: " + customPartsList.join(", "));
+            }
+
+            let msg = `🛠️ *NEW BOOKING REQUEST - V8 POWER GARAGE*\n\n` +
+                      `🚗 *Vehicle Reg:* ${reg}\n` +
+                      `📦 *Selected Services:* ${items.join(", ") || "None"}\n` +
+                      `💰 *Total Estimate:* ${total} (Pay at Workshop)\n` +
+                      `📅 *Date:* ${date}\n` +
+                      `⏰ *Time Slot:* ${selectedSlot}\n\n` +
+                      `👤 *Customer Details:*\n` +
+                      `• Name: ${name}\n` +
+                      `• Email: ${email}\n` +
+                      `• Phone: ${phone}`;
+
+            window.open("https://wa.me/447367446973?text=" + encodeURIComponent(msg), "_blank");
+        }
+    </script>
+
+</body>
+</html>
+5
