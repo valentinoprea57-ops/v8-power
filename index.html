@@ -22,7 +22,7 @@
             overflow-x: hidden;
         }
 
-        /* Fundal mult mai luminos și vizibil */
+        /* Fundal luminos și vizibil cu mașina */
         body::before {
             content: "";
             position: fixed;
@@ -315,6 +315,7 @@
             margin-bottom: 15px;
         }
 
+        /* Secțiunea de jos */
         .bottom-section {
             width: 100%;
             margin-top: auto;
@@ -324,6 +325,7 @@
             padding-top: 10px;
         }
 
+        /* Carduri servicii jos */
         .service-cards {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -360,6 +362,7 @@
             color: #aaa;
         }
 
+        /* Box Collect & Deliver mutat deasupra */
         .collect-box {
             background: rgba(18, 18, 18, 0.85);
             border: 1px solid #333;
@@ -517,6 +520,18 @@
         <a href="#" class="btn-main">BROWSE REPAIRS & GET QUOTE &gt;</a>
 
         <div class="bottom-section">
+            <!-- Colect & Deliver mutat deasupra celor 3 iconițe -->
+            <div class="collect-box">
+                <div class="collect-left">
+                    <div class="collect-icon">🚚</div>
+                    <div class="collect-text">
+                        <h4>COLLECT & DELIVER</h4>
+                        <p>We pick up & return your vehicle</p>
+                    </div>
+                </div>
+                <div class="area-tag">Bristol Area</div>
+            </div>
+
             <div class="service-cards">
                 <div class="card">
                     <div class="card-icon">🛡️</div>
@@ -533,17 +548,6 @@
                     <div class="card-title">REPAIRS</div>
                     <div class="card-sub">OEM Parts</div>
                 </div>
-            </div>
-
-            <div class="collect-box">
-                <div class="collect-left">
-                    <div class="collect-icon">🚚</div>
-                    <div class="collect-text">
-                        <h4>COLLECT & DELIVER</h4>
-                        <p>We pick up & return your vehicle</p>
-                    </div>
-                </div>
-                <div class="area-tag">Bristol Area</div>
             </div>
         </div>
     </div>
