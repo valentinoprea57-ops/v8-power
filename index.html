@@ -876,6 +876,16 @@
             box-shadow: 0 0 15px rgba(16, 185, 129, 0.5);
         }
 
+        /* Stare pentru slot ocupat / booked */
+        .time-slot-btn.booked {
+            background: #2a1215 !important;
+            border-color: #7f1d1d !important;
+            color: #fca5a5 !important;
+            cursor: not-allowed !important;
+            opacity: 0.7;
+            text-decoration: line-through;
+        }
+
         .direct-confirm-badge {
             background: rgba(18, 18, 18, 0.95);
             border: 1px solid #333;
@@ -895,7 +905,6 @@
             font-size: 14px;
         }
 
-        /* Formular date client pe Pagina 3 */
         .client-details-card {
             background: rgba(18, 18, 18, 0.95);
             border: 1px solid #333;
@@ -1896,7 +1905,7 @@
             1. CHOOSE DATE (MON – SAT)
         </div>
 
-        <div class="days-grid">
+        <div class="days-grid" id="daysGridContainer">
             <div class="day-card selected" onclick="selectDay(this, 'Mon, 31 Aug')">
                 <div class="day-name">Mon</div>
                 <div class="day-date">31 Aug</div>
@@ -1924,7 +1933,7 @@
             <span class="available-tag">✓ AVAILABLE</span>
         </div>
 
-        <div class="time-slots-grid">
+        <div class="time-slots-grid" id="timeSlotsContainer">
             <div class="time-slot-btn" onclick="selectTimeSlot(this)">09:00 AM</div>
             <div class="time-slot-btn selected" onclick="selectTimeSlot(this)">10:00 AM</div>
             <div class="time-slot-btn" onclick="selectTimeSlot(this)">11:00 AM</div>
@@ -2074,6 +2083,7 @@
                 document.getElementById("quotePage").classList.add("active");
             } else if (pageName === 'schedule') {
                 document.getElementById("schedulePage").classList.add("active");
+                checkBookedSlots(); // Verificăm sloturile ocupate la deschiderea paginii
             } else if (pageName === 'confirmation') {
                 document.getElementById("confirmationPage").classList.add("active");
             }
@@ -2207,9 +2217,14 @@
             el.classList.add("selected");
             selectedDayText = dayStr;
             updateBottomScheduleText();
+            checkBookedSlots();
         }
 
         function selectTimeSlot(el) {
+            if(el.classList.contains('booked')) {
+                alert("This time slot is already booked. Please choose another available slot.");
+                return;
+            }
             document.querySelectorAll(".time-slot-btn").forEach(t => t.classList.remove("selected"));
             el.classList.add("selected");
             selectedTimeText = el.innerText;
@@ -2218,6 +2233,48 @@
 
         function updateBottomScheduleText() {
             document.getElementById("schedBottomSelectedInfo").innerText = selectedDayText.toUpperCase() + " • " + selectedTimeText;
+        }
+
+        /* Gestionare sloturi ocupate în LocalStorage */
+        function getBookedSlots() {
+            let booked = localStorage.getItem("v8_booked_slots");
+            return booked ? JSON.parse(booked) : {};
+        }
+
+        function saveBookedSlot(day, time) {
+            let booked = getBookedSlots();
+            if(!booked[day]) { booked[day] = []; }
+            if(!booked[day].includes(time)) {
+                booked[day].push(time);
+            }
+            localStorage.setItem("v8_booked_slots", JSON.stringify(booked));
+        }
+
+        function checkBookedSlots() {
+            let booked = getBookedSlots();
+            let daySlots = booked[selectedDayText] || [];
+            
+            document.querySelectorAll(".time-slot-btn").forEach(btn => {
+                let time = btn.innerText;
+                if(daySlots.includes(time)) {
+                    btn.classList.add("booked");
+                    btn.classList.remove("selected");
+                } else {
+                    btn.classList.remove("booked");
+                }
+            });
+
+            // Dacă slotul selectat curent a devenit booked, selectăm primul disponibil
+            let currentSelected = document.querySelector(".time-slot-btn.selected");
+            if(!currentSelected || currentSelected.classList.contains("booked")) {
+                let firstAvailable = document.querySelector(".time-slot-btn:not(.booked)");
+                if(firstAvailable) {
+                    document.querySelectorAll(".time-slot-btn").forEach(t => t.classList.remove("selected"));
+                    firstAvailable.classList.add("selected");
+                    selectedTimeText = firstAvailable.innerText;
+                    updateBottomScheduleText();
+                }
+            }
         }
 
         function goToConfirmation() {
@@ -2229,6 +2286,9 @@
                 alert("Please fill in all your contact details (Name, Phone, Email) before confirming.");
                 return;
             }
+
+            // Salvăm slotul ca ocupat
+            saveBookedSlot(selectedDayText, selectedTimeText);
 
             let randomRef = "V8-" + Math.floor(100000 + Math.random() * 900000);
             document.getElementById("confRefCode").innerText = randomRef;
