@@ -95,12 +95,14 @@
             background: #141414;
             border: 1px solid #262626;
             border-radius: 14px;
-            width: 250px;
+            width: 260px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.8);
             display: none;
             flex-direction: column;
             z-index: 100;
             overflow: hidden;
+            max-height: 80vh;
+            overflow-y: auto;
         }
 
         .dropdown-menu.active {
@@ -131,19 +133,19 @@
             border-bottom: none;
         }
 
-        /* Subcategorii Acordeon */
-        .services-submenu {
+        /* Subcategorii Acordeon (Servicii & Zone) */
+        .services-submenu, .areas-submenu {
             display: none;
             background: #1a1a1a;
             border-left: 3px solid #ff1e1e;
         }
 
-        .services-submenu.active {
+        .services-submenu.active, .areas-submenu.active {
             display: flex;
             flex-direction: column;
         }
 
-        .services-submenu a {
+        .services-submenu a, .areas-submenu a {
             padding: 12px 20px 12px 30px;
             color: #ddd;
             text-decoration: none;
@@ -154,13 +156,9 @@
             transition: background 0.2s;
         }
 
-        .services-submenu a:hover {
+        .services-submenu a:hover, .areas-submenu a:hover {
             background: #262626;
             color: #fff;
-        }
-        
-        .services-submenu a:last-child {
-            border-bottom: none;
         }
 
         .arrow {
@@ -422,7 +420,8 @@
     <div id="navDropdown" class="dropdown-menu">
         <a href="#" class="dropdown-link" style="border-bottom: 1px solid #222;" onclick="closeMenu()">HOME</a>
         
-        <div id="servicesDropdownBtn" class="dropdown-link" onclick="toggleSubmenu()">
+        <!-- SERVICES Acordeon -->
+        <div id="servicesDropdownBtn" class="dropdown-link" onclick="toggleSubmenu('servicesSubmenu', 'servicesDropdownBtn')">
             SERVICES <span class="arrow">▼</span>
         </div>
         
@@ -434,7 +433,29 @@
             <a href="#">Garage Services</a>
         </div>
 
-        <a href="#" class="dropdown-link" onclick="closeMenu()">AREAS COVERED</a>
+        <!-- AREAS COVERED Acordeon -->
+        <div id="areasDropdownBtn" class="dropdown-link" onclick="toggleSubmenu('areasSubmenu', 'areasDropdownBtn')">
+            AREAS COVERED <span class="arrow">▼</span>
+        </div>
+        
+        <div id="areasSubmenu" class="areas-submenu">
+            <a href="#">Avonmouth</a>
+            <a href="#">Bedminster</a>
+            <a href="#">Bishopston</a>
+            <a href="#">Brislington</a>
+            <a href="#">Clifton</a>
+            <a href="#">Filton</a>
+            <a href="#">Fishponds</a>
+            <a href="#">Hengrove</a>
+            <a href="#">Keynsham</a>
+            <a href="#">Kingswood</a>
+            <a href="#">Long Ashton</a>
+            <a href="#">Patchway</a>
+            <a href="#">Portishead</a>
+            <a href="#">Redland</a>
+            <a href="#">Southmead</a>
+            <a href="#">St George</a>
+        </div>
     </div>
 
     <div class="container">
@@ -499,9 +520,9 @@
             menu.classList.toggle("active");
         }
 
-        function toggleSubmenu() {
-            var submenu = document.getElementById("servicesSubmenu");
-            var btn = document.getElementById("servicesDropdownBtn");
+        function toggleSubmenu(submenuId, btnId) {
+            var submenu = document.getElementById(submenuId);
+            var btn = document.getElementById(btnId);
             submenu.classList.toggle("active");
             btn.classList.toggle("active");
         }
@@ -510,6 +531,8 @@
             document.getElementById("navDropdown").classList.remove("active");
             document.getElementById("servicesSubmenu").classList.remove("active");
             document.getElementById("servicesDropdownBtn").classList.remove("active");
+            document.getElementById("areasSubmenu").classList.remove("active");
+            document.getElementById("areasDropdownBtn").classList.remove("active");
         }
     </script>
 
