@@ -742,7 +742,7 @@
             gap: 8px;
         }
 
-        /* --- STILURI EXACTE PENTRU PAGINA 3 (3cf0873a-f6ae-4160-8526-bf767fec7574-1_all_25040.png) --- */
+        /* --- STILURI PENTRU PAGINA 3 (SCHEDULE) --- */
         .schedule-card-top {
             background: rgba(18, 18, 18, 0.95);
             border: 1px solid #333;
@@ -800,7 +800,6 @@
             font-size: 10px;
         }
 
-        /* Zilele săptămânii orizontale */
         .days-grid {
             display: grid;
             grid-template-columns: repeat(5, 1fr);
@@ -846,7 +845,6 @@
             color: #fff;
         }
 
-        /* Grid ore (hourly) */
         .time-slots-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -897,7 +895,6 @@
             font-size: 14px;
         }
 
-        /* Bara fixă de jos de pe Pagina 3 exact ca în poză */
         .schedule-bottom-bar {
             position: fixed;
             bottom: 0;
@@ -968,9 +965,143 @@
             opacity: 0.95;
         }
 
+        /* --- STILURI EXACTE PENTRU PAGINA 4 (CONFIRMATION - 43024.png) --- */
+        .confirmation-box {
+            background: rgba(18, 18, 18, 0.95);
+            border: 1px solid #22c55e;
+            border-radius: 20px;
+            padding: 24px 20px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            margin-top: 10px;
+        }
+
+        .success-icon-circle {
+            width: 64px;
+            height: 64px;
+            border: 2px solid #22c55e;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px auto;
+            color: #22c55e;
+            font-size: 28px;
+            background: rgba(34, 197, 94, 0.1);
+        }
+
+        .conf-title {
+            font-size: 22px;
+            font-weight: 900;
+            text-transform: uppercase;
+            color: #fff;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        .conf-subtitle {
+            font-size: 12px;
+            color: #aaa;
+            margin-bottom: 24px;
+            line-height: 1.4;
+        }
+
+        .conf-subtitle span {
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .conf-details-card {
+            background: rgba(10, 10, 10, 0.9);
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 16px;
+            text-align: left;
+            margin-bottom: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .conf-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13px;
+        }
+
+        .conf-row .label {
+            color: #888;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 11px;
+        }
+
+        .conf-row .value {
+            color: #fff;
+            font-weight: 800;
+        }
+
+        .conf-row .value.ref {
+            color: #ff3333;
+            font-family: monospace;
+            font-size: 14px;
+        }
+
+        .conf-row .value.price {
+            color: #22c55e;
+            font-size: 15px;
+            font-weight: 900;
+        }
+
+        .whatsapp-send-btn {
+            background: #10b981;
+            color: white;
+            width: 100%;
+            padding: 16px;
+            border-radius: 12px;
+            border: none;
+            font-weight: 900;
+            font-size: 12px;
+            text-transform: uppercase;
+            cursor: pointer;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
+            margin-bottom: 12px;
+            transition: 0.2s;
+        }
+
+        .whatsapp-send-btn:hover {
+            opacity: 0.9;
+        }
+
+        .return-home-btn {
+            background: rgba(30, 30, 30, 0.9);
+            border: 1px solid #444;
+            color: #fff;
+            width: 100%;
+            padding: 15px;
+            border-radius: 12px;
+            font-weight: 800;
+            font-size: 12px;
+            text-transform: uppercase;
+            cursor: pointer;
+            letter-spacing: 0.5px;
+            transition: 0.2s;
+        }
+
+        .return-home-btn:hover {
+            background: rgba(45, 45, 45, 0.95);
+            border-color: #666;
+        }
+
         .whatsapp-float {
             position: fixed;
-            bottom: 125px;
+            bottom: 30px;
             right: 20px;
             background-color: #22c55e;
             color: white;
@@ -1704,7 +1835,7 @@
         </div>
     </div>
 
-    <!-- PAGINA 3: SELECT DATE & TIME (Exact ca în 3cf0873a-f6ae-4160-8526-bf767fec7574-1_all_25040.png) -->
+    <!-- PAGINA 3: SELECT DATE & TIME -->
     <div id="schedulePage" class="page-section">
         <div class="top-action-bar">
             <button class="back-btn" onclick="switchPage('quote')">&larr; Back to Services Selection</button>
@@ -1721,7 +1852,6 @@
             1. CHOOSE DATE (MON – SAT)
         </div>
 
-        <!-- Zilele săptămânii -->
         <div class="days-grid">
             <div class="day-card selected" onclick="selectDay(this, 'Mon, 31 Aug')">
                 <div class="day-name">Mon</div>
@@ -1750,7 +1880,6 @@
             <span class="available-tag">✓ AVAILABLE</span>
         </div>
 
-        <!-- Ora (Hourly slots) -->
         <div class="time-slots-grid">
             <div class="time-slot-btn" onclick="selectTimeSlot(this)">09:00 AM</div>
             <div class="time-slot-btn" onclick="selectTimeSlot(this)">10:00 AM</div>
@@ -1776,8 +1905,53 @@
             <div class="sched-bottom-info">
                 <div id="schedBottomTotalPrice" class="sched-bottom-price">£206.09</div>
             </div>
-            <button class="whatsapp-confirm-btn" onclick="bookViaWhatsApp()">
+            <button class="whatsapp-confirm-btn" onclick="goToConfirmation()">
                 💬 CONFIRM & SEND BOOKING ON WHATSAPP
+            </button>
+        </div>
+    </div>
+
+    <!-- PAGINA 4: BOOKING CONFIRMED (43024.png) -->
+    <div id="confirmationPage" class="page-section">
+        <div class="top-action-bar">
+            <button class="back-btn" onclick="switchPage('schedule')">&larr; Edit Services</button>
+            <div style="font-size: 11px; font-weight: 800; color: #ff3333; text-transform: uppercase; letter-spacing: 0.5px;">FINAL STEP: CONTACT & CONFIRM</div>
+        </div>
+
+        <div class="confirmation-box">
+            <div class="success-icon-circle">✓</div>
+            <div class="conf-title">Booking Confirmed!</div>
+            <div class="conf-subtitle">A confirmation summary has been sent to<br><span>valentinoprea57@gmail.com</span></div>
+
+            <div class="conf-details-card">
+                <div class="conf-row">
+                    <span class="label">Ref Code:</span>
+                    <span id="confRefCode" class="value ref">V8-902350</span>
+                </div>
+                <div class="conf-row">
+                    <span class="label">Reg:</span>
+                    <span id="confReg" class="value">LA21 CZU</span>
+                </div>
+                <div class="conf-row">
+                    <span class="label">Date:</span>
+                    <span id="confDate" class="value">2026-08-31</span>
+                </div>
+                <div class="conf-row">
+                    <span class="label">Time:</span>
+                    <span id="confTime" class="value">01:00 PM</span>
+                </div>
+                <div class="conf-row">
+                    <span class="label">Estimate Total:</span>
+                    <span id="confPrice" class="value price">£206.09</span>
+                </div>
+            </div>
+
+            <button class="whatsapp-send-btn" onclick="sendWhatsAppFromConf()">
+                💬 SEND BOOKING TO GARAGE VIA WHATSAPP
+            </button>
+
+            <button class="return-home-btn" onclick="returnToHome()">
+                Return to Home
             </button>
         </div>
     </div>
@@ -1814,7 +1988,6 @@
             var regVal = document.getElementById("regInput").value.trim();
             if(regVal !== "") {
                 document.getElementById("regDisplayBadge").innerText = regVal;
-                document.getElementById("regDisplayBadge3").innerText = regVal;
                 document.getElementById("summaryReg").innerText = regVal;
             }
             switchPage('quote');
@@ -1824,6 +1997,7 @@
             document.getElementById("homePage").classList.remove("active");
             document.getElementById("quotePage").classList.remove("active");
             document.getElementById("schedulePage").classList.remove("active");
+            document.getElementById("confirmationPage").classList.remove("active");
 
             if (pageName === 'home') {
                 document.getElementById("homePage").classList.add("active");
@@ -1831,6 +2005,8 @@
                 document.getElementById("quotePage").classList.add("active");
             } else if (pageName === 'schedule') {
                 document.getElementById("schedulePage").classList.add("active");
+            } else if (pageName === 'confirmation') {
+                document.getElementById("confirmationPage").classList.add("active");
             }
             window.scrollTo(0, 0);
         }
@@ -1954,13 +2130,13 @@
             switchPage('schedule');
         }
 
-        let selectedDayText = "MON, 31 AUG";
+        let selectedDayText = "Mon, 31 Aug";
         let selectedTimeText = "01:00 PM";
 
         function selectDay(el, dayStr) {
             document.querySelectorAll(".day-card").forEach(d => d.classList.remove("selected"));
             el.classList.add("selected");
-            selectedDayText = dayStr.toUpperCase();
+            selectedDayText = dayStr;
             updateBottomScheduleText();
         }
 
@@ -1972,12 +2148,25 @@
         }
 
         function updateBottomScheduleText() {
-            document.getElementById("schedBottomSelectedInfo").innerText = selectedDayText + " • " + selectedTimeText;
+            document.getElementById("schedBottomSelectedInfo").innerText = selectedDayText.toUpperCase() + " • " + selectedTimeText;
         }
 
-        function bookViaWhatsApp() {
-            let reg = document.getElementById("summaryReg").innerText;
-            let total = document.getElementById("schedBottomTotalPrice").innerText;
+        function goToConfirmation() {
+            // Generăm un cod de referință random (ex: V8-902350)
+            let randomRef = "V8-" + Math.floor(100000 + Math.random() * 900000);
+            document.getElementById("confRefCode").innerText = randomRef;
+            document.getElementById("confReg").innerText = document.getElementById("summaryReg").innerText;
+            document.getElementById("confDate").innerText = selectedDayText;
+            document.getElementById("confTime").innerText = selectedTimeText;
+            document.getElementById("confPrice").innerText = "£" + currentTotal.toFixed(2);
+
+            switchPage('confirmation');
+        }
+
+        function sendWhatsAppFromConf() {
+            let reg = document.getElementById("confReg").innerText;
+            let total = document.getElementById("confPrice").innerText;
+            let ref = document.getElementById("confRefCode").innerText;
 
             let items = [];
             for (let key in selectedServices) {
@@ -1989,15 +2178,26 @@
                 items.push("Custom: " + customPartsList.join(", "));
             }
 
-            let msg = `🛠️ *NEW BOOKING REQUEST - V8 POWER GARAGE*\n\n` +
+            let msg = `🛠️ *BOOKING CONFIRMATION - V8 POWER GARAGE*\n\n` +
+                      `🔖 *Ref Code:* ${ref}\n` +
                       `🚗 *Vehicle Reg:* ${reg}\n` +
                       `📦 *Selected Services:* ${items.join(", ") || "None"}\n` +
                       `💰 *Total Estimate:* ${total} (Pay at Workshop)\n` +
                       `📅 *Date:* ${selectedDayText}\n` +
                       `⏰ *Time Slot:* ${selectedTimeText}\n\n` +
-                      `✅ Direct Booking Confirmation`;
+                      `✅ Booking Confirmed!`;
 
             window.open("https://wa.me/447367446973?text=" + encodeURIComponent(msg), "_blank");
+        }
+
+        function returnToHome() {
+            // Resetăm datele
+            for (let key in selectedServices) { selectedServices[key] = false; }
+            customPartsList = [];
+            document.querySelectorAll(".service-item-card").forEach(c => c.classList.remove("selected"));
+            document.querySelectorAll(".service-item-action").forEach(a => a.innerText = "+ Add");
+            updateCartSummary();
+            switchPage('home');
         }
     </script>
 
