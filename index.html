@@ -211,7 +211,7 @@
 
         /* Container principal */
         .container {
-            padding: 15px 20px;
+            padding: 20px 20px;
             max-width: 500px;
             margin: 0 auto;
             width: 100%;
@@ -240,7 +240,7 @@
 
         .hero-title {
             text-align: center;
-            margin-bottom: 15px;
+            margin-bottom: 25px; /* Am mărit spațiul ca să coborâm blocul de sub el */
         }
 
         .hero-title h2 {
@@ -322,7 +322,7 @@
             display: flex;
             flex-direction: column;
             gap: 10px;
-            padding-top: 10px;
+            padding-top: 15px;
         }
 
         /* Carduri servicii jos */
@@ -362,7 +362,6 @@
             color: #aaa;
         }
 
-        /* Box Collect & Deliver mutat deasupra */
         .collect-box {
             background: rgba(18, 18, 18, 0.85);
             border: 1px solid #333;
@@ -447,11 +446,9 @@
         <button class="menu-btn" onclick="toggleMenu()">☰</button>
     </header>
 
-    <!-- Meniul dropdown -->
     <div id="navDropdown" class="dropdown-menu">
         <a href="#" class="dropdown-link" style="border-bottom: 1px solid #222;" onclick="closeMenu()">HOME</a>
         
-        <!-- SERVICES Acordeon -->
         <div id="servicesDropdownBtn" class="dropdown-link" onclick="toggleSubmenu('servicesSubmenu', 'servicesDropdownBtn')">
             SERVICES <span class="arrow">▼</span>
         </div>
@@ -464,7 +461,6 @@
             <a href="#">Garage Services</a>
         </div>
 
-        <!-- AREAS COVERED Acordeon -->
         <div id="areasDropdownBtn" class="dropdown-link" onclick="toggleSubmenu('areasSubmenu', 'areasDropdownBtn')">
             AREAS COVERED <span class="arrow">▼</span>
         </div>
@@ -488,7 +484,6 @@
             <a href="#">St George</a>
         </div>
 
-        <!-- OPENING TIME & CONTACT Acordeon -->
         <div id="contactDropdownBtn" class="dropdown-link" onclick="toggleSubmenu('contactSubmenu', 'contactDropdownBtn')">
             OPENING TIME & CONTACT <span class="arrow">▼</span>
         </div>
@@ -512,15 +507,16 @@
             <p>"Performance, Precision & Honest Auto Care."</p>
         </div>
 
-        <div class="reg-box">
-            <div class="reg-gb">GB</div>
-            <input type="text" class="reg-input" value="LA21 CZU">
+        <div style="width: 100%; margin-top: 15px;">
+            <div class="reg-box">
+                <div class="reg-gb">GB</div>
+                <input type="text" class="reg-input" value="LA21 CZU">
+            </div>
+
+            <a href="#" class="btn-main">BROWSE REPAIRS & GET QUOTE &gt;</a>
         </div>
 
-        <a href="#" class="btn-main">BROWSE REPAIRS & GET QUOTE &gt;</a>
-
         <div class="bottom-section">
-            <!-- Colect & Deliver mutat deasupra celor 3 iconițe -->
             <div class="collect-box">
                 <div class="collect-left">
                     <div class="collect-icon">🚚</div>
