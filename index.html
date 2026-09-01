@@ -209,7 +209,7 @@
             transform: rotate(180deg);
         }
 
-        /* Secțiuni (Pagini: Home vs Quote/Repairs) */
+        /* Secțiuni (Pagini) */
         .page-section {
             display: none;
             flex: 1;
@@ -218,7 +218,7 @@
             max-width: 500px;
             margin: 0 auto;
             padding: 20px;
-            padding-bottom: 100px;
+            padding-bottom: 120px;
         }
 
         .page-section.active {
@@ -413,7 +413,7 @@
             border: 1px solid rgba(34, 197, 94, 0.4);
         }
 
-        /* --- STILURI PAGINA 2: REPAIRS & QUOTE (Ca în 43261.png) --- */
+        /* --- PAGINA 2: REPAIRS & QUOTE --- */
         .search-repair-box {
             background: rgba(22, 22, 22, 0.9);
             border: 1px solid #333;
@@ -477,7 +477,7 @@
             font-size: 14px;
         }
 
-        /* Bara fixă de jos de pe Pagina 2 */
+        /* Bara fixă de jos de pe Pagina 2 - cu eticheta "Pay at Workshop" mutată mai în stânga */
         .quote-bottom-bar {
             position: fixed;
             bottom: 0;
@@ -512,6 +512,7 @@
             color: #fff;
         }
 
+        /* Etichetă mutată mai în stânga, lângă "0 Selected Items" */
         .workshop-pay-badge {
             background: rgba(34, 197, 94, 0.15);
             color: #22c55e;
@@ -542,7 +543,7 @@
 
         .whatsapp-float {
             position: fixed;
-            bottom: 85px;
+            bottom: 95px;
             right: 20px;
             background-color: #22c55e;
             color: white;
@@ -576,6 +577,7 @@
         <button class="menu-btn" onclick="toggleMenu()">☰</button>
     </header>
 
+    <!-- Meniul dropdown -->
     <div id="navDropdown" class="dropdown-menu">
         <a href="#" class="dropdown-link" style="border-bottom: 1px solid #222;" onclick="switchPage('home'); closeMenu();">HOME</a>
         
@@ -627,6 +629,7 @@
         </div>
     </div>
 
+    <!-- PAGINA 1: HOME -->
     <div id="homePage" class="page-section active">
         <div class="top-badge">
             🛡️ APPROVED INDEPENDENT WORKSHOP • BRISTOL
@@ -678,6 +681,7 @@
         </div>
     </div>
 
+    <!-- PAGINA 2: REPAIRS & QUOTE SELECTION -->
     <div id="quotePage" class="page-section">
         <div class="search-repair-box">
             <span style="color: #777;">🔍</span>
@@ -740,10 +744,13 @@
             <div class="repair-cat-arrow">⌄</div>
         </div>
 
+        <!-- Bara fixă de jos de pe Pagina 2 cu elementele reașezate -->
         <div class="quote-bottom-bar">
             <div class="quote-info-row">
-                <div class="quote-items-count">0 Selected Items</div>
-                <div class="workshop-pay-badge">Pay at Workshop</div>
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <div class="quote-items-count">0 Selected Items</div>
+                    <div class="workshop-pay-badge">Pay at Workshop</div>
+                </div>
             </div>
             <div class="quote-info-row">
                 <div class="quote-total-price">£0.00</div>
