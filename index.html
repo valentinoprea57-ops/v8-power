@@ -22,12 +22,12 @@
             overflow-x: hidden;
         }
 
-        /* Fundal nou cu piesă mecanică / motor și umbră fină */
+        /* Fundal mult mai luminos și vizibil */
         body::before {
             content: "";
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(rgba(11, 11, 11, 0.82), rgba(11, 11, 11, 0.90), rgba(11, 11, 11, 0.95)),
+            background: linear-gradient(rgba(11, 11, 11, 0.4), rgba(11, 11, 11, 0.55), rgba(11, 11, 11, 0.7)),
                         url('https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=1200&q=80') no-repeat center center;
             background-size: cover;
             z-index: -1;
@@ -39,7 +39,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 12px 20px;
-            background-color: rgba(11, 11, 11, 0.95);
+            background-color: rgba(11, 11, 11, 0.9);
             border-bottom: 1px solid #1a1a1a;
             position: relative;
             z-index: 101;
@@ -57,13 +57,13 @@
             height: 48px;
             border-radius: 50%;
             background: #0d1322;
-            border: 2px solid #222;
+            border: 2px solid #333;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
-            box-shadow: 0 0 12px rgba(255, 30, 30, 0.3);
+            box-shadow: 0 0 15px rgba(255, 30, 30, 0.4);
             overflow: hidden;
             padding: 2px;
         }
@@ -104,14 +104,14 @@
 
         .logo-text p {
             font-size: 9px;
-            color: #888;
+            color: #aaa;
             letter-spacing: 0.5px;
             text-transform: uppercase;
         }
 
         .menu-btn {
             background: #161616;
-            border: 1px solid #262626;
+            border: 1px solid #333;
             color: white;
             padding: 10px 14px;
             border-radius: 12px;
@@ -223,15 +223,15 @@
         }
 
         .top-badge {
-            border: 1px solid rgba(255, 51, 51, 0.3);
-            background: rgba(255, 30, 30, 0.05);
-            padding: 5px 14px;
+            border: 1px solid rgba(255, 51, 51, 0.4);
+            background: rgba(255, 30, 30, 0.15);
+            padding: 6px 16px;
             border-radius: 20px;
             font-size: 9px;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
-            color: #ff4d4d;
+            color: #ff6666;
             margin-bottom: 15px;
             display: flex;
             align-items: center;
@@ -250,12 +250,14 @@
             line-height: 1.15;
             margin-bottom: 8px;
             letter-spacing: 0.5px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.8);
         }
 
         .hero-title p {
             font-size: 13px;
-            color: #bbb;
+            color: #ddd;
             font-style: italic;
+            text-shadow: 0 1px 5px rgba(0,0,0,0.8);
         }
 
         /* Caseta număr înmatriculare */
@@ -267,7 +269,7 @@
             padding: 8px 14px;
             width: 100%;
             margin-bottom: 15px;
-            box-shadow: 0 4px 15px rgba(250, 204, 21, 0.2);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
         }
 
         .reg-gb {
@@ -306,7 +308,7 @@
             text-transform: uppercase;
             cursor: pointer;
             letter-spacing: 0.5px;
-            box-shadow: 0 4px 15px rgba(255, 30, 30, 0.4);
+            box-shadow: 0 4px 20px rgba(255, 30, 30, 0.4);
             text-align: center;
             display: block;
             text-decoration: none;
@@ -330,12 +332,13 @@
         }
 
         .card {
-            background: rgba(22, 22, 22, 0.85);
-            border: 1px solid #262626;
+            background: rgba(18, 18, 18, 0.85);
+            border: 1px solid #333;
             border-radius: 12px;
             padding: 12px 8px;
             text-align: center;
             backdrop-filter: blur(5px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
         }
 
         .card-icon {
@@ -354,12 +357,12 @@
 
         .card-sub {
             font-size: 8px;
-            color: #888;
+            color: #aaa;
         }
 
         .collect-box {
-            background: rgba(22, 22, 22, 0.85);
-            border: 1px solid #262626;
+            background: rgba(18, 18, 18, 0.85);
+            border: 1px solid #333;
             border-radius: 12px;
             padding: 12px 16px;
             width: 100%;
@@ -367,6 +370,7 @@
             justify-content: space-between;
             align-items: center;
             backdrop-filter: blur(5px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
         }
 
         .collect-left {
@@ -389,19 +393,19 @@
 
         .collect-text p {
             font-size: 9px;
-            color: #888;
+            color: #aaa;
             margin-top: 1px;
         }
 
         .area-tag {
-            background: rgba(34, 197, 94, 0.15);
+            background: rgba(34, 197, 94, 0.2);
             color: #22c55e;
             font-size: 8px;
             font-weight: 800;
             padding: 4px 6px;
             border-radius: 5px;
             text-transform: uppercase;
-            border: 1px solid rgba(34, 197, 94, 0.3);
+            border: 1px solid rgba(34, 197, 94, 0.4);
         }
 
         .whatsapp-float {
@@ -417,7 +421,7 @@
             align-items: center;
             justify-content: center;
             font-size: 24px;
-            box-shadow: 0 4px 15px rgba(34, 197, 94, 0.4);
+            box-shadow: 0 4px 15px rgba(34, 197, 94, 0.5);
             z-index: 100;
             text-decoration: none;
         }
@@ -444,6 +448,7 @@
     <div id="navDropdown" class="dropdown-menu">
         <a href="#" class="dropdown-link" style="border-bottom: 1px solid #222;" onclick="closeMenu()">HOME</a>
         
+        <!-- SERVICES Acordeon -->
         <div id="servicesDropdownBtn" class="dropdown-link" onclick="toggleSubmenu('servicesSubmenu', 'servicesDropdownBtn')">
             SERVICES <span class="arrow">▼</span>
         </div>
@@ -456,6 +461,7 @@
             <a href="#">Garage Services</a>
         </div>
 
+        <!-- AREAS COVERED Acordeon -->
         <div id="areasDropdownBtn" class="dropdown-link" onclick="toggleSubmenu('areasSubmenu', 'areasDropdownBtn')">
             AREAS COVERED <span class="arrow">▼</span>
         </div>
@@ -479,6 +485,7 @@
             <a href="#">St George</a>
         </div>
 
+        <!-- OPENING TIME & CONTACT Acordeon -->
         <div id="contactDropdownBtn" class="dropdown-link" onclick="toggleSubmenu('contactSubmenu', 'contactDropdownBtn')">
             OPENING TIME & CONTACT <span class="arrow">▼</span>
         </div>
