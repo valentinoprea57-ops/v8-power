@@ -165,7 +165,6 @@
             border-bottom: none;
         }
 
-        /* Subcategorii Acordeon */
         .services-submenu, .areas-submenu, .contact-submenu {
             display: none;
             background: #1a1a1a;
@@ -521,7 +520,7 @@
             transition: transform 0.3s;
         }
 
-        /* --- SUBMENIU / LISTĂ MOT & SERVICII (Ca în 43282.png) --- */
+        /* --- LISTĂ MOT & ROUTINE SERVICING (Ca în 43284.png) --- */
         .mot-service-list {
             display: none;
             flex-direction: column;
@@ -562,26 +561,6 @@
             gap: 10px;
         }
 
-        /* Checkbox personalizat */
-        .custom-checkbox {
-            width: 22px;
-            height: 22px;
-            border: 2px solid #555;
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #111;
-            transition: 0.2s;
-        }
-
-        .service-item-card.selected .custom-checkbox {
-            background: #ff1e1e;
-            border-color: #ff1e1e;
-            color: white;
-            font-weight: 900;
-        }
-
         .service-item-name {
             font-size: 13px;
             font-weight: 900;
@@ -589,10 +568,20 @@
             letter-spacing: 0.5px;
         }
 
-        .service-badge-offer {
+        .service-badge-time {
+            background: #222;
+            color: #aaa;
+            font-size: 9px;
+            font-weight: 700;
+            padding: 3px 6px;
+            border-radius: 4px;
+            margin-left: 6px;
+        }
+
+        .service-badge-dvsa {
             background: #7f1d1d;
             color: #fca5a5;
-            font-size: 8px;
+            font-size: 9px;
             font-weight: 800;
             padding: 3px 6px;
             border-radius: 4px;
@@ -601,45 +590,43 @@
             margin-left: 6px;
         }
 
-        .service-badge-rec {
+        .service-badge-val {
             background: #7f1d1d;
             color: #fca5a5;
-            font-size: 8px;
+            font-size: 9px;
             font-weight: 800;
             padding: 3px 6px;
             border-radius: 4px;
             text-transform: uppercase;
             border: 1px solid #991b1b;
             margin-left: 6px;
+        }
+
+        .service-item-right {
+            text-align: right;
         }
 
         .service-item-price {
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 900;
             color: #fff;
         }
 
-        .service-item-bullets {
-            list-style: none;
-            padding-left: 32px;
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
+        .service-item-action {
+            font-size: 11px;
+            font-weight: 800;
+            color: #777;
+            margin-top: 2px;
         }
 
-        .service-item-bullets li {
+        .service-item-card.selected .service-item-action {
+            color: #22c55e;
+        }
+
+        .service-item-desc {
             font-size: 11px;
             color: #aaa;
-            position: relative;
-        }
-
-        .service-item-bullets li::before {
-            content: "•";
-            color: #ff3333;
-            font-weight: bold;
-            display: inline-block;
-            width: 12px;
-            margin-left: -12px;
+            margin-top: 4px;
         }
 
         .custom-repair-box {
@@ -747,19 +734,8 @@
             color: #fff;
         }
 
-        .workshop-pay-badge {
-            background: rgba(34, 197, 94, 0.15);
-            color: #22c55e;
-            border: 1px solid rgba(34, 197, 94, 0.3);
-            font-size: 10px;
-            font-weight: 800;
-            padding: 4px 10px;
-            border-radius: 6px;
-            text-transform: uppercase;
-        }
-
         .continue-btn {
-            background: linear-gradient(135deg, #22c55e, #16a34a);
+            background: linear-gradient(135deg, #ff1e1e, #cc0000);
             color: white;
             width: 100%;
             padding: 15px;
@@ -770,7 +746,7 @@
             text-transform: uppercase;
             cursor: pointer;
             letter-spacing: 0.5px;
-            box-shadow: 0 4px 20px rgba(34, 197, 94, 0.4);
+            box-shadow: 0 4px 20px rgba(255, 30, 30, 0.4);
             text-align: center;
             text-decoration: none;
             display: flex;
@@ -933,84 +909,95 @@
 
         <div class="search-repair-box">
             <span style="color: #777;">🔍</span>
-            <input type="text" placeholder="Search repairs (e.g. brakes, timing belt, clutch...)">
+            <input type="text" placeholder="Search repairs (e.g. brake pads, water pump, timing belt, alterna">
         </div>
 
-        <!-- 1. SERVICING & MOT INSPECTION (Accordion Principal) -->
+        <!-- 1. MOT & ROUTINE SERVICING (Accordion Principal) -->
         <div class="repair-category-card" onclick="toggleMotServiceList()">
             <div class="repair-cat-left">
                 <div class="repair-cat-icon">🛡️</div>
-                <div class="repair-cat-title">Servicing & MOT Inspection</div>
+                <div class="repair-cat-title">MOT & Routine Servicing</div>
             </div>
             <div id="motArrow" class="repair-cat-arrow">⌄</div>
         </div>
 
-        <!-- Lista detaliată MOT & Servicii care se deschide (Ca în 43282.png) -->
+        <!-- Lista detaliată MOT & Servicii (Ca în 43284.png) -->
         <div id="motServiceList" class="mot-service-list">
-            <!-- MOT Inspection -->
-            <div class="service-item-card" id="cardMot" onclick="toggleService('mot', 49.99)">
+            <!-- MOT Test (Class 4 Cars) -->
+            <div class="service-item-card" id="cardMot4" onclick="toggleService('mot4', 45.00)">
                 <div class="service-item-top">
                     <div class="service-item-title-area">
-                        <div class="custom-checkbox" id="checkMot">✓</div>
-                        <div class="service-item-name">MOT Inspection (Class 4 & 7)</div>
-                        <span class="service-badge-offer">Special Offer</span>
+                        <div class="service-item-name">MOT Test (Class 4 Cars)</div>
+                        <span class="service-badge-time">45 mins</span>
+                        <span class="service-badge-dvsa">DVSA</span>
                     </div>
-                    <div class="service-item-price" id="priceMot">£49.99</div>
+                    <div class="service-item-right">
+                        <div class="service-item-price" id="priceMot4">£45</div>
+                        <div class="service-item-action" id="actionMot4">+ Add</div>
+                    </div>
                 </div>
-                <ul class="service-item-bullets">
-                    <li>Official DVSA Certificate</li>
-                    <li>Emissions & Safety Check</li>
-                    <li>Same Day Pass Guarantee Check</li>
-                </ul>
+                <div class="service-item-desc">Official DVSA comprehensive road safety inspection.</div>
+            </div>
+
+            <!-- MOT Test (Class 7 Commercials) -->
+            <div class="service-item-card" id="cardMot7" onclick="toggleService('mot7', 55.00)">
+                <div class="service-item-top">
+                    <div class="service-item-title-area">
+                        <div class="service-item-name">MOT Test (Class 7 Commercials)</div>
+                        <span class="service-badge-time">60 mins</span>
+                    </div>
+                    <div class="service-item-right">
+                        <div class="service-item-price" id="priceMot7">£55</div>
+                        <div class="service-item-action" id="actionMot7">+ Add</div>
+                    </div>
+                </div>
+                <div class="service-item-desc">Commercial goods vehicles and large vans up to 3,500kg.</div>
+            </div>
+
+            <!-- Engine Oil & Filter Replacement -->
+            <div class="service-item-card" id="cardOil" onclick="toggleService('oil', 75.00)">
+                <div class="service-item-top">
+                    <div class="service-item-title-area">
+                        <div class="service-item-name">Engine Oil & Filter Replacement</div>
+                        <span class="service-badge-time">45 mins</span>
+                    </div>
+                    <div class="service-item-right">
+                        <div class="service-item-price">£75</div>
+                        <div class="service-item-action" id="actionOil">+ Add</div>
+                    </div>
+                </div>
+                <div class="service-item-desc">Fresh premium synthetic oil & OEM quality oil filter change.</div>
             </div>
 
             <!-- Interim Service -->
-            <div class="service-item-card" id="cardInterim" onclick="toggleService('interim', 149.00)">
+            <div class="service-item-card" id="cardInterim" onclick="toggleService('interim', 110.00)">
                 <div class="service-item-top">
                     <div class="service-item-title-area">
-                        <div class="custom-checkbox" id="checkInterim">✓</div>
-                        <div class="service-item-name">Interim Service (Bronze Care)</div>
+                        <div class="service-item-name">Interim Service (35-point)</div>
+                        <span class="service-badge-time">1.5 hrs</span>
                     </div>
-                    <div class="service-item-price">£149.00</div>
+                    <div class="service-item-right">
+                        <div class="service-item-price">£110</div>
+                        <div class="service-item-action" id="actionInterim">+ Add</div>
+                    </div>
                 </div>
-                <ul class="service-item-bullets">
-                    <li>Premium Oil & Filter Change</li>
-                    <li>35-Point Safety Inspection</li>
-                    <li>All Fluid Levels Topped Up</li>
-                </ul>
+                <div class="service-item-desc">Oil, filter renewal, underbody check & fluid top-ups.</div>
             </div>
 
-            <!-- Full Service -->
-            <div class="service-item-card" id="cardFull" onclick="toggleService('full', 199.00)">
+            <!-- Full Major Service -->
+            <div class="service-item-card" id="cardMajor" onclick="toggleService('major', 195.00)">
                 <div class="service-item-top">
                     <div class="service-item-title-area">
-                        <div class="custom-checkbox" id="checkFull">✓</div>
-                        <div class="service-item-name">Full Service (Silver Master)</div>
-                        <span class="service-badge-rec">Recommended</span>
+                        <div class="service-item-name">Full Major Service (72-point)</div>
+                        <span class="service-badge-time">3.0 hrs</span>
+                        <span class="service-badge-val">Best Value</span>
                     </div>
-                    <div class="service-item-price">£199.00</div>
-                </div>
-                <ul class="service-item-bullets">
-                    <li>Engine Oil, Air & Cabin Filters</li>
-                    <li>65-Point Complete Vehicle Check</li>
-                    <li>Brake & Suspension Report</li>
-                </ul>
-            </div>
-
-            <!-- Major Service -->
-            <div class="service-item-card" id="cardMajor" onclick="toggleService('major', 259.00)">
-                <div class="service-item-top">
-                    <div class="service-item-title-area">
-                        <div class="custom-checkbox" id="checkMajor">✓</div>
-                        <div class="service-item-name">Major Service (Gold Protection)</div>
+                    <div class="service-item-right">
+                        <div class="service-item-price">£195</div>
+                        <div class="service-item-action" id="actionMajor">+ Add</div>
                     </div>
-                    <div class="service-item-price">£259.00</div>
                 </div>
-                <ul class="service-item-bullets">
-                    <li>All Filters + Spark Plugs/Fuel Filter</li>
-                    <li>80-Point Deep Inspection</li>
-                    <li>Full Diagnostic Computer Scan</li>
-                </ul>
+                <div class="service-item-desc">Complete filters, spark plugs, fluids & diagnostics.</div>
             </div>
         </div>
 
@@ -1080,16 +1067,13 @@
         <!-- Bara fixă de jos de pe Pagina 2 -->
         <div class="quote-bottom-bar">
             <div class="quote-info-row">
-                <div style="display: flex; align-items: center; gap: 10px;">
-                    <div id="selectedCountText" class="quote-items-count">0 Selected Items</div>
-                    <div class="workshop-pay-badge">Pay at Workshop</div>
-                </div>
+                <div id="selectedCountText" class="quote-items-count">0 SELECTED</div>
             </div>
             <div class="quote-info-row">
                 <div id="totalPriceText" class="quote-total-price">£0.00</div>
             </div>
             <button class="continue-btn" onclick="bookViaWhatsApp()">
-                <span>💬</span> CONFIRM & BOOK VIA WHATSAPP &gt;
+                CONTINUE &gt;
             </button>
         </div>
     </div>
@@ -1142,7 +1126,6 @@
             window.scrollTo(0, 0);
         }
 
-        /* --- LOGICĂ PENTRU DESCHIDEREA LISTEI MOT & SERVICII --- */
         function toggleMotServiceList() {
             var list = document.getElementById("motServiceList");
             var arrow = document.getElementById("motArrow");
@@ -1150,30 +1133,34 @@
             arrow.style.transform = list.classList.contains("active") ? "rotate(180deg)" : "rotate(0deg)";
         }
 
-        /* --- GESTIONARE SELECȚIE ȘI CALCUL PREȚURI (MOT £49.99 / Redus la £24.99 la pachet) --- */
         var selectedServices = {
-            mot: false,
+            mot4: false,
+            mot7: false,
+            oil: false,
             interim: false,
-            full: false,
             major: false
         };
 
         const prices = {
-            motNormal: 49.99,
+            mot4Normal: 45.00,
+            mot7Normal: 55.00,
             motCombo: 24.99,
-            interim: 149.00,
-            full: 199.00,
-            major: 259.00
+            oil: 75.00,
+            interim: 110.00,
+            major: 195.00
         };
 
-        function toggleService(serviceKey, basePrice) {
-            selectedServices[serviceKey] = !selectedServices[serviceKey];
-            var card = document.getElementById("card" + capitalize(serviceKey));
-            
-            if(selectedServices[serviceKey]) {
+        function toggleService(key, price) {
+            selectedServices[key] = !selectedServices[key];
+            var card = document.getElementById("card" + capitalize(key));
+            var action = document.getElementById("action" + capitalize(key));
+
+            if(selectedServices[key]) {
                 card.classList.add("selected");
+                action.innerText = "✓ Added";
             } else {
                 card.classList.remove("selected");
+                action.innerText = "+ Add";
             }
 
             updateCartSummary();
@@ -1183,38 +1170,48 @@
             let total = 0;
             let count = 0;
 
-            // Verificăm dacă e selectat vreun service (Interim, Full sau Major)
-            let hasService = selectedServices.interim || selectedServices.full || selectedServices.major;
+            let hasServiceOrOil = selectedServices.oil || selectedServices.interim || selectedServices.major;
 
-            // Calcul MOT
-            let currentMotPrice = prices.motNormal;
-            if(selectedServices.mot) {
+            // MOT 4
+            let price4 = prices.mot4Normal;
+            if(selectedServices.mot4) {
                 count++;
-                if(hasService) {
-                    currentMotPrice = prices.motCombo; // Redus la 24.99 când e combinat cu service
+                if(hasServiceOrOil) {
+                    price4 = prices.motCombo;
                 }
-                total += currentMotPrice;
-                document.getElementById("priceMot").innerText = "£" + currentMotPrice.toFixed(2);
+                total += price4;
+                document.getElementById("priceMot4").innerText = "£" + price4.toFixed(2);
             } else {
-                document.getElementById("priceMot").innerText = "£" + prices.motNormal.toFixed(2);
+                document.getElementById("priceMot4").innerText = "£" + prices.mot4Normal.toFixed(0);
             }
 
-            // Calcul Servicii
+            // MOT 7
+            let price7 = prices.mot7Normal;
+            if(selectedServices.mot7) {
+                count++;
+                if(hasServiceOrOil) {
+                    price7 = prices.motCombo;
+                }
+                total += price7;
+                document.getElementById("priceMot7").innerText = "£" + price7.toFixed(2);
+            } else {
+                document.getElementById("priceMot7").innerText = "£" + prices.mot7Normal.toFixed(0);
+            }
+
+            if(selectedServices.oil) {
+                count++;
+                total += prices.oil;
+            }
             if(selectedServices.interim) {
                 count++;
                 total += prices.interim;
-            }
-            if(selectedServices.full) {
-                count++;
-                total += prices.full;
             }
             if(selectedServices.major) {
                 count++;
                 total += prices.major;
             }
 
-            // Actualizare text pe bara de jos
-            document.getElementById("selectedCountText").innerText = count + (count === 1 ? " Selected Item" : " Selected Items");
+            document.getElementById("selectedCountText").innerText = count + (count === 1 ? " SELECTED" : " SELECTED");
             document.getElementById("totalPriceText").innerText = "£" + total.toFixed(2);
         }
 
@@ -1225,7 +1222,7 @@
         function bookViaWhatsApp() {
             let reg = document.getElementById("regDisplayBadge").innerText;
             let total = document.getElementById("totalPriceText").innerText;
-            let msg = `Hello V8 Power Garage, I would like to book a service for vehicle ${reg}. Total estimate: ${total}. Pay at workshop.`;
+            let msg = `Hello V8 Power Garage, I would like to book a service for vehicle ${reg}. Total estimate: ${total}.`;
             window.open("https://wa.me/447367446973?text=" + encodeURIComponent(msg), "_blank");
         }
     </script>
