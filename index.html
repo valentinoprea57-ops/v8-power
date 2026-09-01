@@ -131,9 +131,9 @@
             border-bottom: none;
         }
 
-        /* Container Subcategorii (Acordeon) */
+        /* Subcategorii Acordeon */
         .services-submenu {
-            display: none; /* Ascuns implicit */
+            display: none;
             background: #1a1a1a;
             border-left: 3px solid #ff1e1e;
         }
@@ -144,12 +144,13 @@
         }
 
         .services-submenu a {
-            padding: 12px 20px 12px 40px;
+            padding: 12px 20px 12px 30px;
             color: #ddd;
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 700;
             font-size: 13px;
-            border-bottom: 1px solid #333;
+            text-transform: uppercase;
+            border-bottom: 1px solid #262626;
             transition: background 0.2s;
         }
 
@@ -162,33 +163,27 @@
             border-bottom: none;
         }
 
-        /* Iconiță săgeată */
         .arrow {
-            font-size: 12px;
+            font-size: 11px;
             transition: transform 0.3s ease;
         }
         .dropdown-link.active .arrow {
             transform: rotate(180deg);
         }
 
-        /* Vederi (Acasă vs Pagina de Servicii) - Păstrate din pasul anterior, funcționale */
-        .view-section {
-            display: none;
+        /* Container principal */
+        .container {
             padding: 20px;
             max-width: 500px;
             margin: 0 auto;
             width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             flex: 1;
             padding-bottom: 110px;
         }
 
-        .view-section.active {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        /* Home View Styling (Păstrat) */
         .top-badge {
             border: 1px solid rgba(255, 51, 51, 0.3);
             background: rgba(255, 30, 30, 0.05);
@@ -425,25 +420,99 @@
 
     <!-- Meniul dropdown -->
     <div id="navDropdown" class="dropdown-menu">
-        <a href="#" onclick="showView('home')">HOME</a>
+        <a href="#" class="dropdown-link" style="border-bottom: 1px solid #222;" onclick="closeMenu()">HOME</a>
         
-        <!-- Elementul SERVICES cu comportament de acordeon -->
-        <div class="dropdown-link" onclick="toggleSubmenu(this)">
+        <div id="servicesDropdownBtn" class="dropdown-link" onclick="toggleSubmenu()">
             SERVICES <span class="arrow">▼</span>
         </div>
         
-        <!-- Submeniul ascuns care se deschide -->
         <div id="servicesSubmenu" class="services-submenu">
-            <a href="#" onclick="navigateToService('MOT Servicing')">MOT Servicing</a>
-            <a href="#" onclick="navigateToService('Car Servicing')">Car Servicing</a>
-            <a href="#" onclick="navigateToService('Class 7 MOTs')">Class 7 MOTs</a>
-            <a href="#" onclick="navigateToService('Vehicle Air Conditioning')">Vehicle Air Conditioning</a>
-            <a href="#" onclick="navigateToService('Garage Services')">Garage Services</a>
-            <a href="#" onclick="navigateToService('View All Services')">View All Services</a>
+            <a href="#">MOT Servicing</a>
+            <a href="#">Car Servicing</a>
+            <a href="#">Class 7 MOTs</a>
+            <a href="#">Vehicle Air Conditioning</a>
+            <a href="#">Garage Services</a>
+            <a href="#">View All Services</a>
         </div>
 
-        <a href="#">AREAS COVERED</a>
+        <a href="#" class="dropdown-link" onclick="closeMenu()">AREAS COVERED</a>
     </div>
 
-    <!-- 1. VEDEREA PRINCIPALĂ (HOME) - Aceeași structură, funcționalitatea butoanelor păstrată -->
-    <div id="homeView" class="view-section active">
+    <div class="container">
+        <div class="top-badge">
+            🛡️ APPROVED INDEPENDENT WORKSHOP • BRISTOL
+        </div>
+
+        <div class="hero-title">
+            <h2>Book Your Service & MOT</h2>
+            <p>"Performance, Precision & Honest Auto Care."</p>
+        </div>
+
+        <div class="reg-box-container">
+            <div class="reg-box">
+                <div class="reg-gb">GB</div>
+                <input type="text" class="reg-input" value="LA21 CZU">
+            </div>
+            <button class="enter-btn">↩ ENTER</button>
+        </div>
+
+        <a href="#" class="btn-main">BROWSE REPAIRS & GET QUOTE &gt;</a>
+
+        <div class="bottom-section">
+            <div class="service-cards">
+                <div class="card">
+                    <div class="card-icon">🛡️</div>
+                    <div class="card-title">MOT</div>
+                    <div class="card-sub">Class 4 & 7</div>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🧰</div>
+                    <div class="card-title">SERVICING</div>
+                    <div class="card-sub">Interim & Full</div>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🔧</div>
+                    <div class="card-title">REPAIRS</div>
+                    <div class="card-sub">OEM Parts</div>
+                </div>
+            </div>
+
+            <div class="collect-box">
+                <div class="collect-left">
+                    <div class="collect-icon">🚚</div>
+                    <div class="collect-text">
+                        <h4>COLLECT & DELIVER</h4>
+                        <p>We pick up & return your vehicle</p>
+                    </div>
+                </div>
+                <div class="area-tag">Bristol Area</div>
+            </div>
+        </div>
+    </div>
+
+    <a href="https://wa.me/" target="_blank" class="whatsapp-float">
+        💬
+    </a>
+
+    <script>
+        function toggleMenu() {
+            var menu = document.getElementById("navDropdown");
+            menu.classList.toggle("active");
+        }
+
+        function toggleSubmenu() {
+            var submenu = document.getElementById("servicesSubmenu");
+            var btn = document.getElementById("servicesDropdownBtn");
+            submenu.classList.toggle("active");
+            btn.classList.toggle("active");
+        }
+
+        function closeMenu() {
+            document.getElementById("navDropdown").classList.remove("active");
+            document.getElementById("servicesSubmenu").classList.remove("active");
+            document.getElementById("servicesDropdownBtn").classList.remove("active");
+        }
+    </script>
+
+</body>
+</html>
