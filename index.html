@@ -27,7 +27,7 @@
             content: "";
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.9), rgba(0,0,0,0.95)),
+            background: linear-gradient(rgba(0,0,0,0.88), rgba(0,0,0,0.92), rgba(0,0,0,0.96)),
                         url('https://images.unsplash.com/photo-1486006920555-c77dce18193b?auto=format&fit=crop&w=1000&q=80') no-repeat center center;
             background-size: cover;
             z-index: -1;
@@ -87,7 +87,7 @@
             cursor: pointer;
         }
 
-        /* Meniul lateral / Dropdown care se deschide la 3 liniuțe */
+        /* Meniul lateral / Dropdown */
         .dropdown-menu {
             position: fixed;
             top: 70px;
@@ -118,29 +118,29 @@
             transition: background 0.2s, color 0.2s;
         }
 
-        .dropdown-menu a:last-child {
-            border-bottom: none;
-        }
-
-        .dropdown-menu a:hover {
+        .dropdown-menu a:hover, .dropdown-menu a.highlight {
             background: #ff1e1e;
             color: #fff;
         }
 
-        /* Container principal */
-        .container {
+        /* Vederi (Acasă vs Pagina de Servicii) */
+        .view-section {
+            display: none;
             padding: 20px;
             max-width: 500px;
             margin: 0 auto;
             width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
             flex: 1;
             padding-bottom: 110px;
         }
 
-        /* Badge sus */
+        .view-section.active {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Home View Styling */
         .top-badge {
             border: 1px solid rgba(255, 51, 51, 0.3);
             background: rgba(255, 30, 30, 0.05);
@@ -157,7 +157,6 @@
             gap: 6px;
         }
 
-        /* Titlu principal */
         .hero-title {
             text-align: center;
             margin-bottom: 25px;
@@ -178,7 +177,6 @@
             font-style: italic;
         }
 
-        /* Casetă Număr Înmatriculare */
         .reg-box-container {
             display: flex;
             gap: 10px;
@@ -235,7 +233,6 @@
             text-transform: uppercase;
         }
 
-        /* Buton roșu principal */
         .btn-main {
             background: linear-gradient(135deg, #ff1e1e, #cc0000);
             color: white;
@@ -255,7 +252,6 @@
             margin-bottom: 20px;
         }
 
-        /* Secțiunea de jos */
         .bottom-section {
             width: 100%;
             margin-top: auto;
@@ -265,7 +261,6 @@
             padding-top: 20px;
         }
 
-        /* Carduri servicii jos */
         .service-cards {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -301,7 +296,6 @@
             color: #888;
         }
 
-        /* Box Collect & Deliver */
         .collect-box {
             background: rgba(22, 22, 22, 0.85);
             border: 1px solid #262626;
@@ -349,6 +343,57 @@
             border: 1px solid rgba(34, 197, 94, 0.3);
         }
 
+        /* Stiluri pentru Pagina de Servicii (Subcategorii) */
+        .services-header {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .services-header span {
+            font-size: 11px;
+            font-weight: 800;
+            color: #ff3333;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .services-header h2 {
+            font-size: 26px;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-top: 5px;
+            letter-spacing: 0.5px;
+        }
+
+        .service-list {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .service-item-box {
+            background: rgba(18, 18, 18, 0.9);
+            border: 1px solid #262626;
+            border-left: 4px solid #ff1e1e;
+            border-radius: 10px;
+            padding: 16px 20px;
+            font-size: 14px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: 0.2s;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .service-item-box:hover {
+            border-color: #ff3333;
+            background: rgba(25, 25, 25, 0.95);
+        }
+
         /* Buton WhatsApp plutitor */
         .whatsapp-float {
             position: fixed;
@@ -382,14 +427,15 @@
         <button class="menu-btn" onclick="toggleMenu()">☰</button>
     </header>
 
-    <!-- Meniul care apare la click pe cele 3 liniuțe -->
+    <!-- Meniul dropdown -->
     <div id="navDropdown" class="dropdown-menu">
-        <a href="#">HOME</a>
-        <a href="#">SERVICES ▾</a>
+        <a href="#" onclick="showView('home')">HOME</a>
+        <a href="#" onclick="showView('services')" class="highlight">SERVICES ▾</a>
         <a href="#">AREAS COVERED</a>
     </div>
 
-    <div class="container">
+    <!-- 1. VEDEREA PRINCIPALĂ (HOME) -->
+    <div id="homeView" class="view-section active">
         <div class="top-badge">
             🛡️ APPROVED INDEPENDENT WORKSHOP • BRISTOL
         </div>
@@ -407,21 +453,21 @@
             <button class="enter-btn">↩ ENTER</button>
         </div>
 
-        <a href="#" class="btn-main">BROWSE REPAIRS & GET QUOTE &gt;</a>
+        <a href="#" class="btn-main" onclick="showView('services')">BROWSE REPAIRS & GET QUOTE &gt;</a>
 
         <div class="bottom-section">
             <div class="service-cards">
-                <div class="card">
+                <div class="card" onclick="showView('services')">
                     <div class="card-icon">🛡️</div>
                     <div class="card-title">MOT</div>
                     <div class="card-sub">Class 4 & 7</div>
                 </div>
-                <div class="card">
+                <div class="card" onclick="showView('services')">
                     <div class="card-icon">🧰</div>
                     <div class="card-title">SERVICING</div>
                     <div class="card-sub">Interim & Full</div>
                 </div>
-                <div class="card">
+                <div class="card" onclick="showView('services')">
                     <div class="card-icon">🔧</div>
                     <div class="card-title">REPAIRS</div>
                     <div class="card-sub">OEM Parts</div>
@@ -441,6 +487,29 @@
         </div>
     </div>
 
+    <!-- 2. VEDEREA DE SERVICII (SUBCATEGORIILE COMPLETE) -->
+    <div id="servicesView" class="view-section">
+        <div class="services-header">
+            <span>Full Offering</span>
+            <h2>Everything We Cover</h2>
+        </div>
+
+        <div class="service-list">
+            <div class="service-item-box">Class 4 MOT <span>›</span></div>
+            <div class="service-item-box">Class 7 MOT <span>›</span></div>
+            <div class="service-item-box">MOT Repairs <span>›</span></div>
+            <div class="service-item-box">MOT Servicing <span>›</span></div>
+            <div class="service-item-box">Vehicle Servicing <span>›</span></div>
+            <div class="service-item-box">Vehicle Repairs <span>›</span></div>
+            <div class="service-item-box">Air Conditioning <span>›</span></div>
+            <div class="service-item-box">Diagnostics <span>›</span></div>
+            <div class="service-item-box">Timing Belt / Chain <span>›</span></div>
+            <div class="service-item-box">Clutch & Flywheel <span>›</span></div>
+            <div class="service-item-box">Turbocharger Replacement <span>›</span></div>
+            <div class="service-item-box">DPF Regeneration <span>›</span></div>
+        </div>
+    </div>
+
     <a href="https://wa.me/" target="_blank" class="whatsapp-float">
         💬
     </a>
@@ -449,6 +518,23 @@
         function toggleMenu() {
             var menu = document.getElementById("navDropdown");
             menu.classList.toggle("active");
+        }
+
+        function showView(viewName) {
+            // Ascunde meniul
+            document.getElementById("navDropdown").classList.remove("active");
+            
+            // Ascunde toate vederile
+            document.getElementById("homeView").classList.remove("active");
+            document.getElementById("servicesView").classList.remove("active");
+            
+            // Afișează vederea dorită
+            if (viewName === 'home') {
+                document.getElementById("homeView").classList.add("active");
+            } else if (viewName === 'services') {
+                document.getElementById("servicesView").classList.add("active");
+            }
+            window.scrollTo(0, 0);
         }
     </script>
 
