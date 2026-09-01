@@ -218,7 +218,7 @@
             max-width: 500px;
             margin: 0 auto;
             padding: 20px;
-            padding-bottom: 120px;
+            padding-bottom: 140px;
         }
 
         .page-section.active {
@@ -414,7 +414,6 @@
         }
 
         /* --- PAGINA 2: REPAIRS & QUOTE --- */
-        /* Rândul de sus cu butonul Back și plăcuța cu numărul */
         .top-action-bar {
             display: flex;
             justify-content: space-between;
@@ -519,6 +518,77 @@
         .repair-cat-arrow {
             color: #777;
             font-size: 14px;
+        }
+
+        /* Stil pentru caseta "Can't find your specific part or repair?" (ca în 43267.png) */
+        .custom-repair-box {
+            background: rgba(18, 18, 18, 0.9);
+            border: 1px dashed #555;
+            border-radius: 14px;
+            padding: 18px 20px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+
+        .custom-repair-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .custom-repair-icon {
+            color: #eab308;
+            font-size: 18px;
+            margin-top: 1px;
+        }
+
+        .custom-repair-title {
+            font-size: 12px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #fff;
+            margin-bottom: 3px;
+        }
+
+        .custom-repair-sub {
+            font-size: 11px;
+            color: #aaa;
+        }
+
+        .custom-repair-input-row {
+            display: flex;
+            gap: 10px;
+        }
+
+        .custom-repair-input-row input {
+            background: rgba(10, 10, 10, 0.9);
+            border: 1px solid #333;
+            border-radius: 10px;
+            padding: 10px 14px;
+            color: #fff;
+            font-size: 12px;
+            flex: 1;
+            outline: none;
+        }
+
+        .add-custom-btn {
+            background: #facc15;
+            color: #000;
+            border: none;
+            padding: 0 18px;
+            border-radius: 10px;
+            font-weight: 900;
+            font-size: 12px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: 0.2s;
+            white-space: nowrap;
+        }
+
+        .add-custom-btn:hover {
+            background: #eab308;
         }
 
         /* Bara fixă de jos de pe Pagina 2 */
@@ -726,7 +796,6 @@
 
     <!-- PAGINA 2: REPAIRS & QUOTE SELECTION -->
     <div id="quotePage" class="page-section">
-        <!-- Rândul de sus: Butonul Back în stânga și Plăcuța cu numărul în dreapta -->
         <div class="top-action-bar">
             <button class="back-btn" onclick="switchPage('home')">&larr; BACK</button>
             <div id="regDisplayBadge" class="reg-display-badge">LA21 CZU</div>
@@ -791,6 +860,21 @@
                 <div class="repair-cat-title">Air Conditioning & Electrical</div>
             </div>
             <div class="repair-cat-arrow">⌄</div>
+        </div>
+
+        <!-- Caseta "Can't find your specific part or repair?" -->
+        <div class="custom-repair-box">
+            <div class="custom-repair-header">
+                <div class="custom-repair-icon">❓</div>
+                <div>
+                    <div class="custom-repair-title">Can't find your specific part or repair?</div>
+                    <div class="custom-repair-sub">Type any custom part or job description below:</div>
+                </div>
+            </div>
+            <div class="custom-repair-input-row">
+                <input type="text" placeholder="e.g. Front anti-roll bar link, Alternator renew...">
+                <button class="add-custom-btn" onclick="alert('Custom request added!')">+ Add</button>
+            </div>
         </div>
 
         <!-- Bara fixă de jos de pe Pagina 2 -->
