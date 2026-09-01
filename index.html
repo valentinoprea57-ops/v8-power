@@ -18,6 +18,19 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Fundal cu imagine și umbră închisă */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.9), rgba(0,0,0,0.95)),
+                        url('https://images.unsplash.com/photo-1486006920555-c77dce18193b?auto=format&fit=crop&w=1000&q=80') no-repeat center center;
+            background-size: cover;
+            z-index: -1;
         }
 
         /* Header */
@@ -26,46 +39,48 @@
             justify-content: space-between;
             align-items: center;
             padding: 15px 20px;
-            background-color: #0b0b0b;
-            border-bottom: 1px solid #222;
+            background-color: rgba(11, 11, 11, 0.9);
+            border-bottom: 1px solid #1a1a1a;
         }
 
         .logo-container {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
         }
 
         .logo-badge {
             background: linear-gradient(135deg, #ff1e1e, #b30000);
             color: white;
             font-weight: 900;
-            padding: 6px 12px;
-            border-radius: 8px;
+            padding: 8px 14px;
+            border-radius: 10px;
             font-size: 16px;
             letter-spacing: 1px;
+            box-shadow: 0 0 15px rgba(255, 30, 30, 0.4);
         }
 
         .logo-text h1 {
             font-size: 15px;
             text-transform: uppercase;
-            font-weight: 800;
+            font-weight: 900;
             letter-spacing: 1px;
             color: #ff3333;
         }
 
         .logo-text p {
-            font-size: 10px;
+            font-size: 9px;
             color: #888;
             letter-spacing: 0.5px;
+            text-transform: uppercase;
         }
 
         .menu-btn {
-            background: #1a1a1a;
-            border: 1px solid #333;
+            background: #161616;
+            border: 1px solid #262626;
             color: white;
-            padding: 8px 12px;
-            border-radius: 8px;
+            padding: 10px 14px;
+            border-radius: 12px;
             font-size: 18px;
             cursor: pointer;
         }
@@ -73,47 +88,77 @@
         /* Container principal */
         .container {
             padding: 20px;
-            max-width: 600px;
+            max-width: 500px;
             margin: 0 auto;
             width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             flex: 1;
-            padding-bottom: 100px;
+            padding-bottom: 110px;
         }
 
-        /* Hero / Reg input */
+        /* Badge sus */
+        .top-badge {
+            border: 1px solid rgba(255, 51, 51, 0.3);
+            background: rgba(255, 30, 30, 0.05);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #ff4d4d;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* Titlu principal */
         .hero-title {
             text-align: center;
             margin-bottom: 25px;
         }
 
         .hero-title h2 {
-            font-size: 24px;
+            font-size: 32px;
             font-weight: 900;
             text-transform: uppercase;
-            margin-bottom: 6px;
+            line-height: 1.15;
+            margin-bottom: 12px;
             letter-spacing: 0.5px;
         }
 
         .hero-title p {
-            font-size: 13px;
-            color: #aaa;
+            font-size: 14px;
+            color: #bbb;
             font-style: italic;
+        }
+
+        /* Casetă Număr Înmatriculare */
+        .reg-box-container {
+            display: flex;
+            gap: 10px;
+            width: 100%;
+            margin-bottom: 20px;
         }
 
         .reg-box {
             background: #facc15;
-            border-radius: 12px;
+            border-radius: 14px;
             display: flex;
             align-items: center;
-            padding: 6px 12px;
-            margin-bottom: 20px;
+            padding: 8px 14px;
+            flex: 1;
+            box-shadow: 0 4px 20px rgba(250, 204, 21, 0.2);
         }
 
         .reg-gb {
             background: #1d4ed8;
             color: white;
             font-weight: 800;
-            font-size: 12px;
+            font-size: 11px;
             padding: 6px 8px;
             border-radius: 6px;
             margin-right: 15px;
@@ -124,7 +169,7 @@
         .reg-input {
             background: transparent;
             border: none;
-            font-size: 22px;
+            font-size: 24px;
             font-weight: 900;
             color: #000;
             text-transform: uppercase;
@@ -133,116 +178,143 @@
             letter-spacing: 2px;
         }
 
-        /* Categorii servicii (carduri mici jos) */
+        .enter-btn {
+            background: #161616;
+            border: 1px solid #262626;
+            color: white;
+            padding: 0 20px;
+            border-radius: 14px;
+            font-weight: 800;
+            font-size: 13px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            text-transform: uppercase;
+        }
+
+        /* Buton roșu principal */
+        .btn-main {
+            background: linear-gradient(135deg, #ff1e1e, #cc0000);
+            color: white;
+            width: 100%;
+            padding: 18px;
+            border-radius: 14px;
+            border: none;
+            font-weight: 800;
+            font-size: 14px;
+            text-transform: uppercase;
+            cursor: pointer;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 20px rgba(255, 30, 30, 0.4);
+            text-align: center;
+            display: block;
+            text-decoration: none;
+            margin-bottom: 20px;
+        }
+
+        /* Carduri servicii jos */
         .service-cards {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 10px;
-            margin-bottom: 25px;
+            width: 100%;
+            margin-bottom: 15px;
         }
 
         .card {
-            background: #161616;
+            background: rgba(22, 22, 22, 0.8);
             border: 1px solid #262626;
-            border-radius: 12px;
-            padding: 15px 10px;
+            border-radius: 14px;
+            padding: 16px 10px;
             text-align: center;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-
-        .card:hover {
-            border-color: #ff3333;
+            backdrop-filter: blur(5px);
         }
 
         .card-icon {
-            font-size: 18px;
+            font-size: 16px;
             margin-bottom: 8px;
             color: #ff3333;
         }
 
         .card-title {
             font-size: 12px;
-            font-weight: 700;
+            font-weight: 800;
             text-transform: uppercase;
             margin-bottom: 4px;
+            letter-spacing: 0.5px;
         }
 
         .card-sub {
             font-size: 9px;
-            color: #777;
+            color: #888;
         }
 
-        /* Buton principal roșu */
-        .btn-main {
-            background: linear-gradient(135deg, #ff1e1e, #cc0000);
-            color: white;
-            width: 100%;
-            padding: 16px;
-            border-radius: 12px;
-            border: none;
-            font-weight: 800;
-            font-size: 15px;
-            text-transform: uppercase;
-            cursor: pointer;
-            letter-spacing: 0.5px;
-            box-shadow: 0 4px 15px rgba(255, 30, 30, 0.3);
-            text-align: center;
-            display: block;
-            text-decoration: none;
-            margin-top: 15px;
-        }
-
-        /* Listă categorii reparații (Vedere a doua) */
-        .repair-list {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin-top: 15px;
-        }
-
-        .repair-item {
-            background: #161616;
+        /* Box Collect & Deliver */
+        .collect-box {
+            background: rgba(22, 22, 22, 0.8);
             border: 1px solid #262626;
-            border-radius: 12px;
-            padding: 16px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: pointer;
-        }
-
-        .repair-item span {
-            font-weight: 700;
-            font-size: 14px;
-            text-transform: uppercase;
-        }
-
-        /* Footer fix jos */
-        .footer-action {
-            position: fixed;
-            bottom: 0;
-            left: 0;
+            border-radius: 14px;
+            padding: 14px 18px;
             width: 100%;
-            background: #111;
-            border-top: 1px solid #222;
-            padding: 15px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            backdrop-filter: blur(5px);
         }
 
-        .price-display {
-            font-size: 18px;
-            font-weight: 900;
-            color: #fff;
+        .collect-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
 
-        .price-display small {
-            display: block;
+        .collect-icon {
+            font-size: 20px;
+            color: #22c55e;
+        }
+
+        .collect-text h4 {
+            font-size: 13px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .collect-text p {
             font-size: 10px;
             color: #888;
-            font-weight: normal;
+            margin-top: 2px;
+        }
+
+        .area-tag {
+            background: rgba(34, 197, 94, 0.15);
+            color: #22c55e;
+            font-size: 9px;
+            font-weight: 800;
+            padding: 4px 8px;
+            border-radius: 6px;
+            text-transform: uppercase;
+            border: 1px solid rgba(34, 197, 94, 0.3);
+        }
+
+        /* Buton WhatsApp plutitor */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background-color: #22c55e;
+            color: white;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+            box-shadow: 0 4px 15px rgba(34, 197, 94, 0.4);
+            z-index: 100;
+            text-decoration: none;
         }
     </style>
 </head>
@@ -260,15 +332,24 @@
     </header>
 
     <div class="container">
+        <div class="top-badge">
+            🛡️ APPROVED INDEPENDENT WORKSHOP • BRISTOL
+        </div>
+
         <div class="hero-title">
             <h2>Book Your Service & MOT</h2>
             <p>"Performance, Precision & Honest Auto Care."</p>
         </div>
 
-        <div class="reg-box">
-            <div class="reg-gb">GB</div>
-            <input type="text" class="reg-input" value="LA21 CZU">
+        <div class="reg-box-container">
+            <div class="reg-box">
+                <div class="reg-gb">GB</div>
+                <input type="text" class="reg-input" value="LA21 CZU">
+            </div>
+            <button class="enter-btn">↩ ENTER</button>
         </div>
+
+        <a href="#" class="btn-main">BROWSE REPAIRS & GET QUOTE &gt;</a>
 
         <div class="service-cards">
             <div class="card">
@@ -278,34 +359,31 @@
             </div>
             <div class="card">
                 <div class="card-icon">🧰</div>
-                <div class="card-title">Servicing</div>
+                <div class="card-title">SERVICING</div>
                 <div class="card-sub">Interim & Full</div>
             </div>
             <div class="card">
                 <div class="card-icon">🔧</div>
-                <div class="card-title">Repairs</div>
+                <div class="card-title">REPAIRS</div>
                 <div class="card-sub">OEM Parts</div>
             </div>
         </div>
 
-        <a href="#" class="btn-main">Browse Repairs & Get Quote ></a>
-
-        <div class="repair-list">
-            <div class="repair-item"><span>Servicing & MOT Inspection</span> <span>⌄</span></div>
-            <div class="repair-item"><span>Brakes & Hydraulic Systems</span> <span>⌄</span></div>
-            <div class="repair-item"><span>Engine, Belts & Cooling</span> <span>⌄</span></div>
-            <div class="repair-item"><span>Suspension, Springs & Steering</span> <span>⌄</span></div>
-            <div class="repair-item"><span>Clutch, Gearbox & Drivetrain</span> <span>⌄</span></div>
+        <div class="collect-box">
+            <div class="collect-left">
+                <div class="collect-icon">🚚</div>
+                <div class="collect-text">
+                    <h4>COLLECT & DELIVER</h4>
+                    <p>We pick up & return your vehicle</p>
+                </div>
+            </div>
+            <div class="area-tag">Bristol Area</div>
         </div>
     </div>
 
-    <div class="footer-action">
-        <div class="price-display">
-            <small>0 SELECTED ITEMS</small>
-            £0.00
-        </div>
-        <a href="https://wa.me/" target="_blank" class="btn-main" style="margin: 0; width: auto; padding: 12px 20px; font-size: 13px;">Confirm on WhatsApp</a>
-    </div>
+    <a href="https://wa.me/" target="_blank" class="whatsapp-float">
+        💬
+    </a>
 
 </body>
 </html>
