@@ -334,6 +334,7 @@
             width: 100%;
         }
 
+        /* Carduri strictly decorative (fără cursor pointer) */
         .card {
             background: rgba(18, 18, 18, 0.85);
             border: 1px solid #333;
@@ -342,7 +343,7 @@
             text-align: center;
             backdrop-filter: blur(5px);
             box-shadow: 0 4px 15px rgba(0,0,0,0.6);
-            cursor: pointer;
+            cursor: default;
         }
 
         .card-icon {
@@ -364,6 +365,7 @@
             color: #aaa;
         }
 
+        /* Colect & Deliver strictly decorativ */
         .collect-box {
             background: rgba(18, 18, 18, 0.85);
             border: 1px solid #333;
@@ -375,6 +377,7 @@
             align-items: center;
             backdrop-filter: blur(5px);
             box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+            cursor: default;
         }
 
         .collect-left {
@@ -409,7 +412,7 @@
             padding: 4px 6px;
             border-radius: 5px;
             text-transform: uppercase;
-            border: 1px solid rgba(34, 197, 94, 0.3);
+            border: 1px solid rgba(34, 197, 94, 0.4);
         }
 
         /* --- PAGINA 2 & 3: COMMON STYLING --- */
@@ -741,7 +744,7 @@
             gap: 8px;
         }
 
-        /* --- STILURI PENTRU PAGINA 3 (SELECT DATE & TIME - 43288.png) --- */
+        /* --- STILURI PENTRU PAGINA 3 (SELECT DATE & TIME) --- */
         .sched-title {
             font-size: 20px;
             font-weight: 900;
@@ -1029,17 +1032,17 @@
             </div>
 
             <div class="service-cards">
-                <div class="card" onclick="goToQuote()">
+                <div class="card">
                     <div class="card-icon">🛡️</div>
                     <div class="card-title">MOT</div>
                     <div class="card-sub">Class 4 & 7</div>
                 </div>
-                <div class="card" onclick="goToQuote()">
+                <div class="card">
                     <div class="card-icon">🧰</div>
                     <div class="card-title">SERVICING</div>
                     <div class="card-sub">Interim & Full</div>
                 </div>
-                <div class="card" onclick="goToQuote()">
+                <div class="card">
                     <div class="card-icon">🔧</div>
                     <div class="card-title">REPAIRS</div>
                     <div class="card-sub">OEM Parts</div>
@@ -1639,7 +1642,7 @@
         </div>
     </div>
 
-    <!-- PAGINA 3: SELECT DATE & TIME (43288.png) -->
+    <!-- PAGINA 3: SELECT DATE & TIME -->
     <div id="schedulePage" class="page-section">
         <div class="top-action-bar">
             <button class="back-btn" onclick="switchPage('quote')">&larr; BACK</button>
@@ -1896,4 +1899,3 @@
 
 </body>
 </html>
-5
