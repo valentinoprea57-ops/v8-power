@@ -520,7 +520,6 @@
             font-size: 14px;
         }
 
-        /* Stil pentru caseta "Can't find your specific part or repair?" (ca în 43267.png) */
         .custom-repair-box {
             background: rgba(18, 18, 18, 0.9);
             border: 1px dashed #555;
@@ -654,6 +653,7 @@
             text-decoration: none;
         }
 
+        /* Butonul WhatsApp activ cu numărul tău (07367446973) */
         .whatsapp-float {
             position: fixed;
             bottom: 95px;
@@ -670,6 +670,11 @@
             box-shadow: 0 4px 15px rgba(34, 197, 94, 0.5);
             z-index: 100;
             text-decoration: none;
+            transition: transform 0.2s;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
         }
     </style>
 </head>
@@ -862,7 +867,6 @@
             <div class="repair-cat-arrow">⌄</div>
         </div>
 
-        <!-- Caseta "Can't find your specific part or repair?" -->
         <div class="custom-repair-box">
             <div class="custom-repair-header">
                 <div class="custom-repair-icon">❓</div>
@@ -892,7 +896,8 @@
         </div>
     </div>
 
-    <a href="https://wa.me/" target="_blank" class="whatsapp-float">
+    <!-- Buton WhatsApp activ legat la numărul tău -->
+    <a href="https://wa.me/447367446973?text=Hello%20V8%20Power%20Garage,%20I%20would%20like%20to%20inquire%20about%20an%20auto%20service." target="_blank" class="whatsapp-float" title="Chat on WhatsApp">
         💬
     </a>
 
