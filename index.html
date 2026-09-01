@@ -22,13 +22,13 @@
             overflow-x: hidden;
         }
 
-        /* Fundal cu imagine și umbră închisă */
+        /* Fundal nou cu piesă mecanică / motor și umbră fină */
         body::before {
             content: "";
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(rgba(0,0,0,0.88), rgba(0,0,0,0.92), rgba(0,0,0,0.96)),
-                        url('https://images.unsplash.com/photo-1486006920555-c77dce18193b?auto=format&fit=crop&w=1000&q=80') no-repeat center center;
+            background: linear-gradient(rgba(11, 11, 11, 0.82), rgba(11, 11, 11, 0.90), rgba(11, 11, 11, 0.95)),
+                        url('https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=1200&q=80') no-repeat center center;
             background-size: cover;
             z-index: -1;
         }
@@ -258,7 +258,7 @@
             font-style: italic;
         }
 
-        /* Caseta număr înmatriculare extinsă pe tot rândul */
+        /* Caseta număr înmatriculare */
         .reg-box {
             background: #facc15;
             border-radius: 12px;
@@ -444,7 +444,6 @@
     <div id="navDropdown" class="dropdown-menu">
         <a href="#" class="dropdown-link" style="border-bottom: 1px solid #222;" onclick="closeMenu()">HOME</a>
         
-        <!-- SERVICES Acordeon -->
         <div id="servicesDropdownBtn" class="dropdown-link" onclick="toggleSubmenu('servicesSubmenu', 'servicesDropdownBtn')">
             SERVICES <span class="arrow">▼</span>
         </div>
@@ -457,7 +456,6 @@
             <a href="#">Garage Services</a>
         </div>
 
-        <!-- AREAS COVERED Acordeon -->
         <div id="areasDropdownBtn" class="dropdown-link" onclick="toggleSubmenu('areasSubmenu', 'areasDropdownBtn')">
             AREAS COVERED <span class="arrow">▼</span>
         </div>
@@ -481,7 +479,6 @@
             <a href="#">St George</a>
         </div>
 
-        <!-- OPENING TIME & CONTACT Acordeon -->
         <div id="contactDropdownBtn" class="dropdown-link" onclick="toggleSubmenu('contactSubmenu', 'contactDropdownBtn')">
             OPENING TIME & CONTACT <span class="arrow">▼</span>
         </div>
@@ -505,7 +502,6 @@
             <p>"Performance, Precision & Honest Auto Care."</p>
         </div>
 
-        <!-- Caseta galbenă de înmatriculare (fără butonul Enter) -->
         <div class="reg-box">
             <div class="reg-gb">GB</div>
             <input type="text" class="reg-input" value="LA21 CZU">
