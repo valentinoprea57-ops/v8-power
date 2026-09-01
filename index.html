@@ -95,7 +95,7 @@
             background: #141414;
             border: 1px solid #262626;
             border-radius: 14px;
-            width: 260px;
+            width: 270px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.8);
             display: none;
             flex-direction: column;
@@ -114,7 +114,7 @@
             color: #fff;
             text-decoration: none;
             font-weight: 800;
-            font-size: 14px;
+            font-size: 13px;
             letter-spacing: 1px;
             border-bottom: 1px solid #222;
             transition: background 0.2s;
@@ -133,27 +133,35 @@
             border-bottom: none;
         }
 
-        /* Subcategorii Acordeon (Servicii & Zone) */
-        .services-submenu, .areas-submenu {
+        /* Subcategorii Acordeon */
+        .services-submenu, .areas-submenu, .contact-submenu {
             display: none;
             background: #1a1a1a;
             border-left: 3px solid #ff1e1e;
         }
 
-        .services-submenu.active, .areas-submenu.active {
+        .services-submenu.active, .areas-submenu.active, .contact-submenu.active {
             display: flex;
             flex-direction: column;
         }
 
-        .services-submenu a, .areas-submenu a {
-            padding: 12px 20px 12px 30px;
+        .services-submenu a, .areas-submenu a, .contact-submenu div, .contact-submenu a {
+            padding: 12px 20px 12px 25px;
             color: #ddd;
             text-decoration: none;
             font-weight: 700;
-            font-size: 13px;
+            font-size: 12px;
             text-transform: uppercase;
             border-bottom: 1px solid #262626;
             transition: background 0.2s;
+        }
+
+        .contact-submenu div span, .contact-submenu a span {
+            color: #ff3333;
+            display: block;
+            font-size: 10px;
+            margin-bottom: 2px;
+            letter-spacing: 0.5px;
         }
 
         .services-submenu a:hover, .areas-submenu a:hover {
@@ -456,6 +464,19 @@
             <a href="#">Southmead</a>
             <a href="#">St George</a>
         </div>
+
+        <!-- OPENING TIME & CONTACT Acordeon -->
+        <div id="contactDropdownBtn" class="dropdown-link" onclick="toggleSubmenu('contactSubmenu', 'contactDropdownBtn')">
+            OPENING TIME & CONTACT <span class="arrow">▼</span>
+        </div>
+        
+        <div id="contactSubmenu" class="contact-submenu">
+            <div><span>Monday – Friday</span> 8:30am – 8:00pm</div>
+            <div><span>Saturday</span> 8:30am – 4:00pm</div>
+            <div><span>Sunday</span> Closed</div>
+            <a href="mailto:valentinoprea57@gmail.com"><span>Email Us</span> valentinoprea57@gmail.com</a>
+            <a href="tel:07367446973"><span>Call Us</span> 07367446973</a>
+        </div>
     </div>
 
     <div class="container">
@@ -533,6 +554,8 @@
             document.getElementById("servicesDropdownBtn").classList.remove("active");
             document.getElementById("areasSubmenu").classList.remove("active");
             document.getElementById("areasDropdownBtn").classList.remove("active");
+            document.getElementById("contactSubmenu").classList.remove("active");
+            document.getElementById("contactDropdownBtn").classList.remove("active");
         }
     </script>
 
