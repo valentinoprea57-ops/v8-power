@@ -1356,7 +1356,7 @@
             <div class="service-item-desc">We pick up your vehicle from your location and return it after service.</div>
         </div>
 
-        <!-- Formularul de colectare care apare la selectare -->
+        <!-- Formularul de colecție care apare la selectare -->
         <div id="collectFormSection" class="collect-form-section">
             <div class="collect-form-title">📍 Collection Details</div>
             <div class="collect-grid">
@@ -2408,7 +2408,53 @@
                 document.getElementById("confCollectRow").style.display = "none";
             }
 
+            // Trimitere email automat prin Resend API folosind cheia ta
+            sendEmailToClient(email, name, randomRef, document.getElementById("summaryReg").innerText, selectedDayText, selectedTimeText, "£" + currentTotal.toFixed(2));
+
             switchPage('confirmation');
+        }
+
+        // Funcția de trimitere email prin Resend API
+        async function sendEmailToClient(clientEmail, clientName, refCode, vehicleReg, date, time, total) {
+            const apiKey = "re_dRVftoDE_..."; // Introdu cheia ta completă aici sau folosește endpoint-ul tău
+            
+            try {
+                const response = await fetch('https://api.resend.com/emails', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${apiKey}`
+                    },
+                    body: JSON.stringify({
+                        from: 'V8 Power Garage <v8powergarage@gmail.com>',
+                        to: [clientEmail],
+                        subject: `Booking Confirmation - Ref: ${refCode}`,
+                        html: `
+                            <div style="font-family: Arial, sans-serif; color: #333; padding: 20px; background: #f9f9f9; border-radius: 10px;">
+                                <h2 style="color: #ff1e1e;">V8 Power Garage - Booking Confirmation</h2>
+                                <p>Hi <strong>${clientName}</strong>,</p>
+                                <p>Thank you for booking with us! Here are your appointment details:</p>
+                                <ul style="list-style: none; padding: 0;">
+                                    <li><strong>Reference Code:</strong> ${refCode}</li>
+                                    <li><strong>Vehicle Registration:</strong> ${vehicleReg}</li>
+                                    <li><strong>Date:</strong> ${date}</li>
+                                    <li><strong>Time Slot:</strong> ${time}</li>
+                                    <li><strong>Total Estimate:</strong> ${total} (Pay at Workshop)</li>
+                                </ul>
+                                <p style="margin-top: 20px;">We look forward to seeing you at our workshop in Kingswood, Bristol.</p>
+                                <hr style="border: none; border-top: 1px solid #ddd; margin: 20px 0;">
+                                <p style="font-size: 12px; color: #777;">V8 Power Garage | Phone: 07367446973</p>
+                            </div>
+                        `
+                    })
+                });
+                
+                if (!response.ok) {
+                    console.error("Failed to send email via Resend");
+                }
+            } catch (error) {
+                console.error("Email error:", error);
+            }
         }
 
         function sendWhatsAppFromConf() {
@@ -2462,7 +2508,7 @@
             document.querySelectorAll(".service-item-action").forEach(a => a.innerText = "+ Add");
             document.getElementById("collectFormSection").classList.remove("active");
             document.getElementById("collPostcode").value = "";
-            document.getElementById("collHouse").value = "";
+            document.getElementById("collHouse").value, document.getElementById("collHouse").value = "";
             document.getElementById("collPhone").value = "";
             document.getElementById("collReg").value = "";
             document.getElementById("collCarModel").value = "";
