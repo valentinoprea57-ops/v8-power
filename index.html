@@ -320,11 +320,39 @@
 
         .bottom-section {
             width: 100%;
-            margin-top: auto;
+            margin-top: 25px;
             display: flex;
             flex-direction: column;
-            gap: 10px;
-            padding-top: 15px;
+            gap: 12px;
+        }
+
+        .welcome-card {
+            background: rgba(18, 18, 18, 0.9);
+            border: 1px solid #333;
+            border-radius: 14px;
+            padding: 18px;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+        }
+
+        .welcome-card h3 {
+            font-size: 13px;
+            font-weight: 900;
+            text-transform: uppercase;
+            color: #ff3333;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        .welcome-card p {
+            font-size: 11px;
+            color: #ccc;
+            line-height: 1.5;
+            margin-bottom: 8px;
+        }
+
+        .welcome-card p:last-child {
+            margin-bottom: 0;
         }
 
         .service-cards {
@@ -1167,6 +1195,7 @@
             <a href="#">Fishponds</a>
             <a href="#">Hengrove</a>
             <a href="#">Keynsham</a>
+            <a href="#">Kingswood</a>
             <a href="#">Long Ashton</a>
             <a href="#">Patchway</a>
             <a href="#">Portishead</a>
@@ -1236,6 +1265,13 @@
                     <div class="card-title">REPAIRS</div>
                     <div class="card-sub">OEM Parts</div>
                 </div>
+            </div>
+
+            <!-- Secțiunea completă de prezentare/welcome adăugată la baza primei pagini -->
+            <div class="welcome-card">
+                <h3>Welcome to V8 Power Garage</h3>
+                <p>Located in Kingswood, Bristol, we provide dependable mechanical services, precise diagnostics, and official MOT testing for private motorists and commercial fleets alike.</p>
+                <p style="margin-top: 8px;">Enjoy complete peace of mind with upfront pricing, quick turnarounds, and our convenient Click & Collect service designed to save your time.</p>
             </div>
         </div>
     </div>
