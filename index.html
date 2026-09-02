@@ -1156,6 +1156,8 @@
         </div>
         
         <div id="areasSubmenu" class="areas-submenu">
+            <a href="#">Kingswood</a>
+            <a href="#">Bristol</a>
             <a href="#">Avonmouth</a>
             <a href="#">Bedminster</a>
             <a href="#">Bishopston</a>
@@ -1165,7 +1167,6 @@
             <a href="#">Fishponds</a>
             <a href="#">Hengrove</a>
             <a href="#">Keynsham</a>
-            <a href="#">Kingswood</a>
             <a href="#">Long Ashton</a>
             <a href="#">Patchway</a>
             <a href="#">Portishead</a>
@@ -1182,7 +1183,7 @@
             <div><span>Monday – Friday</span> 8:30am – 5:30pm</div>
             <div><span>Saturday</span> Closed</div>
             <div><span>Sunday</span> Closed</div>
-            <a href="mailto:valentinoprea57@gmail.com"><span>Email Us</span> valentinoprea57@gmail.com</a>
+            <a href="mailto:v8powergarage@gmail.com"><span>Email Us</span> v8powergarage@gmail.com</a>
             <a href="tel:07367446973"><span>Call Us</span> 07367446973</a>
         </div>
     </div>
@@ -1190,7 +1191,7 @@
     <!-- PAGINA 1: HOME -->
     <div id="homePage" class="page-section active">
         <div class="top-badge">
-            🛡️ APPROVED INDEPENDENT WORKSHOP • BRISTOL
+            🛡️ APPROVED INDEPENDENT WORKSHOP • KINGSWOOD, BRISTOL
         </div>
 
         <div class="hero-title">
@@ -1216,7 +1217,7 @@
                         <p>We pick up & return your vehicle</p>
                     </div>
                 </div>
-                <div class="area-tag">Bristol Area</div>
+                <div class="area-tag">Kingswood Area</div>
             </div>
 
             <div class="service-cards">
@@ -1251,7 +1252,7 @@
             <div class="service-item-top">
                 <div class="service-item-title-area">
                     <div class="service-item-name">🚚 Collect & Deliver Vehicle</div>
-                    <span class="service-badge-val">Bristol Area</span>
+                    <span class="service-badge-val">Kingswood Area</span>
                 </div>
                 <div class="service-item-right">
                     <div class="service-item-price">£15</div>
@@ -1267,7 +1268,7 @@
             <div class="collect-grid">
                 <div class="form-group">
                     <label>Post Code</label>
-                    <input type="text" id="collPostcode" placeholder="BS1 4XX">
+                    <input type="text" id="collPostcode" placeholder="BS15 1XX">
                 </div>
                 <div class="form-group">
                     <label>House No.</label>
@@ -1927,7 +1928,7 @@
             </div>
             <div class="form-group">
                 <label>Email Address</label>
-                <input type="email" id="clientEmail" placeholder="valentinoprea57@gmail.com">
+                <input type="email" id="clientEmail" placeholder="v8powergarage@gmail.com">
             </div>
         </div>
 
@@ -1956,7 +1957,7 @@
         <div class="confirmation-box">
             <div class="success-icon-circle">✓</div>
             <div class="conf-title">Booking Confirmed!</div>
-            <div class="conf-subtitle">A confirmation summary has been sent to<br><span id="confEmailDisplay">valentinoprea57@gmail.com</span><br><strong style="color: #22c55e; font-size: 11px;">✓ Client Receipt Confirmed Successfully</strong></div>
+            <div class="conf-subtitle">A confirmation summary has been sent to<br><span id="confEmailDisplay">v8powergarage@gmail.com</span><br><strong style="color: #22c55e; font-size: 11px;">✓ Client Receipt Confirmed Successfully</strong></div>
 
             <div class="conf-details-card">
                 <div class="conf-row">
@@ -2229,7 +2230,7 @@
             let booked = getBookedSlots();
             if(!booked[day]) { booked[day] = []; }
             if(!booked[day].includes(time)) {
-                booked[day].includes(time) || booked[day].push(time);
+                booked[day].push(time);
             }
             localStorage.setItem("v8_booked_slots", JSON.stringify(booked));
         }
