@@ -457,27 +457,6 @@
             text-transform: uppercase;
         }
 
-        .search-repair-box {
-            background: rgba(22, 22, 22, 0.9);
-            border: 1px solid #333;
-            border-radius: 12px;
-            padding: 12px 16px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 15px;
-            width: 100%;
-        }
-
-        .search-repair-box input {
-            background: transparent;
-            border: none;
-            color: #fff;
-            font-size: 13px;
-            width: 100%;
-            outline: none;
-        }
-
         .repair-category-card {
             background: rgba(18, 18, 18, 0.9);
             border: 1px solid #333;
@@ -614,76 +593,6 @@
             font-size: 11px;
             color: #aaa;
             margin-top: 4px;
-        }
-
-        .custom-repair-box {
-            background: rgba(18, 18, 18, 0.9);
-            border: 1px dashed #555;
-            border-radius: 14px;
-            padding: 18px 20px;
-            margin-bottom: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-        }
-
-        .custom-repair-header {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            margin-bottom: 12px;
-        }
-
-        .custom-repair-icon {
-            color: #eab308;
-            font-size: 18px;
-            margin-top: 1px;
-        }
-
-        .custom-repair-title {
-            font-size: 12px;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: #fff;
-            margin-bottom: 3px;
-        }
-
-        .custom-repair-sub {
-            font-size: 11px;
-            color: #aaa;
-        }
-
-        .custom-repair-input-row {
-            display: flex;
-            gap: 10px;
-        }
-
-        .custom-repair-input-row input {
-            background: rgba(10, 10, 10, 0.9);
-            border: 1px solid #333;
-            border-radius: 10px;
-            padding: 10px 14px;
-            color: #fff;
-            font-size: 12px;
-            flex: 1;
-            outline: none;
-        }
-
-        .add-custom-btn {
-            background: #facc15;
-            color: #000;
-            border: none;
-            padding: 0 18px;
-            border-radius: 10px;
-            font-weight: 900;
-            font-size: 12px;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: 0.2s;
-            white-space: nowrap;
-        }
-
-        .add-custom-btn:hover {
-            background: #eab308;
         }
 
         /* Bara fixă de jos de pe Pagina 2 */
@@ -1296,16 +1205,11 @@
         </div>
     </div>
 
-    <!-- PAGINA 2: REPAIRS & QUOTE SELECTION -->
+    <!-- PAGINA 2: REPAIRS & QUOTE SELECTION (Fără Search și fără Can't find) -->
     <div id="quotePage" class="page-section">
         <div class="top-action-bar">
             <button class="back-btn" onclick="switchPage('home')">&larr; BACK</button>
             <div id="regDisplayBadge" class="reg-display-badge">LA21 CZU</div>
-        </div>
-
-        <div class="search-repair-box">
-            <span style="color: #777;">🔍</span>
-            <input type="text" placeholder="Search repairs (e.g. brake pads, water pump, timing belt...)">
         </div>
 
         <!-- 1. MOT & ROUTINE SERVICING -->
@@ -1859,20 +1763,6 @@
             </div>
         </div>
 
-        <div class="custom-repair-box">
-            <div class="custom-repair-header">
-                <div class="custom-repair-icon">❓</div>
-                <div>
-                    <div class="custom-repair-title">Can't find your specific part or repair?</div>
-                    <div class="custom-repair-sub">Type any custom part or job description below:</div>
-                </div>
-            </div>
-            <div class="custom-repair-input-row">
-                <input type="text" id="customPartInput" placeholder="e.g. Front anti-roll bar link, Alternator renew...">
-                <button class="add-custom-btn" onclick="addCustomPart()">+ Add</button>
-            </div>
-        </div>
-
         <!-- Bara fixă de jos de pe Pagina 2 -->
         <div class="quote-bottom-bar">
             <div class="quote-info-row">
@@ -2145,17 +2035,6 @@
             updateCartSummary();
         }
 
-        function addCustomPart() {
-            let input = document.getElementById("customPartInput");
-            let val = input.value.trim();
-            if(val !== "") {
-                customPartsList.push(val);
-                alert("Custom part added: " + val);
-                input.value = "";
-                updateCartSummary();
-            }
-        }
-
         let currentTotal = 0;
         let currentCount = 0;
 
@@ -2191,8 +2070,6 @@
                     total += prices[key];
                 }
             }
-
-            count += customPartsList.length;
 
             currentTotal = total;
             currentCount = count;
@@ -2284,7 +2161,7 @@
                 return;
             }
 
-            saveBookedSlot(selectedDayText, selectedTimeText);
+            saveBookedSlot(selectedDayTest, selectedTimeText);
 
             let randomRef = "V8-" + Math.floor(100000 + Math.random() * 900000);
             document.getElementById("confRefCode").innerText = randomRef;
@@ -2313,9 +2190,6 @@
                     items.push(serviceNames[key]);
                 }
             }
-            if(customPartsList.length > 0) {
-                items.push("Custom: " + customPartsList.join(", "));
-            }
 
             let msg = `🛠️ *BOOKING CONFIRMATION - V8 POWER GARAGE*\n\n` +
                       `🔖 *Ref Code:* ${ref}\n` +
@@ -2334,7 +2208,6 @@
 
         function returnToHome() {
             for (let key in selectedServices) { selectedServices[key] = false; }
-            customPartsList = [];
             document.querySelectorAll(".service-item-card").forEach(c => c.classList.remove("selected"));
             document.querySelectorAll(".service-item-action").forEach(a => a.innerText = "+ Add");
             document.getElementById("clientName").value = "";
