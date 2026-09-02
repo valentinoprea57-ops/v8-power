@@ -323,36 +323,71 @@
             margin-top: 25px;
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 15px;
         }
 
-        .welcome-card {
+        /* Stiluri pentru secțiunile de prezentare detaliate de la baza primei pagini */
+        .info-card {
             background: rgba(18, 18, 18, 0.9);
             border: 1px solid #333;
             border-radius: 14px;
-            padding: 18px;
+            padding: 20px;
             backdrop-filter: blur(5px);
             box-shadow: 0 4px 15px rgba(0,0,0,0.6);
         }
 
-        .welcome-card h3 {
-            font-size: 13px;
+        .info-card h3 {
+            font-size: 14px;
             font-weight: 900;
             text-transform: uppercase;
             color: #ff3333;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
             letter-spacing: 0.5px;
         }
 
-        .welcome-card p {
+        .info-card p {
             font-size: 11px;
             color: #ccc;
-            line-height: 1.5;
-            margin-bottom: 8px;
+            line-height: 1.6;
+            margin-bottom: 10px;
         }
 
-        .welcome-card p:last-child {
+        .info-card p:last-child {
             margin-bottom: 0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .feature-item {
+            background: rgba(25, 25, 25, 0.8);
+            border: 1px solid #262626;
+            padding: 12px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .feature-item .f-icon {
+            font-size: 18px;
+            color: #ff3333;
+            margin-bottom: 4px;
+        }
+
+        .feature-item .f-title {
+            font-size: 10px;
+            font-weight: 800;
+            text-transform: uppercase;
+            color: #fff;
+            margin-bottom: 2px;
+        }
+
+        .feature-item .f-desc {
+            font-size: 9px;
+            color: #aaa;
         }
 
         .service-cards {
@@ -1195,7 +1230,6 @@
             <a href="#">Fishponds</a>
             <a href="#">Hengrove</a>
             <a href="#">Keynsham</a>
-            <a href="#">Kingswood</a>
             <a href="#">Long Ashton</a>
             <a href="#">Patchway</a>
             <a href="#">Portishead</a>
@@ -1267,11 +1301,49 @@
                 </div>
             </div>
 
-            <!-- Secțiunea completă de prezentare/welcome adăugată la baza primei pagini -->
-            <div class="welcome-card">
+            <!-- Secțiuni de prezentare detaliate adăugate la baza primei pagini -->
+            <div class="info-card">
                 <h3>Welcome to V8 Power Garage</h3>
-                <p>Located in Kingswood, Bristol, we provide dependable mechanical services, precise diagnostics, and official MOT testing for private motorists and commercial fleets alike.</p>
-                <p style="margin-top: 8px;">Enjoy complete peace of mind with upfront pricing, quick turnarounds, and our convenient Click & Collect service designed to save your time.</p>
+                <p>Based in Kingswood, Bristol, we are your trusted local independent garage dedicated to delivering top-tier mechanical repairs, accurate computer diagnostics, and reliable MOT testing for both private motorists and commercial fleets.</p>
+            </div>
+
+            <div class="info-card">
+                <h3>Why Choose Our Workshop?</h3>
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <div class="f-icon">🛡️</div>
+                        <div class="f-title">Certified</div>
+                        <div class="f-desc">Class 4 & 7 MOT Centre</div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="f-icon">⚡</div>
+                        <div class="f-title">Fast Turnaround</div>
+                        <div class="f-desc">Same-day service options</div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="f-icon">📍</div>
+                        <div class="f-title">Local Experts</div>
+                        <div class="f-desc">Serving Kingswood & Bristol</div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="f-icon">💎</div>
+                        <div class="f-title">Transparent</div>
+                        <div class="f-desc">No hidden fees or surprises</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <h3>Convenient Click & Collect</h3>
+                <p>Short on time? Let us handle the logistics. Choose our Click & Collect service when booking, and we will pick up your vehicle from your home or workplace in Kingswood, complete the required maintenance, and return it right back to you.</p>
+            </div>
+
+            <div class="info-card">
+                <h3>Get In Touch</h3>
+                <p><strong>Phone:</strong> 07367446973<br>
+                <strong>Email:</strong> v8powergarage@gmail.com<br>
+                <strong>Location:</strong> Kingswood, Bristol<br>
+                <strong>Hours:</strong> Mon – Fri: 8:30am – 5:30pm</p>
             </div>
         </div>
     </div>
