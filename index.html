@@ -1195,7 +1195,7 @@
                 <p>AUTO SERVICE & MOT CENTRE</p>
             </div>
         </div>
-        <button class="menu-btn" onclick="toggleMenu()">☰</button>
+        <button class="menu-btn" onclick="toggleMenu(event)">☰</button>
     </header>
 
     <!-- Meniul dropdown -->
@@ -2127,7 +2127,8 @@
     </a>
 
     <script>
-        function toggleMenu() {
+        function toggleMenu(event) {
+            if (event) event.stopPropagation();
             var menu = document.getElementById("navDropdown");
             menu.classList.toggle("active");
         }
@@ -2148,6 +2149,17 @@
             document.getElementById("contactSubmenu").classList.remove("active");
             document.getElementById("contactDropdownBtn").classList.remove("active");
         }
+
+        // Închide meniul automat dacă se apasă oriunde în afara lui
+        document.addEventListener("click", function(event) {
+            var menu = document.getElementById("navDropdown");
+            var menuBtn = document.querySelector(".menu-btn");
+            if (menu.classList.contains("active")) {
+                if (!menu.contains(event.target) && !menuBtn.contains(event.target)) {
+                    closeMenu();
+                }
+            }
+        });
 
         function goToQuote() {
             var regVal = document.getElementById("regInput").value.trim();
