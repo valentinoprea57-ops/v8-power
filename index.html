@@ -1205,11 +1205,26 @@
         </div>
     </div>
 
-    <!-- PAGINA 2: REPAIRS & QUOTE SELECTION (Fără Search și fără Can't find) -->
+    <!-- PAGINA 2: REPAIRS & QUOTE SELECTION -->
     <div id="quotePage" class="page-section">
         <div class="top-action-bar">
             <button class="back-btn" onclick="switchPage('home')">&larr; BACK</button>
             <div id="regDisplayBadge" class="reg-display-badge">LA21 CZU</div>
+        </div>
+
+        <!-- OPȚIUNEA 1: COLLECT & DELIVER (£15) -->
+        <div class="service-item-card" id="card-collect" onclick="toggleService('collect', 15.00, 'Collect & Deliver Vehicle')">
+            <div class="service-item-top">
+                <div class="service-item-title-area">
+                    <div class="service-item-name">🚚 Collect & Deliver Vehicle</div>
+                    <span class="service-badge-val">Bristol Area</span>
+                </div>
+                <div class="service-item-right">
+                    <div class="service-item-price">£15</div>
+                    <div class="service-item-action" id="action-collect">+ Add</div>
+                </div>
+            </div>
+            <div class="service-item-desc">We pick up your vehicle from your location and return it after service.</div>
         </div>
 
         <!-- 1. MOT & ROUTINE SERVICING -->
@@ -1862,7 +1877,7 @@
                 <div class="pay-workshop-tag">Pay at Workshop</div>
             </div>
             <div class="sched-bottom-info">
-                <div id="schedBottomTotalPrice" class="sched-bottom-price">£414.99</div>
+                <div id="schedBottomTotalPrice" class="sched-bottom-price">£15.00</div>
             </div>
             <button class="whatsapp-confirm-btn" onclick="goToConfirmation()">
                 💬 CONFIRM & SEND BOOKING ON WHATSAPP
@@ -1909,7 +1924,7 @@
                 </div>
                 <div class="conf-row">
                     <span class="label">Estimate Total:</span>
-                    <span id="confPrice" class="value price">£414.99</span>
+                    <span id="confPrice" class="value price">£15.00</span>
                 </div>
             </div>
 
@@ -1987,6 +2002,7 @@
         }
 
         var selectedServices = {
+            collect: false,
             mot4: false, mot7: false, oil: false, interim: false, major: false,
             bpf: false, bpr: false, bdpf: false, bdpr: false, bff: false, cal: false,
             timb: false, womp: false, alt: false, stm: false, aux: false, glow: false,
@@ -1997,6 +2013,7 @@
         };
 
         var serviceNames = {
+            collect: "Collect & Deliver Vehicle",
             mot4: "MOT Test (Class 4)", mot7: "MOT Test (Class 7)", oil: "Oil & Filter Replacement", interim: "Interim Service", major: "Major Service",
             bpf: "Front Brake Pads", bpr: "Rear Brake Pads", bdpf: "Front Discs & Pads", bdpr: "Rear Discs & Pads", bff: "Brake Fluid Flush", cal: "Caliper Replacement",
             timb: "Timing Belt Kit", womp: "Water Pump", alt: "Alternator", stm: "Starter Motor", aux: "Auxiliary Drive Belt", glow: "Glow Plugs",
@@ -2009,6 +2026,7 @@
         var customPartsList = [];
 
         const prices = {
+            collect: 15.00,
             mot4Normal: 45.00, mot7Normal: 55.00, motCombo: 24.99,
             oil: 75.00, interim: 110.00, major: 195.00,
             bpf: 85.00, bpr: 80.00, bdpf: 165.00, bdpr: 155.00, bff: 55.00, cal: 120.00,
@@ -2042,6 +2060,11 @@
             let total = 0;
             let count = 0;
 
+            if (selectedServices.collect) {
+                count++;
+                total += prices.collect;
+            }
+
             let hasServiceOrOil = selectedServices.oil || selectedServices.interim || selectedServices.major;
 
             let price4 = prices.mot4Normal;
@@ -2065,7 +2088,7 @@
             }
 
             for (let key in selectedServices) {
-                if (key !== 'mot4' && key !== 'mot7' && selectedServices[key]) {
+                if (key !== 'collect' && key !== 'mot4' && key !== 'mot7' && selectedServices[key]) {
                     count++;
                     total += prices[key];
                 }
@@ -2161,7 +2184,7 @@
                 return;
             }
 
-            saveBookedSlot(selectedDayTest, selectedTimeText);
+            saveBookedSlot(selectedDayText, selectedTimeText);
 
             let randomRef = "V8-" + Math.floor(100000 + Math.random() * 900000);
             document.getElementById("confRefCode").innerText = randomRef;
