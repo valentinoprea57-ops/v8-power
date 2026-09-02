@@ -326,68 +326,60 @@
             gap: 15px;
         }
 
-        /* Stiluri pentru secțiunile de prezentare detaliate de la baza primei pagini */
-        .info-card {
-            background: rgba(18, 18, 18, 0.9);
+        /* Stiluri pentru prezentarea ilustrată de la baza primei pagini */
+        .showcase-card {
+            background: rgba(18, 18, 18, 0.92);
             border: 1px solid #333;
+            border-left: 4px solid #ff1e1e;
             border-radius: 14px;
-            padding: 20px;
+            padding: 18px;
             backdrop-filter: blur(5px);
             box-shadow: 0 4px 15px rgba(0,0,0,0.6);
         }
 
-        .info-card h3 {
-            font-size: 14px;
+        .showcase-card h3 {
+            font-size: 13px;
             font-weight: 900;
             text-transform: uppercase;
-            color: #ff3333;
-            margin-bottom: 10px;
+            color: #fff;
+            margin-bottom: 6px;
             letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
-        .info-card p {
+        .showcase-card p {
             font-size: 11px;
-            color: #ccc;
-            line-height: 1.6;
-            margin-bottom: 10px;
+            color: #aaa;
+            line-height: 1.5;
         }
 
-        .info-card p:last-child {
-            margin-bottom: 0;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
+        .showcase-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
             margin-top: 10px;
         }
 
-        .feature-item {
-            background: rgba(25, 25, 25, 0.8);
+        .showcase-item {
+            background: rgba(25, 25, 25, 0.9);
             border: 1px solid #262626;
-            padding: 12px;
             border-radius: 10px;
-            text-align: center;
-        }
-
-        .feature-item .f-icon {
-            font-size: 18px;
-            color: #ff3333;
-            margin-bottom: 4px;
-        }
-
-        .feature-item .f-title {
-            font-size: 10px;
+            padding: 12px 14px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 11px;
             font-weight: 800;
             text-transform: uppercase;
             color: #fff;
-            margin-bottom: 2px;
+            letter-spacing: 0.5px;
         }
 
-        .feature-item .f-desc {
-            font-size: 9px;
-            color: #aaa;
+        .showcase-item span {
+            color: #22c55e;
+            font-size: 13px;
         }
 
         .service-cards {
@@ -1301,50 +1293,39 @@
                 </div>
             </div>
 
-            <!-- Secțiuni de prezentare detaliate adăugate la baza primei pagini pentru scroll -->
-            <div class="info-card">
+            <!-- Prezentare ilustrată detaliată la baza primei pagini -->
+            <div class="showcase-card">
                 <h3>Welcome to V8 Power Garage</h3>
-                <p>Based in Kingswood, Bristol, we are your trusted local independent garage dedicated to delivering top-tier mechanical repairs, accurate computer diagnostics, and reliable MOT testing for both private motorists and commercial fleets.</p>
+                <p>Based in Kingswood, Bristol, we provide dependable mechanical services, precise computer diagnostics, and official MOT testing for both private motorists and commercial fleets across the region.</p>
             </div>
 
-            <div class="info-card">
-                <h3>Why Choose Our Workshop?</h3>
-                <div class="features-grid">
-                    <div class="feature-item">
-                        <div class="f-icon">🛡️</div>
-                        <div class="f-title">Certified</div>
-                        <div class="f-desc">Class 4 & 7 MOT Centre</div>
-                    </div>
-                    <div class="feature-item">
-                        <div class="f-icon">⚡</div>
-                        <div class="f-title">Fast Turnaround</div>
-                        <div class="f-desc">Same-day service options</div>
-                    </div>
-                    <div class="feature-item">
-                        <div class="f-icon">📍</div>
-                        <div class="f-title">Local Experts</div>
-                        <div class="f-desc">Serving Kingswood & Bristol</div>
-                    </div>
-                    <div class="feature-item">
-                        <div class="f-icon">💎</div>
-                        <div class="f-title">Transparent</div>
-                        <div class="f-desc">No hidden fees or surprises</div>
-                    </div>
+            <div class="showcase-card">
+                <h3>Why Drivers Trust Us</h3>
+                <div class="showcase-list">
+                    <div class="showcase-item"><span>✓</span> Approved & Certified MOT Centre</div>
+                    <div class="showcase-item"><span>✓</span> Fast Same-Day Turnaround</div>
+                    <div class="showcase-item"><span>✓</span> Local Kingswood & Bristol Experts</div>
+                    <div class="showcase-item"><span>✓</span> Transparent Pricing & Quotes Upfront</div>
                 </div>
             </div>
 
-            <div class="info-card">
-                <h3>Convenient Click & Collect</h3>
-                <p>Short on time? Let us handle the logistics. Choose our Click & Collect service when booking, and we will pick up your vehicle from your home or workplace across the Bristol Area, complete the required maintenance, and return it right back to you.</p>
+            <div class="showcase-card">
+                <h3>Our Core Automotive Services</h3>
+                <div class="showcase-list">
+                    <div class="showcase-item"><span>🛡️</span> Class 4 & Class 7 MOT Testing</div>
+                    <div class="showcase-item"><span>🧰</span> Interim & Full Vehicle Servicing</div>
+                    <div class="showcase-item"><span>🛑</span> Brakes, Discs & Hydraulic Repairs</div>
+                    <div class="showcase-item"><span>⚡</span> Timing Belts, Clutches & Diagnostics</div>
+                </div>
             </div>
 
-            <div class="info-card">
-                <h3>Comprehensive Automotive Services</h3>
-                <p>From routine oil changes and interim/major servicing to complex mechanical fixes including timing belts, brakes, suspension, clutches, and DPF cleaning — our certified mechanics ensure your car stays safe, efficient, and fully roadworthy all year round.</p>
+            <div class="showcase-card">
+                <h3>Convenient Click & Collect (£15)</h3>
+                <p>Busy schedule? No problem! Select our Click & Collect service when booking, and we'll pick up your car from your home or workplace anywhere in Bristol, complete all required maintenance, and bring it back safely.</p>
             </div>
 
-            <div class="info-card">
-                <h3>Get In Touch</h3>
+            <div class="showcase-card">
+                <h3>Contact & Location</h3>
                 <p><strong>Phone:</strong> 07367446973<br>
                 <strong>Email:</strong> v8powergarage@gmail.com<br>
                 <strong>Location:</strong> Kingswood, Bristol<br>
@@ -1375,7 +1356,7 @@
             <div class="service-item-desc">We pick up your vehicle from your location and return it after service.</div>
         </div>
 
-        <!-- Formularul de colecție care apare la selectare -->
+        <!-- Formularul de colectare care apare la selectare -->
         <div id="collectFormSection" class="collect-form-section">
             <div class="collect-form-title">📍 Collection Details</div>
             <div class="collect-grid">
