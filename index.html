@@ -2523,7 +2523,64 @@
             document.getElementById("clientEmail").value = "";
             updateCartSummary();
             switchPage('home');
+             function goToConfirmation() {
+            let name = document.getElementById("clientName").value.trim();
+            let phone = document.getElementById("clientPhone").value.trim();
+            let email = document.getElementById("clientEmail").value.trim();
+
+            if(!name || !phone || !email) {
+                alert("Please fill in all your contact details (Name, Phone, Email) before confirming.");
+                return;
+            }
+
+            if(selectedServices.collect) {
+                let postcode = document.getElementById("collPostcode").value.trim();
+                let house = document.getElementById("collHouse").value.trim();
+                if(!postcode || !house) {
+                    alert("Please fill in your Collection Address details (Post Code & House No.).");
+                    return;
+                }
+            }
+
+            saveBookedSlot(selectedDayText, selectedTimeText);
+
+            let randomRef = "V8-" + Math.floor(100000 + Math.random() * 900000);
+            document.getElementById("confRefCode").innerText = randomRef;
+            document.getElementById("confReg").innerText = document.getElementById("summaryReg").innerText;
+            document.getElementById("confName").innerText = name;
+            document.getElementById("confPhone").innerText = phone;
+            document.getElementById("confEmailDisplay").innerText = email;
+            document.getElementById("confDate").innerText = selectedDayText;
+            document.getElementById("confTime").innerText = selectedTimeText;
+            document.getElementById("confPrice").innerText = "£" + currentTotal.toFixed(2);
+
+            if(selectedServices.collect) {
+                document.getElementById("confCarModel").innerText = document.getElementById("collCarModel").value.trim() || "Not specified";
+                document.getElementById("confCollReg").innerText = document.getElementById("collReg").value.trim() || "Not specified";
+                document.getElementById("confAddress").innerText = document.getElementById("collHouse").value.trim() + ", " + document.getElementById("collPostcode").value.trim();
+                document.getElementById("confCollPhone").innerText = document.getElementById("collPhone").value.trim() || "Not specified";
+                document.getElementById("confCollectRow").style.display = "block";
+            } else {
+                document.getElementById("confCollectRow").style.display = "none";
+            }
+
+            fetch('/api/send-email', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    clientEmail: email,
+                    clientName: name,
+                    refCode: randomRef,
+                    vehicleReg: document.getElementById("summaryReg").innerText,
+                    date: selectedDayText,
+                    time: selectedTimeText,
+                    total: "£" + currentTotal.toFixed(2)
+                })
+            }).catch(err => console.error("Email error:", err));
+
+            switchPage('confirmation');
         }
+   }
     </script>
 
 </body>
