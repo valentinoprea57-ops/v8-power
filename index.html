@@ -1190,7 +1190,7 @@
         <button class="menu-btn" onclick="toggleMenu(event)">☰</button>
     </header>
 
-    <!-- Meniul dropdown -->
+    <!-- Meniul dropdown (păstrat și funcțional) -->
     <div id="navDropdown" class="dropdown-menu">
         <a href="#" class="dropdown-link" style="border-bottom: 1px solid #222;" onclick="switchPage('home'); closeMenu();">HOME</a>
         
@@ -1322,6 +1322,58 @@
                 <h3>Convenient Click & Collect (£15)</h3>
                 <p>Busy schedule? No problem! Select our Click & Collect service when booking, and we'll pick up your car from your home or workplace anywhere in Bristol, complete all required maintenance, and bring it back safely.</p>
             </div>
+
+            <!-- ===== SECȚIUNI NOI PRE luate DIN MENIUL HAMBURGER ===== -->
+
+            <!-- 1. SERVICES REPRISAL -->
+            <div class="showcase-card">
+                <h3>🛠️ Our Services</h3>
+                <div class="showcase-list">
+                    <div class="showcase-item" onclick="switchPage('quote')" style="cursor: pointer;"><span>&gt;</span> MOT Servicing</div>
+                    <div class="showcase-item" onclick="switchPage('quote')" style="cursor: pointer;"><span>&gt;</span> Car Servicing</div>
+                    <div class="showcase-item" onclick="switchPage('quote')" style="cursor: pointer;"><span>&gt;</span> Class 7 MOTs</div>
+                    <div class="showcase-item" onclick="switchPage('quote')" style="cursor: pointer;"><span>&gt;</span> Vehicle Air Conditioning</div>
+                    <div class="showcase-item" onclick="switchPage('quote')" style="cursor: pointer;"><span>&gt;</span> Garage Services</div>
+                </div>
+            </div>
+
+            <!-- 2. AREAS COVERED REPRISAL -->
+            <div class="showcase-card">
+                <h3>📍 Areas Covered Across Bristol</h3>
+                <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px;">
+                    <span class="area-tag">Kingswood</span>
+                    <span class="area-tag">Bristol</span>
+                    <span class="area-tag">Avonmouth</span>
+                    <span class="area-tag">Bedminster</span>
+                    <span class="area-tag">Bishopston</span>
+                    <span class="area-tag">Brislington</span>
+                    <span class="area-tag">Clifton</span>
+                    <span class="area-tag">Filton</span>
+                    <span class="area-tag">Fishponds</span>
+                    <span class="area-tag">Hengrove</span>
+                    <span class="area-tag">Keynsham</span>
+                    <span class="area-tag">Long Ashton</span>
+                    <span class="area-tag">Patchway</span>
+                    <span class="area-tag">Portishead</span>
+                    <span class="area-tag">Redland</span>
+                    <span class="area-tag">Southmead</span>
+                    <span class="area-tag">St George</span>
+                </div>
+            </div>
+
+            <!-- 3. OPENING TIME & CONTACT REPRISAL -->
+            <div class="showcase-card">
+                <h3>🕒 Opening Time & Contact</h3>
+                <div class="showcase-list">
+                    <div class="showcase-item"><span>Mon – Fri</span> 8:30am – 5:30pm</div>
+                    <div class="showcase-item" style="color: #aaa;"><span>Saturday</span> Closed</div>
+                    <div class="showcase-item" style="color: #aaa;"><span>Sunday</span> Closed</div>
+                    <a href="mailto:v8powergarage@gmail.com" class="showcase-item" style="text-decoration: none; color: #fff;"><span>Email Us</span> v8powergarage@gmail.com</a>
+                    <a href="tel:07367446973" class="showcase-item" style="text-decoration: none; color: #fff;"><span>Call Us</span> 07367446973</a>
+                </div>
+            </div>
+
+            <!-- ======================================================== -->
 
             <div class="showcase-card">
                 <h3>Contact & Location</h3>
@@ -2392,6 +2444,21 @@
             } else {
                 document.getElementById("confCollectRow").style.display = "none";
             }
+
+            // Trimitere email securizată prin rutele Vercel
+            fetch('/api/send-email', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    clientEmail: email,
+                    clientName: name,
+                    refCode: randomRef,
+                    vehicleReg: document.getElementById("summaryReg").innerText,
+                    date: selectedDayText,
+                    time: selectedTimeText,
+                    total: "£" + currentTotal.toFixed(2)
+                })
+            }).catch(err => console.error("Email error:", err));
 
             switchPage('confirmation');
         }
