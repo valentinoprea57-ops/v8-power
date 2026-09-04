@@ -2570,40 +2570,40 @@
 
 </body>
     <script>
-document.addEventListener('DOMContentLoaded', () => {
-  const container = document.getElementById('daysGridContainer');
-  if (!container) return;
-  container.innerHTML = '';
+  document.addEventListener('DOMContentLoaded', () => {
+    const container = document.getElementById('daysGridContainer');
+    if (!container) return;
+    container.innerHTML = '';
 
-  const today = new Date();
-  
-  for (let i = 0; i < 14; i++) {
-    const d = new Date();
-    d.setDate(today.getDate() + i);
-
-    if (d.getDay() === 0) continue;
-
-    const dayName = d.toLocaleDateString('en-GB', { weekday: 'short' }).toUpperCase();
-    const dayNum = d.getDate();
-    const monthName = d.toLocaleDateString('en-GB', { month: 'short' }).toUpperCase();
+    const today = new Date();
     
-    const card = document.createElement('div');
-    card.className = `day-card ${i === 0 ? 'selected' : ''}`;
-    
-    card.onclick = function() {
-      document.querySelectorAll('.day-card').forEach(c => c.classList.remove('selected'));
-      card.classList.add('selected');
-      window.selectedDateStr = `${dayName}, ${dayNum} ${monthName}`;
-    };
+    for (let i = 0; i < 14; i++) {
+      const d = new Date();
+      d.setDate(today.getDate() + i);
 
-    card.innerHTML = `
-      <div class="day-name">${dayName}</div>
-      <div class="day-date">${dayNum} ${monthName}</div>
-    `;
+      if (d.getDay() === 0) continue;
 
-    container.appendChild(card);
-  }
-});
-    </script>
-    
+      const dayName = d.toLocaleDateString('en-GB', { weekday: 'short' }).toUpperCase();
+      const dayNum = d.getDate();
+      const monthName = d.toLocaleDateString('en-GB', { month: 'short' }).toUpperCase();
+      
+      const card = document.createElement('div');
+      card.className = `day-card ${i === 0 ? 'selected' : ''}`;
+      
+      card.onclick = function() {
+        document.querySelectorAll('.day-card').forEach(c => c.classList.remove('selected'));
+        card.classList.add('selected');
+        window.selectedDateStr = `${dayName}, ${dayNum} ${monthName}`;
+      };
+
+      card.innerHTML = `
+        <div class="day-name">${dayName}</div>
+        <div class="day-date">${dayNum} ${monthName}</div>
+      `;
+
+      container.appendChild(card);
+    }
+  });
+</script>
+
 </html>
