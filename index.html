@@ -1174,7 +1174,7 @@
 
         <!-- ENGINE -->
         <div class="repair-category-card" onclick="toggleSubList('engineList', 'arrow3')">
-            <div class="repair-cat-left"><div class="repair-cat-icon">⚡</div><div class="repair-cat-title">Engine, Belts & Electrical</div></div>
+            <div class="repair-cat-left"><div class="repair-cat-icon">⚡</div><div class="repair-cat-title">Engine, Belts & Electrical Motors</div></div>
             <div id="arrow3" class="repair-cat-arrow">⌄</div>
         </div>
         <div id="engineList" class="sub-service-list">
@@ -1188,6 +1188,80 @@
                 <div class="service-item-top">
                     <div class="service-item-title-area"><div class="service-item-name">Alternator Replacement</div><span class="service-badge-time">2.0 hrs</span></div>
                     <div class="service-item-right"><div class="service-item-price">Ask for Quotation</div><div class="service-item-action" id="action-alt">+ Add</div></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SUSPENSION -->
+        <div class="repair-category-card" onclick="toggleSubList('suspList', 'arrow4')">
+            <div class="repair-cat-left"><div class="repair-cat-icon">🚗</div><div class="repair-cat-title">Suspension, Springs & Steering</div></div>
+            <div id="arrow4" class="repair-cat-arrow">⌄</div>
+        </div>
+        <div id="suspList" class="sub-service-list">
+            <div class="service-item-card" id="card-shf" onclick="toggleService('shf')">
+                <div class="service-item-top">
+                    <div class="service-item-title-area"><div class="service-item-name">Shock Absorbers - Front</div><span class="service-badge-time">2.0 hrs</span></div>
+                    <div class="service-item-right"><div class="service-item-price">Ask for Quotation</div><div class="service-item-action" id="action-shf">+ Add</div></div>
+                </div>
+            </div>
+            <div class="service-item-card" id="card-csp" onclick="toggleService('csp')">
+                <div class="service-item-top">
+                    <div class="service-item-title-area"><div class="service-item-name">Coil Spring Replacement</div><span class="service-badge-time">60 mins</span></div>
+                    <div class="service-item-right"><div class="service-item-price">Ask for Quotation</div><div class="service-item-action" id="action-csp">+ Add</div></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CLUTCH -->
+        <div class="repair-category-card" onclick="toggleSubList('clutchList', 'arrow5')">
+            <div class="repair-cat-left"><div class="repair-cat-icon">🔧</div><div class="repair-cat-title">Clutch, Gearbox & Drivetrain</div></div>
+            <div id="arrow5" class="repair-cat-arrow">⌄</div>
+        </div>
+        <div id="clutchList" class="sub-service-list">
+            <div class="service-item-card" id="card-clt" onclick="toggleService('clt')">
+                <div class="service-item-top">
+                    <div class="service-item-title-area"><div class="service-item-name">Clutch Kit Replacement</div><span class="service-badge-time">4.5 hrs</span></div>
+                    <div class="service-item-right"><div class="service-item-price">Ask for Quotation</div><div class="service-item-action" id="action-clt">+ Add</div></div>
+                </div>
+            </div>
+            <div class="service-item-card" id="card-dmf" onclick="toggleService('dmf')">
+                <div class="service-item-top">
+                    <div class="service-item-title-area"><div class="service-item-name">Dual Mass Flywheel & Clutch</div><span class="service-badge-time">5.5 hrs</span></div>
+                    <div class="service-item-right"><div class="service-item-price">Ask for Quotation</div><div class="service-item-action" id="action-dmf">+ Add</div></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- EXHAUST & DPF -->
+        <div class="repair-category-card" onclick="toggleSubList('exhaustList', 'arrow6')">
+            <div class="repair-cat-left"><div class="repair-cat-icon">💨</div><div class="repair-cat-title">Turbo, Exhaust & DPF Emissions</div></div>
+            <div id="arrow6" class="repair-cat-arrow">⌄</div>
+        </div>
+        <div id="exhaustList" class="sub-service-list">
+            <div class="service-item-card" id="card-dpf" onclick="toggleService('dpf')">
+                <div class="service-item-top">
+                    <div class="service-item-title-area"><div class="service-item-name">DPF Chemical Clean & Regen</div><span class="service-badge-time">90 mins</span></div>
+                    <div class="service-item-right"><div class="service-item-price">Ask for Quotation</div><div class="service-item-action" id="action-dpf">+ Add</div></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- AIR CON -->
+        <div class="repair-category-card" onclick="toggleSubList('acList', 'arrow7')">
+            <div class="repair-cat-left"><div class="repair-cat-icon">🔋</div><div class="repair-cat-title">Air Conditioning & Electrical</div></div>
+            <div id="arrow7" class="repair-cat-arrow">⌄</div>
+        </div>
+        <div id="acList" class="sub-service-list">
+            <div class="service-item-card" id="card-ac" onclick="toggleService('ac')">
+                <div class="service-item-top">
+                    <div class="service-item-title-area"><div class="service-item-name">Air Con Re-gas & Service</div><span class="service-badge-time">45 mins</span></div>
+                    <div class="service-item-right"><div class="service-item-price">Ask for Quotation</div><div class="service-item-action" id="action-ac">+ Add</div></div>
+                </div>
+            </div>
+            <div class="service-item-card" id="card-diag" onclick="toggleService('diag')">
+                <div class="service-item-top">
+                    <div class="service-item-title-area"><div class="service-item-name">Full Diagnostic Computer Scan</div><span class="service-badge-time">30 mins</span></div>
+                    <div class="service-item-right"><div class="service-item-price">Ask for Quotation</div><div class="service-item-action" id="action-diag">+ Add</div></div>
                 </div>
             </div>
         </div>
@@ -1320,14 +1394,17 @@
 
         var selectedServices = {
             collect: false, mot4: false, mot7: false, oil: false, interim: false, major: false,
-            bpf: false, bpr: false, bdpf: false, bdpr: false, timb: false, alt: false
+            bpf: false, bpr: false, bdpf: false, bdpr: false, timb: false, alt: false,
+            shf: false, csp: false, clt: false, dmf: false, dpf: false, ac: false, diag: false
         };
 
         var serviceNames = {
             collect: "Collect & Deliver (£15)", mot4: "MOT Test (Class 4 - £45)", mot7: "MOT Test (Class 7 - £55)",
             oil: "Oil & Filter (Quote)", interim: "Interim Service (Quote)", major: "Major Service (Quote)",
             bpf: "Front Brake Pads (Quote)", bpr: "Rear Brake Pads (Quote)", bdpf: "Front Discs & Pads (Quote)", bdpr: "Rear Discs & Pads (Quote)",
-            timb: "Timing Belt Kit (Quote)", alt: "Alternator (Quote)"
+            timb: "Timing Belt Kit (Quote)", alt: "Alternator (Quote)",
+            shf: "Shock Absorbers (Quote)", csp: "Coil Spring (Quote)", clt: "Clutch Kit (Quote)", dmf: "Flywheel & Clutch (Quote)",
+            dpf: "DPF Clean & Regen (Quote)", ac: "Air Con Re-gas (Quote)", diag: "Diagnostic Scan (Quote)"
         };
 
         function toggleCollectService(key) {
@@ -1371,7 +1448,7 @@
             for (let key in selectedServices) {
                 if (selectedServices[key]) {
                     count++;
-                    if (fixedPrices[key]) {
+                    if (fixedPrices[key] !== undefined) {
                         fixedTotal += fixedPrices[key];
                     } else {
                         hasQuoteItems = true;
@@ -1396,16 +1473,13 @@
 
         function goToSchedule() {
             let displayText = document.getElementById("totalPriceText").innerText;
-            document.getElementById("summaryCountText").innerText = currentCountText();
+            let count = 0;
+            for (let key in selectedServices) { if (selectedServices[key]) count++; }
+
+            document.getElementById("summaryCountText").innerText = count + (count === 1 ? " Service" : " Services");
             document.getElementById("summaryPriceHeader").innerText = displayText;
             document.getElementById("schedBottomTotalPrice").innerText = displayText;
             switchPage('schedule');
-        }
-
-        function currentCountText() {
-            let count = 0;
-            for (let key in selectedServices) { if (selectedServices[key]) count++; }
-            return count + (count === 1 ? " Service" : " Services");
         }
 
         let selectedDayText = "Mon, 31 Aug";
@@ -1469,6 +1543,8 @@
             let reg = document.getElementById("confReg").innerText;
             let ref = document.getElementById("confRefCode").innerText;
             let priceText = document.getElementById("confPrice").innerText;
+            let name = document.getElementById("clientName").value.trim();
+            let phone = document.getElementById("clientPhone").value.trim();
 
             let items = [];
             for (let key in selectedServices) {
@@ -1480,7 +1556,8 @@
                       `🚗 *Reg:* ${reg}\n` +
                       `📦 *Requested Services:* ${items.join(", ")}\n` +
                       `💰 *Estimate:* ${priceText}\n` +
-                      `📅 *Preferred Slot:* ${selectedDayText} • ${selectedTimeText}`;
+                      `📅 *Preferred Slot:* ${selectedDayText} • ${selectedTimeText}\n` +
+                      `👤 *Client:* ${name} (${phone})`;
 
             window.open("https://wa.me/447367446973?text=" + encodeURIComponent(msg), "_blank");
         }
