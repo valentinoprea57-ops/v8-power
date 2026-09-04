@@ -1,3 +1,1033 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>V8 Power Garage - Auto Service & MOT Centre</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        body {
+            background-color: #0b0b0b;
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(rgba(11, 11, 11, 0.45), rgba(11, 11, 11, 0.6), rgba(11, 11, 11, 0.75)),
+                        url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=80') no-repeat center center;
+            background-size: cover;
+            z-index: -1;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 20px;
+            background-color: rgba(11, 11, 11, 0.95);
+            border-bottom: 1px solid #1a1a1a;
+            position: relative;
+            z-index: 101;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .custom-logo {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: #0d1322;
+            border: 2px solid #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            box-shadow: 0 0 15px rgba(255, 30, 30, 0.4);
+            overflow: hidden;
+            padding: 2px;
+        }
+
+        .custom-logo .logo-v8 {
+            color: #ff3333;
+            font-weight: 900;
+            font-size: 15px;
+            line-height: 1;
+            letter-spacing: 0.5px;
+        }
+
+        .custom-logo .logo-power {
+            color: #ff3333;
+            font-weight: 800;
+            font-size: 9px;
+            line-height: 1;
+            letter-spacing: 1px;
+            margin-top: 1px;
+        }
+
+        .custom-logo .logo-garage {
+            color: #ffffff;
+            font-style: italic;
+            font-family: Georgia, serif;
+            font-size: 8px;
+            line-height: 1;
+            margin-top: 2px;
+        }
+
+        .logo-text h1 {
+            font-size: 15px;
+            text-transform: uppercase;
+            font-weight: 900;
+            letter-spacing: 1px;
+            color: #ff3333;
+        }
+
+        .logo-text p {
+            font-size: 9px;
+            color: #aaa;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .menu-btn {
+            background: #161616;
+            border: 1px solid #333;
+            color: white;
+            padding: 10px 14px;
+            border-radius: 12px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        .dropdown-menu {
+            position: fixed;
+            top: 70px;
+            right: 20px;
+            background: #141414;
+            border: 1px solid #262626;
+            border-radius: 14px;
+            width: 270px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            display: none;
+            flex-direction: column;
+            z-index: 100;
+            overflow: hidden;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .dropdown-menu.active {
+            display: flex;
+        }
+
+        .dropdown-link {
+            padding: 15px 20px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 13px;
+            letter-spacing: 1px;
+            border-bottom: 1px solid #222;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .dropdown-link:hover {
+            background: #ff1e1e;
+            color: #fff;
+        }
+
+        .services-submenu, .areas-submenu, .contact-submenu {
+            display: none;
+            background: #1a1a1a;
+            border-left: 3px solid #ff1e1e;
+        }
+
+        .services-submenu.active, .areas-submenu.active, .contact-submenu.active {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .services-submenu a, .areas-submenu a, .contact-submenu div, .contact-submenu a {
+            padding: 12px 20px 12px 25px;
+            color: #ddd;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 12px;
+            text-transform: uppercase;
+            border-bottom: 1px solid #262626;
+        }
+
+        .contact-submenu div span, .contact-submenu a span {
+            color: #ff3333;
+            display: block;
+            font-size: 10px;
+            margin-bottom: 2px;
+            letter-spacing: 0.5px;
+        }
+
+        .arrow {
+            font-size: 11px;
+            transition: transform 0.3s ease;
+        }
+
+        .page-section {
+            display: none;
+            flex: 1;
+            flex-direction: column;
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            padding-bottom: 150px;
+        }
+
+        .page-section.active {
+            display: flex;
+        }
+
+        .top-badge {
+            border: 1px solid rgba(255, 51, 51, 0.4);
+            background: rgba(255, 30, 30, 0.15);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 9px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #ff6666;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            align-self: center;
+        }
+
+        .hero-title {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .hero-title h2 {
+            font-size: 26px;
+            font-weight: 900;
+            text-transform: uppercase;
+            line-height: 1.15;
+            margin-bottom: 8px;
+        }
+
+        .hero-title p {
+            font-size: 13px;
+            color: #ddd;
+            font-style: italic;
+        }
+
+        .reg-box {
+            background: #facc15;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            padding: 8px 14px;
+            width: 100%;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+        }
+
+        .reg-gb {
+            background: #1d4ed8;
+            color: white;
+            font-weight: 800;
+            font-size: 11px;
+            padding: 6px 8px;
+            border-radius: 6px;
+            margin-right: 15px;
+            text-align: center;
+        }
+
+        .reg-input {
+            background: transparent;
+            border: none;
+            font-size: 22px;
+            font-weight: 900;
+            color: #000;
+            text-transform: uppercase;
+            width: 100%;
+            outline: none;
+            letter-spacing: 2px;
+        }
+
+        .btn-main {
+            background: linear-gradient(135deg, #ff1e1e, #cc0000);
+            color: white;
+            width: 100%;
+            padding: 16px;
+            border-radius: 12px;
+            border: none;
+            font-weight: 800;
+            font-size: 13px;
+            text-transform: uppercase;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(255, 30, 30, 0.4);
+            text-align: center;
+            display: block;
+            text-decoration: none;
+            margin-bottom: 15px;
+        }
+
+        .bottom-section {
+            width: 100%;
+            margin-top: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .showcase-card {
+            background: rgba(18, 18, 18, 0.92);
+            border: 1px solid #333;
+            border-left: 4px solid #ff1e1e;
+            border-radius: 14px;
+            padding: 18px;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+        }
+
+        .showcase-card h3 {
+            font-size: 13px;
+            font-weight: 900;
+            text-transform: uppercase;
+            color: #fff;
+            margin-bottom: 6px;
+        }
+
+        .showcase-card p {
+            font-size: 11px;
+            color: #aaa;
+            line-height: 1.5;
+        }
+
+        .service-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            width: 100%;
+        }
+
+        .card {
+            background: rgba(18, 18, 18, 0.85);
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 12px 8px;
+            text-align: center;
+        }
+
+        .card-icon {
+            font-size: 15px;
+            margin-bottom: 6px;
+            color: #ff3333;
+        }
+
+        .card-title {
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        .card-sub {
+            font-size: 8px;
+            color: #aaa;
+        }
+
+        .collect-box {
+            background: rgba(18, 18, 18, 0.85);
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 12px 16px;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .collect-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .collect-icon {
+            font-size: 18px;
+            color: #22c55e;
+        }
+
+        .collect-text h4 {
+            font-size: 12px;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        .collect-text p {
+            font-size: 9px;
+            color: #aaa;
+        }
+
+        .area-tag {
+            background: rgba(34, 197, 94, 0.2);
+            color: #22c55e;
+            font-size: 8px;
+            font-weight: 800;
+            padding: 4px 6px;
+            border-radius: 5px;
+            text-transform: uppercase;
+            border: 1px solid rgba(34, 197, 94, 0.3);
+        }
+
+        .top-action-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            width: 100%;
+            gap: 10px;
+        }
+
+        .back-btn {
+            background: rgba(22, 22, 22, 0.9);
+            border: 1px solid #333;
+            color: #fff;
+            padding: 10px 16px;
+            border-radius: 12px;
+            font-weight: 800;
+            font-size: 12px;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+
+        .reg-display-badge {
+            background: #facc15;
+            color: #000;
+            font-weight: 900;
+            font-size: 14px;
+            padding: 8px 14px;
+            border-radius: 10px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .repair-category-card {
+            background: rgba(18, 18, 18, 0.9);
+            border: 1px solid #333;
+            border-radius: 14px;
+            padding: 18px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+
+        .repair-cat-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .repair-cat-icon {
+            color: #ff3333;
+            font-size: 18px;
+        }
+
+        .repair-cat-title {
+            font-size: 13px;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        .repair-cat-arrow {
+            color: #777;
+            font-size: 14px;
+            transition: transform 0.3s;
+        }
+
+        .sub-service-list {
+            display: none;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 15px;
+            width: 100%;
+        }
+
+        .sub-service-list.active {
+            display: flex;
+        }
+
+        .service-item-card {
+            background: rgba(18, 18, 18, 0.95);
+            border: 1px solid #333;
+            border-radius: 14px;
+            padding: 16px;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .service-item-card.selected {
+            border-color: #ff1e1e;
+            background: rgba(26, 15, 15, 0.95);
+        }
+
+        .service-item-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 8px;
+        }
+
+        .service-item-title-area {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .service-item-name {
+            font-size: 13px;
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+
+        .service-badge-time {
+            background: #222;
+            color: #aaa;
+            font-size: 9px;
+            font-weight: 700;
+            padding: 3px 6px;
+            border-radius: 4px;
+        }
+
+        .service-item-right {
+            text-align: right;
+        }
+
+        .service-item-price {
+            font-size: 12px;
+            font-weight: 900;
+            color: #facc15;
+            text-transform: uppercase;
+        }
+
+        .service-item-action {
+            font-size: 11px;
+            font-weight: 800;
+            color: #777;
+            margin-top: 2px;
+        }
+
+        .service-item-card.selected .service-item-action {
+            color: #22c55e;
+        }
+
+        .service-item-desc {
+            font-size: 11px;
+            color: #aaa;
+            margin-top: 4px;
+        }
+
+        .collect-form-section {
+            display: none;
+            background: rgba(26, 15, 15, 0.95);
+            border: 1px solid #ff1e1e;
+            border-radius: 14px;
+            padding: 16px;
+            margin-top: 10px;
+            margin-bottom: 15px;
+        }
+
+        .collect-form-section.active {
+            display: block;
+        }
+
+        .collect-form-title {
+            font-size: 11px;
+            font-weight: 800;
+            color: #ff6666;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .collect-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .collect-grid .form-group-full {
+            grid-column: span 2;
+        }
+
+        .quote-bottom-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(15, 15, 15, 0.98);
+            border-top: 1px solid #222;
+            padding: 15px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 99;
+            box-shadow: 0 -5px 20px rgba(0,0,0,0.8);
+        }
+
+        .quote-info-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .quote-items-count {
+            font-size: 11px;
+            font-weight: 700;
+            color: #aaa;
+            text-transform: uppercase;
+        }
+
+        .quote-total-price {
+            font-size: 14px;
+            font-weight: 900;
+            color: #facc15;
+            text-transform: uppercase;
+        }
+
+        .continue-btn {
+            background: linear-gradient(135deg, #ff1e1e, #cc0000);
+            color: white;
+            width: 100%;
+            padding: 15px;
+            border-radius: 12px;
+            border: none;
+            font-weight: 800;
+            font-size: 13px;
+            text-transform: uppercase;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(255, 30, 30, 0.4);
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .schedule-card-top {
+            background: rgba(18, 18, 18, 0.95);
+            border: 1px solid #333;
+            border-radius: 14px;
+            padding: 16px;
+            margin-bottom: 20px;
+        }
+
+        .schedule-step {
+            font-size: 9px;
+            font-weight: 800;
+            color: #ff3333;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+
+        .schedule-main-title {
+            font-size: 18px;
+            font-weight: 900;
+            text-transform: uppercase;
+            color: #fff;
+            margin-bottom: 6px;
+        }
+
+        .schedule-sub-info {
+            font-size: 12px;
+            color: #aaa;
+        }
+
+        .schedule-sub-info span {
+            color: #facc15;
+            font-weight: 800;
+        }
+
+        .sched-section-title {
+            font-size: 11px;
+            font-weight: 800;
+            color: #aaa;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .days-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .day-card {
+            background: rgba(18, 18, 18, 0.95);
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 12px 6px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .day-card.selected {
+            background: #ff1e1e;
+            border-color: #ff1e1e;
+            box-shadow: 0 0 15px rgba(255, 30, 30, 0.5);
+        }
+
+        .day-name {
+            font-size: 10px;
+            font-weight: 800;
+            text-transform: uppercase;
+            color: #aaa;
+            margin-bottom: 4px;
+        }
+
+        .day-card.selected .day-name {
+            color: #ffd1d1;
+        }
+
+        .day-date {
+            font-size: 12px;
+            font-weight: 900;
+            color: #fff;
+        }
+
+        .time-slots-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .time-slot-btn {
+            background: rgba(18, 18, 18, 0.95);
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 14px 10px;
+            color: #fff;
+            font-size: 12px;
+            font-weight: 800;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .time-slot-btn.selected {
+            background: #10b981;
+            border-color: #10b981;
+            color: #fff;
+            box-shadow: 0 0 15px rgba(16, 185, 129, 0.5);
+        }
+
+        .time-slot-btn.booked {
+            background: #2a1215 !important;
+            border-color: #7f1d1d !important;
+            color: #fca5a5 !important;
+            cursor: not-allowed !important;
+            opacity: 0.7;
+            text-decoration: line-through;
+        }
+
+        .client-details-card {
+            background: rgba(18, 18, 18, 0.95);
+            border: 1px solid #333;
+            border-radius: 16px;
+            padding: 18px;
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 12px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 10px;
+            font-weight: 800;
+            text-transform: uppercase;
+            color: #aaa;
+            margin-bottom: 4px;
+        }
+
+        .form-group input {
+            background: rgba(10, 10, 10, 0.9);
+            border: 1px solid #333;
+            border-radius: 10px;
+            padding: 10px 14px;
+            color: #fff;
+            font-size: 12px;
+            width: 100%;
+            outline: none;
+        }
+
+        .schedule-bottom-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(12, 12, 12, 0.99);
+            border-top: 1px solid #222;
+            padding: 15px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 99;
+        }
+
+        .sched-bottom-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .sched-selected-time {
+            font-size: 11px;
+            font-weight: 800;
+            color: #aaa;
+            text-transform: uppercase;
+        }
+
+        .sched-bottom-price {
+            font-size: 13px;
+            font-weight: 900;
+            color: #facc15;
+            text-transform: uppercase;
+        }
+
+        .pay-workshop-tag {
+            background: rgba(34, 197, 94, 0.15);
+            color: #22c55e;
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            font-size: 10px;
+            font-weight: 800;
+            padding: 4px 10px;
+            border-radius: 6px;
+            text-transform: uppercase;
+        }
+
+        .whatsapp-confirm-btn {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            width: 100%;
+            padding: 16px;
+            border-radius: 14px;
+            border: none;
+            font-weight: 900;
+            font-size: 13px;
+            text-transform: uppercase;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(16, 185, 129, 0.4);
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .confirmation-box {
+            background: rgba(18, 18, 18, 0.95);
+            border: 1px solid #22c55e;
+            border-radius: 20px;
+            padding: 24px 20px;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .success-icon-circle {
+            width: 64px;
+            height: 64px;
+            border: 2px solid #22c55e;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px auto;
+            color: #22c55e;
+            font-size: 28px;
+            background: rgba(34, 197, 94, 0.1);
+        }
+
+        .conf-title {
+            font-size: 22px;
+            font-weight: 900;
+            text-transform: uppercase;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+
+        .conf-subtitle {
+            font-size: 12px;
+            color: #aaa;
+            margin-bottom: 24px;
+        }
+
+        .conf-details-card {
+            background: rgba(10, 10, 10, 0.9);
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 16px;
+            text-align: left;
+            margin-bottom: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .conf-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13px;
+        }
+
+        .conf-row .label {
+            color: #888;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 11px;
+        }
+
+        .conf-row .value {
+            color: #fff;
+            font-weight: 800;
+        }
+
+        .whatsapp-send-btn {
+            background: #10b981;
+            color: white;
+            width: 100%;
+            padding: 16px;
+            border-radius: 12px;
+            border: none;
+            font-weight: 900;
+            font-size: 12px;
+            text-transform: uppercase;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .return-home-btn {
+            background: rgba(30, 30, 30, 0.9);
+            border: 1px solid #444;
+            color: #fff;
+            width: 100%;
+            padding: 15px;
+            border-radius: 12px;
+            font-weight: 800;
+            font-size: 12px;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 20px;
+            background-color: #22c55e;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            box-shadow: 0 4px 15px rgba(34, 197, 94, 0.5);
+            z-index: 100;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <div class="custom-logo">
+                <span class="logo-v8">V8</span>
+                <span class="logo-power">POWER</span>
+                <span class="logo-garage">Garage</span>
+            </div>
+            <div class="logo-text">
+                <h1>V8 POWER GARAGE</h1>
+                <p>AUTO SERVICE & MOT CENTRE</p>
+            </div>
+        </div>
+        <button class="menu-btn" onclick="toggleMenu(event)">☰</button>
+    </header>
+
+    <div id="navDropdown" class="dropdown-menu">
+        <a href="#" class="dropdown-link" onclick="switchPage('home'); closeMenu();">HOME</a>
+        <div id="servicesDropdownBtn" class="dropdown-link" onclick="toggleSubmenu('servicesSubmenu', 'servicesDropdownBtn')">
+            SERVICES <span class="arrow">▼</span>
+        </div>
+        <div id="servicesSubmenu" class="services-submenu">
+            <a href="#" onclick="switchPage('quote'); closeMenu();">MOT Servicing</a>
+            <a href="#" onclick="switchPage('quote'); closeMenu();">Car Servicing</a>
+            <a href="#" onclick="switchPage('quote'); closeMenu();">Class 7 MOTs</a>
+        </div>
+        <div id="contactDropdownBtn" class="dropdown-link" onclick="toggleSubmenu('contactSubmenu', 'contactDropdownBtn')">
+            CONTACT <span class="arrow">▼</span>
+        </div>
+        <div id="contactSubmenu" class="contact-submenu">
+            <div><span>Mon – Fri</span> 8:30am – 5:30pm</div>
+            <a href="tel:07367446973"><span>Call Us</span> 07367446973</a>
+        </div>
+    </div>
+
+    <!-- PAGINA 1: HOME -->
+    <div id="homePage" class="page-section active">
+        <div class="top-badge">
+            🛡️ APPROVED INDEPENDENT WORKSHOP • KINGSWOOD, BRISTOL
+        </div>
+
+        <div class="hero-title">
+            <h2>Book Your Service & MOT</h2>
+            <p>"Performance, Precision & Honest Auto Care."</p>
+        </div>
+
+        <div style="width: 100%; margin-top: 15px;">
+            <div class="reg-box">
+                <div class="reg-gb">GB</div>
+                <input type="text" id="regInput" class="reg-input" value="LA21 CZU">
+            </div>
+
+            <button class="btn-main" onclick="goToQuote()">BROWSE REPAIRS & GET QUOTE &gt;</button>
+        </div>
+
         <div class="bottom-section">
             <div class="collect-box">
                 <div class="collect-left">
@@ -33,3 +1063,471 @@
                 <p>Based in Kingswood, Bristol, we provide dependable mechanical services, precise computer diagnostics, and official MOT testing for both private motorists and commercial fleets across the region.</p>
             </div>
         </div>
+    </div>
+
+    <!-- PAGINA 2: REPAIRS & QUOTE SELECTION -->
+    <div id="quotePage" class="page-section">
+        <div class="top-action-bar">
+            <button class="back-btn" onclick="switchPage('home')">&larr; BACK</button>
+            <div id="regDisplayBadge" class="reg-display-badge">LA21 CZU</div>
+        </div>
+
+        <div class="service-item-card" id="card-collect" onclick="toggleCollectService('collect')">
+            <div class="service-item-top">
+                <div class="service-item-title-area">
+                    <div class="service-item-name">🚚 Collect & Deliver Vehicle</div>
+                    <span class="service-badge-val" style="background:#7f1d1d; color:#fca5a5; font-size:9px; padding:3px 6px; border-radius:4px;">Bristol Area</span>
+                </div>
+                <div class="service-item-right">
+                    <div class="service-item-price">£15.00</div>
+                    <div class="service-item-action" id="action-collect">+ Add</div>
+                </div>
+            </div>
+            <div class="service-item-desc">We pick up your vehicle from your location and return it after service.</div>
+        </div>
+
+        <div id="collectFormSection" class="collect-form-section">
+            <div class="collect-form-title">📍 Collection Details</div>
+            <div class="collect-grid">
+                <div class="form-group"><label>Post Code</label><input type="text" id="collPostcode" placeholder="BS15 1XX"></div>
+                <div class="form-group"><label>House No.</label><input type="text" id="collHouse" placeholder="123"></div>
+                <div class="form-group"><label>Phone Number</label><input type="tel" id="collPhone" placeholder="07123456789"></div>
+                <div class="form-group"><label>Reg Number</label><input type="text" id="collReg" placeholder="LA21 CZU"></div>
+                <div class="form-group form-group-full"><label>Car Model / Engine</label><input type="text" id="collCarModel" placeholder="e.g. Škoda Kodiaq 2.0L Diesel"></div>
+            </div>
+        </div>
+
+        <!-- MOT & ROUTINE -->
+        <div class="repair-category-card" onclick="toggleSubList('motList', 'arrow1')">
+            <div class="repair-cat-left"><div class="repair-cat-icon">🛡️</div><div class="repair-cat-title">MOT & Routine Servicing</div></div>
+            <div id="arrow1" class="repair-cat-arrow">⌄</div>
+        </div>
+        <div id="motList" class="sub-service-list">
+            <div class="service-item-card" id="card-mot4" onclick="toggleService('mot4')">
+                <div class="service-item-top">
+                    <div class="service-item-title-area"><div class="service-item-name">MOT Test (Class 4 Cars)</div><span class="service-badge-time">45 mins</span></div>
+                    <div class="service-item-right"><div class="service-item-price">£45.00</div><div class="service-item-action" id="action-mot4">+ Add</div></div>
+                </div>
+                <div class="service-item-desc">Official DVSA comprehensive road safety inspection.</div>
+            </div>
+            <div class="service-item-card" id="card-mot7" onclick="toggleService('mot7')">
+                <div class="service-item-top">
+                    <div class="service-item-title-area"><div class="service-item-name">MOT Test (Class 7 Commercials)</div><span class="service-badge-time">60 mins</span></div>
+                    <div class="service-item-right"><div class="service-item-price">£55.00</div><div class="service-item-action" id="action-mot7">+ Add</div></div>
+                </div>
+                <div class="service-item-desc">Commercial goods vehicles and large vans up to 3,500kg.</div>
+            </div>
+            <div class="service-item-card" id="card-oil" onclick="toggleService('oil')">
+                <div class="service-item-top">
+                    <div class="service-item-title-area"><div class="service-item-name">Engine Oil & Filter Replacement</div><span class="service-badge-time">45 mins</span></div>
+                    <div class="service-item-right"><div class="service-item-price">Ask for Quotation</div><div class="service-item-action" id="action-oil">+ Add</div></div>
+                </div>
+                <div class="service-item-desc">Fresh premium synthetic oil & OEM quality oil filter change.</div>
+            </div>
+            <div class="service-item-card" id="card-interim" onclick="toggleService('interim')">
+                <div class="service-item-top">
+                    <div class="service-item-title-area"><div class="service-item-name">Interim Service (35-point)</div><span class="service-badge-time">1.5 hrs</span></div>
+                    <div class="service-item-right"><div class="service-item-price">Ask for Quotation</div><div class="service-item-action" id="action-interim">+ Add</div></div>
+                </div>
+                <div class="service-item-desc">Oil, filter renewal, underbody check & fluid top-ups.</div>
+            </div>
+            <div class="service-item-card" id="card-major" onclick="toggleService('major')">
+                <div class="service-item-top">
+                    <div class="service-item-title-area"><div class="service-item-name">Full Major Service (72-point)</div><span class="service-badge-time">3.0 hrs</span></div>
+                    <div class="service-item-right"><div class="service-item-price">Ask for Quotation</div><div class="service-item-action" id="action-major">+ Add</div></div>
+                </div>
+                <div class="service-item-desc">Complete filters, spark plugs, fluids & diagnostics.</div>
+            </div>
+        </div>
+
+        <!-- BRAKES -->
+        <div class="repair-category-card" onclick="toggleSubList('brakesList', 'arrow2')">
+            <div class="repair-cat-left"><div class="repair-cat-icon">🛑</div><div class="repair-cat-title">Brakes & Hydraulic Systems</div></div>
+            <div id="arrow2" class="repair-cat-arrow">⌄</div>
+        </div>
+        <div id="brakesList" class="sub-service-list">
+            <div class="service-item-card" id="card-bpf" onclick="toggleService('bpf')">
+                <div class="service-item-top">
+                    <div class="service-item-title-area"><div class="service-item-name">Brake Pads Replacement - Front</div><span class="service-badge-time">60 mins</span></div>
+                    <div class="service-item-right"><div class="service-item-price">Ask for Quotation</div><div class="service-item-action" id="action-bpf">+ Add</div></div>
+                </div>
+            </div>
+            <div class="service-item-card" id="card-bpr" onclick="toggleService('bpr')">
+                <div class="service-item-top">
+                    <div class="service-item-title-area"><div class="service-item-name">Brake Pads Replacement - Rear</div><span class="service-badge-time">60 mins</span></div>
+                    <div class="service-item-right"><div class="service-item-price">Ask for Quotation</div><div class="service-item-action" id="action-bpr">+ Add</div></div>
+                </div>
+            </div>
+            <div class="service-item-card" id="card-bdpf" onclick="toggleService('bdpf')">
+                <div class="service-item-top">
+                    <div class="service-item-title-area"><div class="service-item-name">Brake Discs & Pads - Front</div><span class="service-badge-time">90 mins</span></div>
+                    <div class="service-item-right"><div class="service-item-price">Ask for Quotation</div><div class="service-item-action" id="action-bdpf">+ Add</div></div>
+                </div>
+            </div>
+            <div class="service-item-card" id="card-bdpr" onclick="toggleService('bdpr')">
+                <div class="service-item-top">
+                    <div class="service-item-title-area"><div class="service-item-name">Brake Discs & Pads - Rear</div><span class="service-badge-time">90 mins</span></div>
+                    <div class="service-item-right"><div class="service-item-price">Ask for Quotation</div><div class="service-item-action" id="action-bdpr">+ Add</div></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ENGINE -->
+        <div class="repair-category-card" onclick="toggleSubList('engineList', 'arrow3')">
+            <div class="repair-cat-left"><div class="repair-cat-icon">⚡</div><div class="repair-cat-title">Engine, Belts & Electrical</div></div>
+            <div id="arrow3" class="repair-cat-arrow">⌄</div>
+        </div>
+        <div id="engineList" class="sub-service-list">
+            <div class="service-item-card" id="card-timb" onclick="toggleService('timb')">
+                <div class="service-item-top">
+                    <div class="service-item-title-area"><div class="service-item-name">Timing Belt Kit Replacement</div><span class="service-badge-time">3.5 hrs</span></div>
+                    <div class="service-item-right"><div class="service-item-price">Ask for Quotation</div><div class="service-item-action" id="action-timb">+ Add</div></div>
+                </div>
+            </div>
+            <div class="service-item-card" id="card-alt" onclick="toggleService('alt')">
+                <div class="service-item-top">
+                    <div class="service-item-title-area"><div class="service-item-name">Alternator Replacement</div><span class="service-badge-time">2.0 hrs</span></div>
+                    <div class="service-item-right"><div class="service-item-price">Ask for Quotation</div><div class="service-item-action" id="action-alt">+ Add</div></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="quote-bottom-bar">
+            <div class="quote-info-row"><div id="selectedCountText" class="quote-items-count">0 SELECTED</div></div>
+            <div class="quote-info-row"><div id="totalPriceText" class="quote-total-price">Ask for Quotation</div></div>
+            <button class="continue-btn" onclick="goToSchedule()">CONTINUE &gt;</button>
+        </div>
+    </div>
+
+    <!-- PAGINA 3: SCHEDULE -->
+    <div id="schedulePage" class="page-section">
+        <div class="top-action-bar">
+            <button class="back-btn" onclick="switchPage('quote')">&larr; BACK</button>
+            <div id="regDisplayBadge3" class="reg-display-badge">LA21CZU</div>
+        </div>
+
+        <div class="schedule-card-top">
+            <div class="schedule-step">📅 STEP 2 OF 2: WORKSHOP SCHEDULE</div>
+            <div class="schedule-main-title">SELECT YOUR ARRIVAL SLOT</div>
+            <div class="schedule-sub-info">Vehicle: <span id="summaryReg">LA21CZU</span> • <span id="summaryCountText">0 Services</span> (<span id="summaryPriceHeader">Ask for Quotation</span>)</div>
+        </div>
+
+        <div class="sched-section-title"><span>1. CHOOSE DATE (MON – SAT)</span></div>
+        <div class="days-grid" id="daysGridContainer"></div>
+
+        <div class="sched-section-title"><span>2. CHOOSE TIME SLOT (HOURLY)</span><span class="available-tag" style="color:#22c55e;">✓ AVAILABLE</span></div>
+        <div class="time-slots-grid" id="timeSlotsContainer">
+            <div class="time-slot-btn" onclick="selectTimeSlot(this)">09:00 AM</div>
+            <div class="time-slot-btn selected" onclick="selectTimeSlot(this)">10:00 AM</div>
+            <div class="time-slot-btn" onclick="selectTimeSlot(this)">11:00 AM</div>
+            <div class="time-slot-btn" onclick="selectTimeSlot(this)">12:00 PM</div>
+            <div class="time-slot-btn" onclick="selectTimeSlot(this)">01:00 PM</div>
+            <div class="time-slot-btn" onclick="selectTimeSlot(this)">02:00 PM</div>
+            <div class="time-slot-btn" onclick="selectTimeSlot(this)">03:00 PM</div>
+            <div class="time-slot-btn" onclick="selectTimeSlot(this)">04:00 PM</div>
+            <div class="time-slot-btn" onclick="selectTimeSlot(this)">05:00 PM</div>
+        </div>
+
+        <div class="client-details-card">
+            <div class="sched-section-title" style="margin-bottom: 12px;">3. YOUR CONTACT DETAILS</div>
+            <div class="form-group"><label>Your Full Name</label><input type="text" id="clientName" placeholder="John Doe"></div>
+            <div class="form-group"><label>Phone Number</label><input type="tel" id="clientPhone" placeholder="07123 456789"></div>
+            <div class="form-group"><label>Email Address</label><input type="email" id="clientEmail" placeholder="v8powergarage@gmail.com"></div>
+        </div>
+
+        <div class="schedule-bottom-bar">
+            <div class="sched-bottom-info">
+                <div id="schedBottomSelectedInfo" class="sched-selected-time">MON, 31 AUG • 10:00 AM</div>
+                <div class="pay-workshop-tag">Request Quote</div>
+            </div>
+            <div class="sched-bottom-info">
+                <div id="schedBottomTotalPrice" class="sched-bottom-price">Ask for Quotation</div>
+            </div>
+            <button class="whatsapp-confirm-btn" onclick="goToConfirmation()">
+                💬 REQUEST QUOTE &amp; SEND ON WHATSAPP
+            </button>
+        </div>
+    </div>
+
+    <!-- PAGINA 4: CONFIRMATION -->
+    <div id="confirmationPage" class="page-section">
+        <div class="top-action-bar">
+            <button class="back-btn" onclick="switchPage('schedule')">&larr; Edit</button>
+        </div>
+        <div class="confirmation-box">
+            <div class="success-icon-circle">✓</div>
+            <div class="conf-title">Quote Request Sent!</div>
+            <div class="conf-subtitle">We will check parts on GSF / Euro Car Parts and contact you with the best price.</div>
+            <div class="conf-details-card">
+                <div class="conf-row"><span class="label">Ref Code:</span><span id="confRefCode" class="value">V8-123</span></div>
+                <div class="conf-row"><span class="label">Reg:</span><span id="confReg" class="value">LA21 CZU</span></div>
+                <div class="conf-row"><span class="label">Pricing:</span><span id="confPrice" class="value">Ask for Quotation</span></div>
+            </div>
+            <button class="whatsapp-send-btn" onclick="sendWhatsAppFromConf()">💬 SEND QUOTE REQUEST VIA WHATSAPP</button>
+            <button class="return-home-btn" onclick="returnToHome()">Return to Home</button>
+        </div>
+    </div>
+
+    <a href="https://wa.me/447367446973" target="_blank" class="whatsapp-float">💬</a>
+
+    <script>
+        function toggleMenu(event) {
+            if (event) event.stopPropagation();
+            document.getElementById("navDropdown").classList.toggle("active");
+        }
+        function toggleSubmenu(id, btnId) {
+            document.getElementById(id).classList.toggle("active");
+            document.getElementById(btnId).classList.toggle("active");
+        }
+        function closeMenu() {
+            document.getElementById("navDropdown").classList.remove("active");
+        }
+
+        const fixedPrices = {
+            collect: 15.00,
+            mot4: 45.00,
+            mot7: 55.00
+        };
+
+        function goToQuote() {
+            var regVal = document.getElementById("regInput").value.trim();
+            if(regVal !== "") {
+                document.getElementById("regDisplayBadge").innerText = regVal;
+                document.getElementById("summaryReg").innerText = regVal;
+            }
+            switchPage('quote');
+        }
+
+        function switchPage(pageName) {
+            document.getElementById("homePage").classList.remove("active");
+            document.getElementById("quotePage").classList.remove("active");
+            document.getElementById("schedulePage").classList.remove("active");
+            document.getElementById("confirmationPage").classList.remove("active");
+
+            document.getElementById(pageName + "Page").classList.add("active");
+            if (pageName === 'schedule') {
+                checkBookedSlots();
+            }
+            window.scrollTo(0, 0);
+        }
+
+        function toggleSubList(listId, arrowId) {
+            var list = document.getElementById(listId);
+            var arrow = document.getElementById(arrowId);
+            list.classList.toggle("active");
+            arrow.style.transform = list.classList.contains("active") ? "rotate(180deg)" : "rotate(0deg)";
+        }
+
+        var selectedServices = {
+            collect: false, mot4: false, mot7: false, oil: false, interim: false, major: false,
+            bpf: false, bpr: false, bdpf: false, bdpr: false, timb: false, alt: false
+        };
+
+        var serviceNames = {
+            collect: "Collect & Deliver (£15)", mot4: "MOT Test (Class 4 - £45)", mot7: "MOT Test (Class 7 - £55)",
+            oil: "Oil & Filter (Quote)", interim: "Interim Service (Quote)", major: "Major Service (Quote)",
+            bpf: "Front Brake Pads (Quote)", bpr: "Rear Brake Pads (Quote)", bdpf: "Front Discs & Pads (Quote)", bdpr: "Rear Discs & Pads (Quote)",
+            timb: "Timing Belt Kit (Quote)", alt: "Alternator (Quote)"
+        };
+
+        function toggleCollectService(key) {
+            selectedServices[key] = !selectedServices[key];
+            var card = document.getElementById("card-" + key);
+            var action = document.getElementById("action-" + key);
+            var formSection = document.getElementById("collectFormSection");
+
+            if(selectedServices[key]) {
+                card.classList.add("selected");
+                action.innerText = "✓ Added";
+                formSection.classList.add("active");
+            } else {
+                card.classList.remove("selected");
+                action.innerText = "+ Add";
+                formSection.classList.remove("active");
+            }
+            updateCartSummary();
+        }
+
+        function toggleService(key) {
+            selectedServices[key] = !selectedServices[key];
+            var card = document.getElementById("card-" + key);
+            var action = document.getElementById("action-" + key);
+
+            if(selectedServices[key]) {
+                card.classList.add("selected");
+                action.innerText = "✓ Added";
+            } else {
+                card.classList.remove("selected");
+                action.innerText = "+ Add";
+            }
+            updateCartSummary();
+        }
+
+        function updateCartSummary() {
+            let fixedTotal = 0;
+            let count = 0;
+            let hasQuoteItems = false;
+
+            for (let key in selectedServices) {
+                if (selectedServices[key]) {
+                    count++;
+                    if (fixedPrices[key]) {
+                        fixedTotal += fixedPrices[key];
+                    } else {
+                        hasQuoteItems = true;
+                    }
+                }
+            }
+
+            let displayText = "Ask for Quotation";
+            if (count > 0) {
+                if (fixedTotal > 0 && !hasQuoteItems) {
+                    displayText = "£" + fixedTotal.toFixed(2);
+                } else if (fixedTotal > 0 && hasQuoteItems) {
+                    displayText = "£" + fixedTotal.toFixed(2) + " + Quote";
+                } else {
+                    displayText = "Ask for Quotation";
+                }
+            }
+
+            document.getElementById("selectedCountText").innerText = count + " SELECTED";
+            document.getElementById("totalPriceText").innerText = displayText;
+        }
+
+        function goToSchedule() {
+            let displayText = document.getElementById("totalPriceText").innerText;
+            document.getElementById("summaryCountText").innerText = currentCountText();
+            document.getElementById("summaryPriceHeader").innerText = displayText;
+            document.getElementById("schedBottomTotalPrice").innerText = displayText;
+            switchPage('schedule');
+        }
+
+        function currentCountText() {
+            let count = 0;
+            for (let key in selectedServices) { if (selectedServices[key]) count++; }
+            return count + (count === 1 ? " Service" : " Services");
+        }
+
+        let selectedDayText = "Mon, 31 Aug";
+        let selectedTimeText = "10:00 AM";
+
+        function selectTimeSlot(el) {
+            if(el.classList.contains('booked')) return;
+            document.querySelectorAll(".time-slot-btn").forEach(t => t.classList.remove("selected"));
+            el.classList.add("selected");
+            selectedTimeText = el.innerText;
+        }
+
+        function getBookedSlots() {
+            let booked = localStorage.getItem("v8_booked_slots");
+            return booked ? JSON.parse(booked) : {};
+        }
+
+        function saveBookedSlot(day, time) {
+            let booked = getBookedSlots();
+            if(!booked[day]) booked[day] = [];
+            if(!booked[day].includes(time)) booked[day].push(time);
+            localStorage.setItem("v8_booked_slots", JSON.stringify(booked));
+        }
+
+        function checkBookedSlots() {
+            let booked = getBookedSlots();
+            let daySlots = booked[selectedDayText] || [];
+            document.querySelectorAll(".time-slot-btn").forEach(btn => {
+                if(daySlots.includes(btn.innerText)) {
+                    btn.classList.add("booked");
+                } else {
+                    btn.classList.remove("booked");
+                }
+            });
+        }
+
+        function goToConfirmation() {
+            let name = document.getElementById("clientName").value.trim();
+            let phone = document.getElementById("clientPhone").value.trim();
+            let email = document.getElementById("clientEmail").value.trim();
+
+            if(!name || !phone || !email) {
+                alert("Please fill in your contact details.");
+                return;
+            }
+
+            saveBookedSlot(selectedDayText, selectedTimeText);
+
+            let randomRef = "V8-" + Math.floor(100000 + Math.random() * 900000);
+            let displayText = document.getElementById("schedBottomTotalPrice").innerText;
+
+            document.getElementById("confRefCode").innerText = randomRef;
+            document.getElementById("confReg").innerText = document.getElementById("summaryReg").innerText;
+            document.getElementById("confPrice").innerText = displayText;
+            document.getElementById("confEmailDisplay").innerText = email;
+
+            switchPage('confirmation');
+        }
+
+        function sendWhatsAppFromConf() {
+            let reg = document.getElementById("confReg").innerText;
+            let ref = document.getElementById("confRefCode").innerText;
+            let priceText = document.getElementById("confPrice").innerText;
+
+            let items = [];
+            for (let key in selectedServices) {
+                if (selectedServices[key]) items.push(serviceNames[key]);
+            }
+
+            let msg = `🛠️ *QUOTE REQUEST - V8 POWER GARAGE*\n` +
+                      `🔖 *Ref:* ${ref}\n` +
+                      `🚗 *Reg:* ${reg}\n` +
+                      `📦 *Requested Services:* ${items.join(", ")}\n` +
+                      `💰 *Estimate:* ${priceText}\n` +
+                      `📅 *Preferred Slot:* ${selectedDayText} • ${selectedTimeText}`;
+
+            window.open("https://wa.me/447367446973?text=" + encodeURIComponent(msg), "_blank");
+        }
+
+        function returnToHome() {
+            for (let key in selectedServices) { selectedServices[key] = false; }
+            updateCartSummary();
+            switchPage('home');
+        }
+
+        // Calendar 14 zile
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('daysGridContainer');
+            if (!container) return;
+            container.innerHTML = '';
+
+            const today = new Date();
+            for (let i = 0; i < 14; i++) {
+                const d = new Date();
+                d.setDate(today.getDate() + i);
+                if (d.getDay() === 0) continue;
+
+                const dayName = d.toLocaleDateString('en-GB', { weekday: 'short' }).toUpperCase();
+                const dayNum = d.getDate();
+                const monthName = d.toLocaleDateString('en-GB', { month: 'short' }).toUpperCase();
+                const fullDateStr = `${dayName}, ${dayNum} ${monthName}`;
+                
+                const card = document.createElement('div');
+                card.className = `day-card ${i === 0 ? 'selected' : ''}`;
+                
+                if (i === 0) selectedDayText = fullDateStr;
+
+                card.onclick = function() {
+                    document.querySelectorAll('.day-card').forEach(c => c.classList.remove('selected'));
+                    card.classList.add('selected');
+                    selectedDayText = fullDateStr;
+                    checkBookedSlots();
+                };
+
+                card.innerHTML = `<div class="day-name">${dayName}</div><div class="day-date">${dayNum} ${monthName}</div>`;
+                container.appendChild(card);
+            }
+
+            document.querySelectorAll('.time-slot-btn').forEach(btn => {
+                btn.classList.remove('booked', 'disabled');
+            });
+        });
+    </script>
+</body>
+</html>
