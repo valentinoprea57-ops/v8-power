@@ -326,7 +326,6 @@
             gap: 15px;
         }
 
-        /* Stiluri pentru prezentarea ilustrată de la baza primei pagini */
         .showcase-card {
             background: rgba(18, 18, 18, 0.92);
             border: 1px solid #333;
@@ -353,33 +352,6 @@
             font-size: 11px;
             color: #aaa;
             line-height: 1.5;
-        }
-
-        .showcase-list {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            margin-top: 10px;
-        }
-
-        .showcase-item {
-            background: rgba(25, 25, 25, 0.9);
-            border: 1px solid #262626;
-            border-radius: 10px;
-            padding: 12px 14px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            font-size: 11px;
-            font-weight: 800;
-            text-transform: uppercase;
-            color: #fff;
-            letter-spacing: 0.5px;
-        }
-
-        .showcase-item span {
-            color: #22c55e;
-            font-size: 13px;
         }
 
         .service-cards {
@@ -651,7 +623,6 @@
             margin-top: 4px;
         }
 
-        /* Stiluri pentru formularul de colectare dinamic */
         .collect-form-section {
             display: none;
             background: rgba(26, 15, 15, 0.95);
@@ -685,7 +656,6 @@
             grid-column: span 2;
         }
 
-        /* Bara fixă de jos de pe Pagina 2 */
         .quote-bottom-bar {
             position: fixed;
             bottom: 0;
@@ -742,7 +712,6 @@
             gap: 8px;
         }
 
-        /* --- STILURI PENTRU PAGINA 3 (SCHEDULE & CLIENT DETAILS) --- */
         .schedule-card-top {
             background: rgba(18, 18, 18, 0.95);
             border: 1px solid #333;
@@ -1018,7 +987,6 @@
             opacity: 0.95;
         }
 
-        /* --- STILURI PENTRU PAGINA 4 (CONFIRMATION) --- */
         .confirmation-box {
             background: rgba(18, 18, 18, 0.95);
             border: 1px solid #22c55e;
@@ -1152,10 +1120,39 @@
             border-color: #666;
         }
 
-        .whatsapp-float {
+        /* Container WhatsApp flotant și banner roșu de atenționare */
+        .whatsapp-container {
             position: fixed;
             bottom: 30px;
             right: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 100;
+        }
+
+        .whatsapp-badge-alert {
+            background: #dc2626;
+            color: white;
+            font-weight: 800;
+            font-size: 11px;
+            padding: 8px 12px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(220, 38, 38, 0.5);
+            border: 1px solid #f87171;
+            white-space: nowrap;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            animation: pulseAlert 2s infinite;
+        }
+
+        @keyframes pulseAlert {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+            100% { transform: scale(1); }
+        }
+
+        .whatsapp-float {
             background-color: #22c55e;
             color: white;
             width: 50px;
@@ -1166,9 +1163,9 @@
             justify-content: center;
             font-size: 24px;
             box-shadow: 0 4px 15px rgba(34, 197, 94, 0.5);
-            z-index: 100;
             text-decoration: none;
             transition: transform 0.2s;
+            flex-shrink: 0;
         }
 
         .whatsapp-float:hover {
@@ -1387,7 +1384,6 @@
                 <div class="service-item-desc">Commercial goods vehicles and large vans up to 3,500kg.</div>
             </div>
 
-            <!-- Prețurile modificate strict în Ask for Quotation, restul opțiunilor păstrate 100% -->
             <div class="service-item-card" id="card-oil" onclick="toggleService('oil', 0)">
                 <div class="service-item-top">
                     <div class="service-item-title-area">
@@ -2038,10 +2034,15 @@
         </div>
     </div>
 
-    <!-- Buton WhatsApp plutitor -->
-    <a href="https://wa.me/447367446973?text=Hello%20V8%20Power%20Garage,%20I%20would%20like%20to%20book%20a%20service." target="_blank" class="whatsapp-float" title="Chat on WhatsApp">
-        💬
-    </a>
+    <!-- Container WhatsApp plutitor cu bannerul roșu de urgență / întrebări -->
+    <div class="whatsapp-container">
+        <div class="whatsapp-badge-alert">
+            🚨 Emergency / Ask a question
+        </div>
+        <a href="https://wa.me/447367446973?text=Hello%20V8%20Power%20Garage,%20I%20have%20a%20question%20or%20need%20quick%20help." target="_blank" class="whatsapp-float" title="Chat on WhatsApp">
+            💬
+        </a>
+    </div>
 
     <script>
         function toggleMenu(event) {
@@ -2434,7 +2435,6 @@
             switchPage('home');
         }
 
-        // Generare dinamică calendar 14 zile (fără duminici)
         document.addEventListener('DOMContentLoaded', () => {
             const container = document.getElementById('daysGridContainer');
             if (!container) return;
@@ -2476,7 +2476,6 @@
                 container.appendChild(card);
             }
 
-            // Deblocare sigură ore
             document.querySelectorAll('.time-slot-btn').forEach(btn => {
                 btn.classList.remove('booked', 'disabled');
             });
