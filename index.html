@@ -145,7 +145,6 @@
             font-size: 13px;
             letter-spacing: 1px;
             border-bottom: 1px solid #222;
-            transition: background 0.2s;
             cursor: pointer;
             display: flex;
             justify-content: space-between;
@@ -234,7 +233,6 @@
             text-transform: uppercase;
             line-height: 1.15;
             margin-bottom: 8px;
-            letter-spacing: 0.5px;
         }
 
         .hero-title p {
@@ -263,7 +261,6 @@
             border-radius: 6px;
             margin-right: 15px;
             text-align: center;
-            line-height: 1.1;
         }
 
         .reg-input {
@@ -289,7 +286,6 @@
             font-size: 13px;
             text-transform: uppercase;
             cursor: pointer;
-            letter-spacing: 0.5px;
             box-shadow: 0 4px 20px rgba(255, 30, 30, 0.4);
             text-align: center;
             display: block;
@@ -312,7 +308,6 @@
             border-radius: 14px;
             padding: 18px;
             backdrop-filter: blur(5px);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.6);
         }
 
         .showcase-card h3 {
@@ -321,39 +316,12 @@
             text-transform: uppercase;
             color: #fff;
             margin-bottom: 6px;
-            letter-spacing: 0.5px;
         }
 
         .showcase-card p {
             font-size: 11px;
             color: #aaa;
             line-height: 1.5;
-        }
-
-        .showcase-list {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            margin-top: 10px;
-        }
-
-        .showcase-item {
-            background: rgba(25, 25, 25, 0.9);
-            border: 1px solid #262626;
-            border-radius: 10px;
-            padding: 12px 14px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            font-size: 11px;
-            font-weight: 800;
-            text-transform: uppercase;
-            color: #fff;
-        }
-
-        .showcase-item span {
-            color: #22c55e;
-            font-size: 13px;
         }
 
         .service-cards {
@@ -381,7 +349,6 @@
             font-size: 11px;
             font-weight: 800;
             text-transform: uppercase;
-            margin-bottom: 2px;
         }
 
         .card-sub {
@@ -451,9 +418,6 @@
             font-weight: 800;
             font-size: 12px;
             cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 6px;
             text-transform: uppercase;
         }
 
@@ -563,7 +527,7 @@
         }
 
         .service-item-price {
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 900;
             color: #facc15;
             text-transform: uppercase;
@@ -666,7 +630,6 @@
             cursor: pointer;
             box-shadow: 0 4px 20px rgba(255, 30, 30, 0.4);
             text-align: center;
-            text-decoration: none;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -1103,7 +1066,7 @@
             <div id="regDisplayBadge" class="reg-display-badge">LA21 CZU</div>
         </div>
 
-        <div class="service-item-card" id="card-collect" onclick="toggleCollectService('collect')">
+        <div class="service-item-card" id="card-collect" onclick="toggleServiceCard('collect')">
             <div class="service-item-top">
                 <div class="service-item-title-area">
                     <div class="service-item-name">🚚 Collect & Deliver Vehicle</div>
@@ -1134,35 +1097,35 @@
             <div id="arrow1" class="repair-cat-arrow">⌄</div>
         </div>
         <div id="motList" class="sub-service-list">
-            <div class="service-item-card" id="card-mot4" onclick="toggleService('mot4')">
+            <div class="service-item-card" id="card-mot4" onclick="toggleServiceCard('mot4')">
                 <div class="service-item-top">
                     <div class="service-item-title-area"><div class="service-item-name">MOT Test (Class 4 Cars)</div><span class="service-badge-time">45 mins</span></div>
                     <div class="service-item-right"><div class="service-item-price">£45.00</div><div class="service-item-action" id="action-mot4">+ Add</div></div>
                 </div>
                 <div class="service-item-desc">Official DVSA comprehensive road safety inspection.</div>
             </div>
-            <div class="service-item-card" id="card-mot7" onclick="toggleService('mot7')">
+            <div class="service-item-card" id="card-mot7" onclick="toggleServiceCard('mot7')">
                 <div class="service-item-top">
                     <div class="service-item-title-area"><div class="service-item-name">MOT Test (Class 7 Commercials)</div><span class="service-badge-time">60 mins</span></div>
                     <div class="service-item-right"><div class="service-item-price">£55.00</div><div class="service-item-action" id="action-mot7">+ Add</div></div>
                 </div>
                 <div class="service-item-desc">Commercial goods vehicles and large vans up to 3,500kg.</div>
             </div>
-            <div class="service-item-card" id="card-oil" onclick="toggleService('oil')">
+            <div class="service-item-card" id="card-oil" onclick="toggleServiceCard('oil')">
                 <div class="service-item-top">
                     <div class="service-item-title-area"><div class="service-item-name">Engine Oil & Filter Replacement</div><span class="service-badge-time">45 mins</span></div>
                     <div class="service-item-right"><div class="service-item-price">Ask for Quotation</div><div class="service-item-action" id="action-oil">+ Add</div></div>
                 </div>
                 <div class="service-item-desc">Fresh premium synthetic oil & OEM quality oil filter change.</div>
             </div>
-            <div class="service-item-card" id="card-interim" onclick="toggleService('interim')">
+            <div class="service-item-card" id="card-interim" onclick="toggleServiceCard('interim')">
                 <div class="service-item-top">
                     <div class="service-item-title-area"><div class="service-item-name">Interim Service (35-point)</div><span class="service-badge-time">1.5 hrs</span></div>
                     <div class="service-item-right"><div class="service-item-price">Ask for Quotation</div><div class="service-item-action" id="action-interim">+ Add</div></div>
                 </div>
                 <div class="service-item-desc">Oil, filter renewal, underbody check & fluid top-ups.</div>
             </div>
-            <div class="service-item-card" id="card-major" onclick="toggleService('major')">
+            <div class="service-item-card" id="card-major" onclick="toggleServiceCard('major')">
                 <div class="service-item-top">
                     <div class="service-item-title-area"><div class="service-item-name">Full Major Service (72-point)</div><span class="service-badge-time">3.0 hrs</span></div>
                     <div class="service-item-right"><div class="service-item-price">Ask for Quotation</div><div class="service-item-action" id="action-major">+ Add</div></div>
@@ -1177,25 +1140,25 @@
             <div id="arrow2" class="repair-cat-arrow">⌄</div>
         </div>
         <div id="brakesList" class="sub-service-list">
-            <div class="service-item-card" id="card-bpf" onclick="toggleService('bpf')">
+            <div class="service-item-card" id="card-bpf" onclick="toggleServiceCard('bpf')">
                 <div class="service-item-top">
                     <div class="service-item-title-area"><div class="service-item-name">Brake Pads Replacement - Front</div><span class="service-badge-time">60 mins</span></div>
                     <div class="service-item-right"><div class="service-item-price">Ask for Quotation</div><div class="service-item-action" id="action-bpf">+ Add</div></div>
                 </div>
             </div>
-            <div class="service-item-card" id="card-bpr" onclick="toggleService('bpr')">
+            <div class="service-item-card" id="card-bpr" onclick="toggleServiceCard('bpr')">
                 <div class="service-item-top">
                     <div class="service-item-title-area"><div class="service-item-name">Brake Pads Replacement - Rear</div><span class="service-badge-time">60 mins</span></div>
                     <div class="service-item-right"><div class="service-item-price">Ask for Quotation</div><div class="service-item-action" id="action-bpr">+ Add</div></div>
                 </div>
             </div>
-            <div class="service-item-card" id="card-bdpf" onclick="toggleService('bdpf')">
+            <div class="service-item-card" id="card-bdpf" onclick="toggleServiceCard('bdpf')">
                 <div class="service-item-top">
                     <div class="service-item-title-area"><div class="service-item-name">Brake Discs & Pads - Front</div><span class="service-badge-time">90 mins</span></div>
                     <div class="service-item-right"><div class="service-item-price">Ask for Quotation</div><div class="service-item-action" id="action-bdpf">+ Add</div></div>
                 </div>
             </div>
-            <div class="service-item-card" id="card-bdpr" onclick="toggleService('bdpr')">
+            <div class="service-item-card" id="card-bdpr" onclick="toggleServiceCard('bdpr')">
                 <div class="service-item-top">
                     <div class="service-item-title-area"><div class="service-item-name">Brake Discs & Pads - Rear</div><span class="service-badge-time">90 mins</span></div>
                     <div class="service-item-right"><div class="service-item-price">Ask for Quotation</div><div class="service-item-action" id="action-bdpr">+ Add</div></div>
@@ -1209,16 +1172,56 @@
             <div id="arrow3" class="repair-cat-arrow">⌄</div>
         </div>
         <div id="engineList" class="sub-service-list">
-            <div class="service-item-card" id="card-timb" onclick="toggleService('timb')">
+            <div class="service-item-card" id="card-timb" onclick="toggleServiceCard('timb')">
                 <div class="service-item-top">
                     <div class="service-item-title-area"><div class="service-item-name">Timing Belt Kit Replacement</div><span class="service-badge-time">3.5 hrs</span></div>
                     <div class="service-item-right"><div class="service-item-price">Ask for Quotation</div><div class="service-item-action" id="action-timb">+ Add</div></div>
                 </div>
             </div>
-            <div class="service-item-card" id="card-alt" onclick="toggleService('alt')">
+            <div class="service-item-card" id="card-alt" onclick="toggleServiceCard('alt')">
                 <div class="service-item-top">
                     <div class="service-item-title-area"><div class="service-item-name">Alternator Replacement</div><span class="service-badge-time">2.0 hrs</span></div>
                     <div class="service-item-right"><div class="service-item-price">Ask for Quotation</div><div class="service-item-action" id="action-alt">+ Add</div></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SUSPENSION -->
+        <div class="repair-category-card" onclick="toggleSubList('suspList', 'arrow4')">
+            <div class="repair-cat-left"><div class="repair-cat-icon">🚗</div><div class="repair-cat-title">Suspension & Steering</div></div>
+            <div id="arrow4" class="repair-cat-arrow">⌄</div>
+        </div>
+        <div id="suspList" class="sub-service-list">
+            <div class="service-item-card" id="card-shf" onclick="toggleServiceCard('shf')">
+                <div class="service-item-top">
+                    <div class="service-item-title-area"><div class="service-item-name">Shock Absorbers - Front</div><span class="service-badge-time">2.0 hrs</span></div>
+                    <div class="service-item-right"><div class="service-item-price">Ask for Quotation</div><div class="service-item-action" id="action-shf">+ Add</div></div>
+                </div>
+            </div>
+            <div class="service-item-card" id="card-csp" onclick="toggleServiceCard('csp')">
+                <div class="service-item-top">
+                    <div class="service-item-title-area"><div class="service-item-name">Coil Spring Replacement</div><span class="service-badge-time">60 mins</span></div>
+                    <div class="service-item-right"><div class="service-item-price">Ask for Quotation</div><div class="service-item-action" id="action-csp">+ Add</div></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CLUTCH -->
+        <div class="repair-category-card" onclick="toggleSubList('clutchList', 'arrow5')">
+            <div class="repair-cat-left"><div class="repair-cat-icon">🔧</div><div class="repair-cat-title">Clutch & Drivetrain</div></div>
+            <div id="arrow5" class="repair-cat-arrow">⌄</div>
+        </div>
+        <div id="clutchList" class="sub-service-list">
+            <div class="service-item-card" id="card-clt" onclick="toggleServiceCard('clt')">
+                <div class="service-item-top">
+                    <div class="service-item-title-area"><div class="service-item-name">Clutch Kit Replacement</div><span class="service-badge-time">4.5 hrs</span></div>
+                    <div class="service-item-right"><div class="service-item-price">Ask for Quotation</div><div class="service-item-action" id="action-clt">+ Add</div></div>
+                </div>
+            </div>
+            <div class="service-item-card" id="card-dmf" onclick="toggleServiceCard('dmf')">
+                <div class="service-item-top">
+                    <div class="service-item-title-area"><div class="service-item-name">Dual Mass Flywheel & Clutch</div><span class="service-badge-time">5.5 hrs</span></div>
+                    <div class="service-item-right"><div class="service-item-price">Ask for Quotation</div><div class="service-item-action" id="action-dmf">+ Add</div></div>
                 </div>
             </div>
         </div>
@@ -1351,38 +1354,31 @@
 
         var selectedServices = {
             collect: false, mot4: false, mot7: false, oil: false, interim: false, major: false,
-            bpf: false, bpr: false, bdpf: false, bdpr: false, timb: false, alt: false
+            bpf: false, bpr: false, bdpf: false, bdpr: false, timb: false, alt: false,
+            shf: false, csp: false, clt: false, dmf: false
         };
 
         var serviceNames = {
             collect: "Collect & Deliver (£15)", mot4: "MOT Test (Class 4 - £45)", mot7: "MOT Test (Class 7 - £55)",
             oil: "Oil & Filter (Quote)", interim: "Interim Service (Quote)", major: "Major Service (Quote)",
             bpf: "Front Brake Pads (Quote)", bpr: "Rear Brake Pads (Quote)", bdpf: "Front Discs & Pads (Quote)", bdpr: "Rear Discs & Pads (Quote)",
-            timb: "Timing Belt Kit (Quote)", alt: "Alternator (Quote)"
+            timb: "Timing Belt Kit (Quote)", alt: "Alternator (Quote)",
+            shf: "Shock Absorbers (Quote)", csp: "Coil Spring (Quote)", clt: "Clutch Kit (Quote)", dmf: "Flywheel & Clutch (Quote)"
         };
 
-        function toggleCollectService(key) {
+        function toggleServiceCard(key) {
             selectedServices[key] = !selectedServices[key];
             var card = document.getElementById("card-" + key);
             var action = document.getElementById("action-" + key);
-            var formSection = document.getElementById("collectFormSection");
-
-            if(selectedServices[key]) {
-                card.classList.add("selected");
-                action.innerText = "✓ Added";
-                formSection.classList.add("active");
-            } else {
-                card.classList.remove("selected");
-                action.innerText = "+ Add";
-                formSection.classList.remove("active");
+            
+            if (key === 'collect') {
+                var formSection = document.getElementById("collectFormSection");
+                if(selectedServices[key]) {
+                    formSection.classList.add("active");
+                } else {
+                    formSection.classList.remove("active");
+                }
             }
-            updateCartSummary();
-        }
-
-        function toggleService(key) {
-            selectedServices[key] = !selectedServices[key];
-            var card = document.getElementById("card-" + key);
-            var action = document.getElementById("action-" + key);
 
             if(selectedServices[key]) {
                 card.classList.add("selected");
@@ -1402,7 +1398,7 @@
             for (let key in selectedServices) {
                 if (selectedServices[key]) {
                     count++;
-                    if (fixedPrices[key]) {
+                    if (fixedPrices[key] !== undefined) {
                         fixedTotal += fixedPrices[key];
                     } else {
                         hasQuoteItems = true;
@@ -1427,16 +1423,13 @@
 
         function goToSchedule() {
             let displayText = document.getElementById("totalPriceText").innerText;
-            document.getElementById("summaryCountText").innerText = currentCountText();
+            let count = 0;
+            for (let key in selectedServices) { if (selectedServices[key]) count++; }
+            
+            document.getElementById("summaryCountText").innerText = count + (count === 1 ? " Service" : " Services");
             document.getElementById("summaryPriceHeader").innerText = displayText;
             document.getElementById("schedBottomTotalPrice").innerText = displayText;
             switchPage('schedule');
-        }
-
-        function currentCountText() {
-            let count = 0;
-            for (let key in selectedServices) { if (selectedServices[key]) count++; }
-            return count + (count === 1 ? " Service" : " Services");
         }
 
         let selectedDayText = "Mon, 31 Aug";
@@ -1500,6 +1493,8 @@
             let reg = document.getElementById("confReg").innerText;
             let ref = document.getElementById("confRefCode").innerText;
             let priceText = document.getElementById("confPrice").innerText;
+            let name = document.getElementById("clientName").value.trim();
+            let phone = document.getElementById("clientPhone").value.trim();
 
             let items = [];
             for (let key in selectedServices) {
@@ -1511,7 +1506,8 @@
                       `🚗 *Reg:* ${reg}\n` +
                       `📦 *Requested Services:* ${items.join(", ")}\n` +
                       `💰 *Estimate:* ${priceText}\n` +
-                      `📅 *Preferred Slot:* ${selectedDayText} • ${selectedTimeText}`;
+                      `📅 *Preferred Slot:* ${selectedDayText} • ${selectedTimeText}\n` +
+                      `👤 *Client:* ${name} (${phone})`;
 
             window.open("https://wa.me/447367446973?text=" + encodeURIComponent(msg), "_blank");
         }
