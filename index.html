@@ -2001,14 +2001,32 @@
             <div class="schedule-main-title">SELECT YOUR ARRIVAL SLOT</div>
             <div class="schedule-sub-info">Vehicle: <span id="summaryReg">LA21CZU</span> • <span id="summaryCountText">0 Services</span> (<span id="summaryPriceHeader">£0.00</span>)</div>
         </div>
-<div class="sched-section-title">
-  1. CHOOSE DATE
-</div>
-<div style="padding: 10px 0;">
-  <input type="date" id="clientDate" style="width: 100%; padding: 14px; background: #1e1e1e; border: 1px solid #333; color: #fff; border-radius: 8px; font-size: 16px; outline: none;" required>
-</div>
 
-        
+        <div class="sched-section-title">
+            1. CHOOSE DATE (MON – SAT)
+        </div>
+
+        <div class="days-grid" id="daysGridContainer">
+            <div class="day-card selected" onclick="selectDay(this, 'Mon, 31 Aug')">
+                <div class="day-name">Mon</div>
+                <div class="day-date">31 Aug</div>
+            </div>
+            <div class="day-card" onclick="selectDay(this, 'Tue, 1 Sept')">
+                <div class="day-name">Tue</div>
+                <div class="day-date">1 Sept</div>
+            </div>
+            <div class="day-card" onclick="selectDay(this, 'Wed, 2 Sept')">
+                <div class="day-name">Wed</div>
+                <div class="day-date">2 Sept</div>
+            </div>
+            <div class="day-card" onclick="selectDay(this, 'Thu, 3 Sept')">
+                <div class="day-name">Thu</div>
+                <div class="day-date">3 Sept</div>
+            </div>
+            <div class="day-card" onclick="selectDay(this, 'Fri, 4 Sept')">
+                <div class="day-name">Fri</div>
+                <div class="day-date">4 Sept</div>
+            </div>
         </div>
 
         <div class="sched-section-title">
